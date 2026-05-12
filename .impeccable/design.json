@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-11T23:25:00.000Z",
+  "title": "Design System: BeaverBots FTC",
+  "extensions": {
+    "colorMeta": {
+      "beaverbots-royal": {
+        "role": "primary",
+        "displayName": "BeaverBots Royal",
+        "canonical": "oklch(0.52 0.21 295)",
+        "tonalRamp": [
+          "oklch(0.18 0.06 295)",
+          "oklch(0.28 0.12 295)",
+          "oklch(0.38 0.18 295)",
+          "oklch(0.46 0.21 295)",
+          "oklch(0.52 0.21 295)",
+          "oklch(0.66 0.18 295)",
+          "oklch(0.82 0.12 295)",
+          "oklch(0.95 0.04 295)"
+        ]
+      },
+      "beaverbots-royal-soft": {
+        "role": "primary-soft",
+        "displayName": "Royal Soft",
+        "canonical": "oklch(0.94 0.04 295)",
+        "tonalRamp": [
+          "oklch(0.4 0.18 295)",
+          "oklch(0.5 0.16 295)",
+          "oklch(0.6 0.14 295)",
+          "oklch(0.7 0.12 295)",
+          "oklch(0.82 0.08 295)",
+          "oklch(0.88 0.06 295)",
+          "oklch(0.94 0.04 295)",
+          "oklch(0.98 0.02 295)"
+        ]
+      },
+      "beaverbots-royal-cream": {
+        "role": "secondary",
+        "displayName": "Royal Cream",
+        "canonical": "oklch(0.96 0.02 295)",
+        "tonalRamp": [
+          "oklch(0.5 0.14 295)",
+          "oklch(0.6 0.1 295)",
+          "oklch(0.72 0.06 295)",
+          "oklch(0.84 0.04 295)",
+          "oklch(0.9 0.03 295)",
+          "oklch(0.96 0.02 295)",
+          "oklch(0.985 0.01 295)",
+          "oklch(0.998 0.005 295)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(0.22 0.03 290)",
+        "tonalRamp": [
+          "oklch(0.1 0.02 290)",
+          "oklch(0.16 0.025 290)",
+          "oklch(0.22 0.03 290)",
+          "oklch(0.36 0.03 290)",
+          "oklch(0.48 0.03 290)",
+          "oklch(0.62 0.025 290)",
+          "oklch(0.78 0.02 290)",
+          "oklch(0.92 0.01 290)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "oklch(0.48 0.03 290)",
+        "tonalRamp": [
+          "oklch(0.16 0.03 290)",
+          "oklch(0.24 0.03 290)",
+          "oklch(0.32 0.03 290)",
+          "oklch(0.48 0.03 290)",
+          "oklch(0.6 0.025 290)",
+          "oklch(0.72 0.02 290)",
+          "oklch(0.84 0.015 290)",
+          "oklch(0.94 0.01 290)"
+        ]
+      },
+      "paper-muted": {
+        "role": "neutral-bg",
+        "displayName": "Paper Muted",
+        "canonical": "oklch(0.96 0.01 290)",
+        "tonalRamp": [
+          "oklch(0.32 0.04 290)",
+          "oklch(0.5 0.03 290)",
+          "oklch(0.68 0.02 290)",
+          "oklch(0.82 0.015 290)",
+          "oklch(0.9 0.012 290)",
+          "oklch(0.96 0.01 290)",
+          "oklch(0.985 0.005 290)",
+          "oklch(0.998 0.003 290)"
+        ]
+      },
+      "rule": {
+        "role": "neutral-border",
+        "displayName": "Rule",
+        "canonical": "oklch(0.9 0.01 290)",
+        "tonalRamp": [
+          "oklch(0.3 0.03 290)",
+          "oklch(0.48 0.025 290)",
+          "oklch(0.66 0.02 290)",
+          "oklch(0.78 0.015 290)",
+          "oklch(0.86 0.012 290)",
+          "oklch(0.9 0.01 290)",
+          "oklch(0.95 0.008 290)",
+          "oklch(0.99 0.004 290)"
+        ]
+      },
+      "background": {
+        "role": "neutral-bg",
+        "displayName": "Page White",
+        "canonical": "oklch(1 0 0)",
+        "tonalRamp": [
+          "oklch(0.9 0.005 290)",
+          "oklch(0.94 0.004 290)",
+          "oklch(0.97 0.003 290)",
+          "oklch(0.985 0.002 290)",
+          "oklch(0.992 0.001 290)",
+          "oklch(0.996 0 290)",
+          "oklch(0.998 0 290)",
+          "oklch(1 0 0)"
+        ]
+      },
+      "caution": {
+        "role": "destructive",
+        "displayName": "Caution Red",
+        "canonical": "oklch(0.65 0.24 27)",
+        "tonalRamp": [
+          "oklch(0.28 0.16 27)",
+          "oklch(0.4 0.22 27)",
+          "oklch(0.5 0.24 27)",
+          "oklch(0.58 0.24 27)",
+          "oklch(0.65 0.24 27)",
+          "oklch(0.76 0.18 27)",
+          "oklch(0.88 0.1 27)",
+          "oklch(0.97 0.03 27)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page-hero headline. Used once per page." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings within a page." },
+      "title": { "displayName": "Title", "purpose": "Card titles, member names, subsystem names." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy. Capped 65-75ch line length." },
+      "label": { "displayName": "Caption Label", "purpose": "JetBrains Mono uppercase. Eyebrows, breadcrumbs, badges, table headers, captions." }
+    },
+    "shadows": [
+      {
+        "name": "shadow-sm",
+        "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "purpose": "The only ambient shadow in the system. Used on feature cards that must read as the receipt the user is meant to act on (Worlds Travel Fund, tier cards)."
+      },
+      {
+        "name": "shadow-hover",
+        "value": "0 10px 32px -16px oklch(0.22 0.03 290 / 0.18)",
+        "purpose": "Hover-only shadow on nav cards and feature cards. Appears as a response to interaction, never at rest."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for color, background, and translation transitions on interactive elements."
+      },
+      {
+        "name": "duration-quick",
+        "value": "150ms",
+        "purpose": "Hover, focus, and active state changes on buttons, badges, and links."
+      },
+      {
+        "name": "duration-deliberate",
+        "value": "300ms",
+        "purpose": "Nav underline scale-in, drawer open/close, page-header reveals."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single most important CTA on a page. Always filled BeaverBots Royal.",
+      "html": "<button class=\"ds-btn-primary\"><svg class=\"ds-btn-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z\"/></svg>CLICK HERE TO DONATE<svg class=\"ds-btn-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 5l7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-primary, oklch(0.52 0.21 295)); color: var(--color-primary-foreground, oklch(1 0 0)); font-family: Inter, system-ui, sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.875rem 1.75rem; border: none; border-radius: 0.75rem; cursor: pointer; transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover { background: oklch(0.46 0.21 295); } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px oklch(0.52 0.21 295 / 0.5); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-icon { width: 1.125rem; height: 1.125rem; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Companion CTA next to a primary action. White surface, hairline border.",
+      "html": "<button class=\"ds-btn-outline\">About The Team</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-background, oklch(1 0 0)); color: var(--color-foreground, oklch(0.22 0.03 290)); font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 1rem; padding: 0.875rem 1.5rem; border: 1px solid var(--color-border, oklch(0.9 0.01 290)); border-radius: 0.75rem; cursor: pointer; transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1), border-color 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-outline:hover { background: oklch(0.96 0.01 290); border-color: oklch(0.85 0.012 290); } .ds-btn-outline:focus-visible { outline: none; box-shadow: 0 0 0 3px oklch(0.52 0.21 295 / 0.5); }"
+    },
+    {
+      "name": "Eyebrow Badge",
+      "kind": "chip",
+      "refersTo": "badge-eyebrow",
+      "description": "The signature caption-voice label at the top of every page header. Mono, uppercase, 0.16em tracking.",
+      "html": "<span class=\"ds-badge-eyebrow\"><svg class=\"ds-badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2Z\"/></svg>2026 FIRST\u00ae WORLDS CHAMPIONSHIP QUALIFIER</span>",
+      "css": ".ds-badge-eyebrow { display: inline-flex; align-items: center; gap: 0.375rem; background: oklch(0.52 0.21 295 / 0.05); color: var(--color-primary, oklch(0.52 0.21 295)); font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.3125rem 0.75rem; border: 1px solid oklch(0.52 0.21 295 / 0.3); border-radius: 9999px; } .ds-badge-icon { width: 0.875rem; height: 0.875rem; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Default content card. White, 1px Rule border, no shadow at rest.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Building like Beavers</h3><p class=\"ds-card-body\">A second-year FTC team from Ashburn, VA. Meet the pack.</p><a class=\"ds-card-link\">Read more <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 5l7 7-7 7\"/></svg></a></article>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 0.75rem; background: var(--color-background, oklch(1 0 0)); border: 1px solid var(--color-border, oklch(0.9 0.01 290)); border-radius: 1rem; padding: 1.5rem; font-family: Inter, system-ui, sans-serif; transition: border-color 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-card:hover { border-color: oklch(0.52 0.21 295 / 0.4); transform: translateY(-2px); box-shadow: 0 10px 32px -16px oklch(0.22 0.03 290 / 0.18); } .ds-card-title { font-size: 1.125rem; font-weight: 700; color: var(--color-foreground, oklch(0.22 0.03 290)); letter-spacing: -0.005em; margin: 0; } .ds-card-body { font-size: 0.875rem; color: oklch(0.48 0.03 290); line-height: 1.6; margin: 0; } .ds-card-link { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.875rem; font-weight: 600; color: var(--color-primary, oklch(0.52 0.21 295)); margin-top: auto; } .ds-card-link svg { width: 1rem; height: 1rem; }"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Standard text field. Hairline border, Royal Purple focus ring.",
+      "html": "<input class=\"ds-input\" placeholder=\"Your email address\" />",
+      "css": ".ds-input { width: 100%; height: 2.5rem; padding: 0.5rem 0.75rem; background: var(--color-background, oklch(1 0 0)); color: var(--color-foreground, oklch(0.22 0.03 290)); font-family: Inter, system-ui, sans-serif; font-size: 0.9375rem; border: 1px solid var(--color-border, oklch(0.9 0.01 290)); border-radius: 0.5rem; outline: none; transition: border-color 150ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-input::placeholder { color: oklch(0.48 0.03 290); } .ds-input:focus-visible { border-color: var(--color-primary, oklch(0.52 0.21 295)); box-shadow: 0 0 0 3px oklch(0.52 0.21 295 / 0.5); }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Top-bar nav link. Mono uppercase. Active state gets a permanent Royal underline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\">HOME</a><a class=\"ds-nav-link is-active\">ABOUT</a><a class=\"ds-nav-link\">OUTREACH</a><a class=\"ds-nav-link\">SPONSOR</a></nav>",
+      "css": ".ds-nav { display: inline-flex; align-items: center; gap: 2rem; } .ds-nav-link { position: relative; color: var(--color-foreground, oklch(0.22 0.03 290)); font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 0.875rem; letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 0.25rem; transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; } .ds-nav-link::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--color-primary, oklch(0.52 0.21 295)); transform: scaleX(0); transform-origin: left; transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-nav-link:hover { color: var(--color-primary, oklch(0.52 0.21 295)); } .ds-nav-link:hover::after { transform: scaleX(1); } .ds-nav-link.is-active { color: var(--color-primary, oklch(0.52 0.21 295)); } .ds-nav-link.is-active::after { transform: scaleX(1); }"
+    },
+    {
+      "name": "Worlds Travel Fund Card",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Signature conversion card. White surface, ambient shadow, Royal progress fill, tabular-num figures.",
+      "html": "<aside class=\"ds-fund-card\"><div class=\"ds-fund-meta\"><span class=\"ds-fund-label\">WORLDS TRAVEL FUND</span><span class=\"ds-fund-pct\">68%</span></div><div class=\"ds-fund-track\"><div class=\"ds-fund-fill\"></div></div><div class=\"ds-fund-foot\"><span><strong>$13,650</strong> raised</span><span>Goal: $20,000</span></div></aside>",
+      "css": ".ds-fund-card { display: flex; flex-direction: column; gap: 0.75rem; background: var(--color-background, oklch(1 0 0)); border: 1px solid var(--color-border, oklch(0.9 0.01 290)); border-radius: 0.75rem; padding: 1.25rem; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); font-family: Inter, system-ui, sans-serif; max-width: 36rem; } .ds-fund-meta { display: flex; align-items: center; justify-content: space-between; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; } .ds-fund-label { color: var(--color-primary, oklch(0.52 0.21 295)); } .ds-fund-pct { color: var(--color-foreground, oklch(0.22 0.03 290)); font-variant-numeric: tabular-nums; } .ds-fund-track { height: 0.25rem; background: oklch(0.96 0.01 290); border-radius: 9999px; overflow: hidden; } .ds-fund-fill { width: 68%; height: 100%; background: var(--color-primary, oklch(0.52 0.21 295)); transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-fund-foot { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: oklch(0.48 0.03 290); font-variant-numeric: tabular-nums; } .ds-fund-foot strong { color: var(--color-foreground, oklch(0.22 0.03 290)); font-weight: 700; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Engineering Yearbook",
+    "overview": "This site is the yearbook of a second-year FTC team \u2014 a documentary record, not a marketing campaign. Real photographs of real students, real budget tables, real sponsor names, real outreach numbers. Decoration is suspect. Every surface is white paper, every line is a thin printed rule, every label is set in monospace like a caption underneath an archive photo. The system reads as quietly authoritative: confident enough that a $5,000 sponsor takes the team seriously, restrained enough that a parent or judge can scan it in 30 seconds and trust what they see. The single accent \u2014 BeaverBots Royal \u2014 appears on actions, status, and emphasis only. It is never decoration. The mascot stays in the logo; the writing carries the brand.",
+    "keyCharacteristics": [
+      "White paper foreground with one purple accent used as ink, never as wallpaper.",
+      "Inter for everything readable, JetBrains Mono for labels, captions, and metadata.",
+      "Borders and spacing carry hierarchy; shadows almost never do.",
+      "Real photos with real captions. Decorative imagery is forbidden.",
+      "Generous line-height and capped line-length; older donors and mentors must read it comfortably."
+    ],
+    "rules": [
+      { "name": "The One Ink Rule", "body": "BeaverBots Royal acts as ink, not as wallpaper. It can fill text, an icon, a 1px focus ring, a small badge, or a primary CTA. It can never fill a section background, sit behind a hero, or act as a gradient stop. If the purple covers more than ~10% of any viewport, the design is wrong.", "section": "colors" },
+      { "name": "The No-Cream Rule", "body": "There is no off-white card surface. Cards are page-white with a 1px Rule border. The instant you see two adjacent whites trying to layer with shadow, the design has drifted.", "section": "colors" },
+      { "name": "The Receipts Rule", "body": "A color in the system must serve information, not mood. If a stat is decorative, it leaves. If a stat is real, the number gets Royal Purple and the unit stays Ink Muted.", "section": "colors" },
+      { "name": "The Caption Rule", "body": "Anything below the running body type \u2014 eyebrows, photo credits, status pills, breadcrumbs, table column heads \u2014 is set in JetBrains Mono with 0.16em tracking and uppercase. That single mono voice is the most distinctive thread in the system.", "section": "typography" },
+      { "name": "The Two-Tone Rule", "body": "The headline scale uses two weights only \u2014 Body 400 and Display/Title 700/800 \u2014 with no 500 or 600 intermediates. Hierarchy comes from scale-plus-mono labels.", "section": "typography" },
+      { "name": "The Wide-Read Rule", "body": "Body type never falls below 16px and never exceeds 75ch line-width. The donor demographic skews older.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. A shadow is a response (hover, focus, active modal), not a property. Any card you ship with a static shadow has to earn it by being a primary call-to-action or a fund tracker.", "section": "elevation" },
+      { "name": "The No-Glow Rule", "body": "Glows, backdrop blurs, and glassmorphism overlays are forbidden. The system uses one ambient shadow and one hover shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the entire site on a Page-White background (oklch(1 0 0)); cards sit on it with a 1px Rule border.",
+      "Do use BeaverBots Royal (oklch(0.52 0.21 295)) as ink on text, icons, focus rings, the primary CTA, the active nav underline, and the progress fill \u2014 and nowhere else.",
+      "Do set every eyebrow, badge, breadcrumb, photo caption, and table header in JetBrains Mono at 0.16em tracking, uppercase.",
+      "Do cite real numbers and real names. The Receipts Rule beats every adjective.",
+      "Do keep body type at 16px or larger with line-length capped at 75ch and line-height 1.6.",
+      "Do respect prefers-reduced-motion. Disable carousels and hover translations when it is set.",
+      "Do show a focus ring at all times (3px Royal Purple, 50% opacity). No outline:none without a replacement."
+    ],
+    "donts": [
+      "Don't use gradient text (background-clip: text over a gradient). Headline emphasis is always a single solid Royal Purple word.",
+      "Don't use gradient backgrounds or radial-gradient overlays anywhere. White is the surface.",
+      "Don't use dark mode, neon accents, or backdrop-blur glassmorphism.",
+      "Don't use a side-stripe border (border-left greater than 1px as a colored accent) on cards, callouts, or list items.",
+      "Don't ship a default modal. Inline progressive disclosure first; modal only when blocking is the point.",
+      "Don't nest cards inside cards.",
+      "Don't lean on the beaver mascot beyond the logo. No dam puns in headings, no cartoon beavers.",
+      "Don't drop into generic SaaS landing patterns: hero + three identical feature cards + pricing grid.",
+      "Don't use comic-sans or kid-themed STEM clip art.",
+      "Don't use stock-photo corporate imagery (suits shaking hands, motion-blur cityscapes). Only real team photos.",
+      "Don't use em-dashes in UI copy. Use comma, colon, semicolon, or period.",
+      "Don't stack section padding identically; vary 5rem and 7rem for vertical rhythm."
+    ]
+  }
+}
