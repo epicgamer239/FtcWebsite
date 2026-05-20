@@ -37,7 +37,7 @@ export function Footer() {
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <Link href="/" className="flex items-center gap-3 mb-4 group">
-              <BeaverLogo className="h-12 w-12 group-hover:-rotate-3 transition-transform" />
+              <BeaverLogo className="h-14 group-hover:-rotate-3 transition-transform" />
               <div>
                 <div className="font-extrabold tracking-wider">BEAVERBOTS</div>
                 <div className="label-mono text-[10px] text-primary">

@@ -59,7 +59,7 @@ export function Navbar() {
             className="flex items-center gap-3 group shrink-0"
             aria-label="BeaverBots Home"
           >
-            <BeaverLogo className="h-12 w-12 transition-transform group-hover:-rotate-3" />
+            <BeaverLogo className="h-12 transition-transform group-hover:-rotate-3" />
             <div className="hidden sm:flex flex-col leading-none">
               <span className="text-base font-extrabold tracking-wider">
                 BEAVERBOTS
@@ -133,7 +133,7 @@ export function Navbar() {
           )}
         >
           <div className="flex items-center justify-between px-6 py-6 border-b border-border">
-            <BeaverLogo className="h-10 w-10" />
+            <BeaverLogo className="h-10" />
             <button
               onClick={() => setOpen(false)}
               aria-label="Close menu"
