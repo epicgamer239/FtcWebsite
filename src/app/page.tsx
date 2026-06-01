@@ -24,6 +24,8 @@ import {
   School,
   Sparkles,
   Cog,
+  CheckCircle,
+  Circle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/reveal";
@@ -66,12 +68,40 @@ const PAGE_CARDS = [
   },
 ];
 
+const SEASON_MILESTONES = [
+  {
+    title: "Kickoff",
+    date: "September 2025",
+    status: "completed",
+    icon: CheckCircle,
+  },
+  {
+    title: "Prototyping & Build",
+    date: "October–December 2025",
+    status: "completed",
+    icon: CheckCircle,
+  },
+  {
+    title: "Regional Qualifiers",
+    date: "January–March 2026",
+    status: "completed",
+    icon: CheckCircle,
+  },
+  {
+    title: "FIRST World Championship",
+    date: "April 2026",
+    status: "active",
+    icon: Trophy,
+  },
+];
+
 type Receipt = {
   value: number;
   prefix?: string;
   suffix?: string;
   label: string;
   caption: string;
+  secondary?: string;
 };
 
 const RECEIPTS: Receipt[] = [
@@ -79,6 +109,12 @@ const RECEIPTS: Receipt[] = [
   { value: 1400, suffix: "+", label: "Kids Reached", caption: "Outreach to date" },
   { value: 13650, prefix: "$", label: "Raised", caption: "Worlds travel fund" },
   { value: 280, suffix: "+", label: "Build Hours", caption: "On DAM-1 alone" },
+  { value: 125.07, label: "Best OPR", caption: "Overall Power Ranking" },
+  { value: 50.08, label: "Auto Points", caption: "Average per match" },
+  { value: 91.92, label: "Teleop Points", caption: "Average per match" },
+  { value: 10.51, label: "Endgame Points", caption: "Average per match" },
+  { value: 290, suffix: "th", label: "Rank", caption: "Worldwide", secondary: "96.51% Percentile" },
+  { value: 36, suffix: "th", label: "Auto Rank", caption: "Worldwide", secondary: "99.58% Percentile" },
 ];
 
 export default function Home() {
@@ -229,24 +265,154 @@ export default function Home() {
             </Link>
           </div>
 
-          <dl className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-border border border-border rounded-2xl overflow-hidden bg-background">
+          <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 divide-y sm:divide-y-0 lg:divide-y-0 lg:divide-x divide-border border border-border rounded-2xl overflow-hidden bg-background">
             {RECEIPTS.map((r, i) => (
-              <div key={r.label} className="p-6 lg:p-8 relative">
+              <div key={r.label} className="p-5 lg:p-6 relative">
                 <div className="label-mono absolute top-3 left-4 text-[10px] text-muted-foreground">
                   {String(i + 1).padStart(2, "0")} / {String(RECEIPTS.length).padStart(2, "0")}
                 </div>
                 <dt className="label-mono mt-4 text-[10px] text-muted-foreground">
                   {r.label}
                 </dt>
-                <dd className="mt-1 text-4xl lg:text-5xl font-extrabold tracking-tight text-primary leading-none">
+                <dd className="mt-1 text-3xl lg:text-4xl font-extrabold tracking-tight text-primary leading-none">
                   <Counter value={r.value} prefix={r.prefix} suffix={r.suffix} />
                 </dd>
                 <div className="mt-3 text-xs text-muted-foreground">
                   {r.caption}
                 </div>
+                {r.secondary && (
+                  <div className="mt-1 text-[10px] text-primary font-medium">
+                    {r.secondary}
+                  </div>
+                )}
               </div>
             ))}
           </dl>
+        </div>
+      </section>
+
+      {/* SEASON TIMELINE */}
+      <section className="py-16 lg:py-20 border-y border-border bg-secondary/40">
+        <div className="container-px mx-auto max-w-7xl">
+          <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
+            <div>
+              <div className="label-mono text-[11px] text-primary mb-3">
+                Season Journey
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+                Our path to Worlds.
+              </h2>
+            </div>
+            <Badge variant="outline" className="label-mono text-[10px]">
+              2025-26 SEASON
+            </Badge>
+          </div>
+
+          {/* Desktop: Horizontal timeline */}
+          <div className="hidden md:block">
+            <div className="relative">
+              {/* Connecting line */}
+              <div className="absolute top-1/2 left-0 right-0 h-px bg-border -translate-y-1/2" />
+              
+              <div className="flex items-center justify-between gap-4">
+                {SEASON_MILESTONES.map((milestone, index) => {
+                  const Icon = milestone.icon;
+                  const isActive = milestone.status === "active";
+                  return (
+                    <div key={milestone.title} className="relative flex flex-col items-center gap-4 group">
+                      {/* Dot marker */}
+                      <div
+                        className={cn(
+                          "relative z-10 rounded-full border-4 bg-background transition-all duration-300 ease-in-out",
+                          "hover:scale-105 hover:shadow-[0_0_12px_oklch(0.52_0.21_295/0.4)]",
+                          isActive
+                            ? "border-primary h-6 w-6"
+                            : "border-border h-4 w-4"
+                        )}
+                      >
+                        {isActive && (
+                          <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+                        )}
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="text-center max-w-[200px]">
+                        <div
+                          className={cn(
+                            "label-mono text-[10px] mb-1 transition-all duration-300",
+                            isActive ? "text-primary" : "text-muted-foreground"
+                          )}
+                        >
+                          {milestone.date}
+                        </div>
+                        <div
+                          className={cn(
+                            "font-semibold text-sm transition-all duration-300",
+                            isActive && "text-primary"
+                          )}
+                        >
+                          {milestone.title}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: Vertical timeline */}
+          <div className="md:hidden">
+            <div className="relative pl-8">
+              {/* Connecting line */}
+              <div className="absolute left-3 top-0 bottom-0 w-px bg-border" />
+              
+              <div className="flex flex-col gap-6">
+                {SEASON_MILESTONES.map((milestone, index) => {
+                  const Icon = milestone.icon;
+                  const isActive = milestone.status === "active";
+                  return (
+                    <div key={milestone.title} className="relative group">
+                      {/* Dot marker */}
+                      <div
+                        className={cn(
+                          "absolute left-[-20px] top-1 rounded-full border-4 bg-background transition-all duration-300 ease-in-out",
+                          "hover:scale-105 hover:shadow-[0_0_12px_oklch(0.52_0.21_295/0.4)]",
+                          isActive
+                            ? "border-primary h-5 w-5"
+                            : "border-border h-3 w-3"
+                        )}
+                      >
+                        {isActive && (
+                          <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+                        )}
+                      </div>
+                      
+                      {/* Content */}
+                      <div>
+                        <div
+                          className={cn(
+                            "label-mono text-[10px] mb-1 transition-all duration-300",
+                            isActive ? "text-primary" : "text-muted-foreground"
+                          )}
+                        >
+                          {milestone.date}
+                        </div>
+                        <div
+                          className={cn(
+                            "font-semibold text-sm transition-all duration-300",
+                            isActive && "text-primary"
+                          )}
+                        >
+                          {milestone.title}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -278,7 +444,7 @@ export default function Home() {
               return (
                 <Reveal key={p.href} index={i} className="h-full">
                   <Link href={p.href} className="group block h-full">
-                    <Card className="h-full border-border transition-colors hover:border-primary/60 relative overflow-hidden">
+                    <Card className="h-full border-border transition-all duration-300 ease-in-out hover:scale-[1.02] hover:border-primary/60 hover:shadow-paper-hover relative overflow-hidden">
                       <CardContent className="p-6 flex flex-col h-full">
                         <div className="label-mono absolute top-5 right-5 text-[10px] text-muted-foreground">
                           {String(i + 1).padStart(2, "0")} / {String(PAGE_CARDS.length).padStart(2, "0")}

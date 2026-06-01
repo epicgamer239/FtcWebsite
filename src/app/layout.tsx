@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { MobileNav } from "@/components/mobile-nav";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -35,8 +36,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <TooltipProvider delay={150}>
           <Navbar />
-          <main className="flex-1 flex flex-col">{children}</main>
+          <main className="flex-1 flex flex-col pb-16 md:pb-0">{children}</main>
           <Footer />
+          <MobileNav />
           <Toaster />
         </TooltipProvider>
       </body>

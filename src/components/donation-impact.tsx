@@ -53,10 +53,10 @@ export function DonationImpact() {
         <div className="flex items-baseline justify-between flex-wrap gap-3 mb-6">
           <div>
             <div className="label-mono text-[10px] text-primary mb-2">
-              Donation Impact Calculator
+              See How Your Support Sends Our Team to Worlds
             </div>
             <h3 className="text-xl lg:text-2xl font-extrabold tracking-tight">
-              See what your gift unlocks.
+              Your donation makes real things happen.
             </h3>
           </div>
           <Badge variant="outline" className="label-mono text-[10px]">
@@ -106,7 +106,7 @@ export function DonationImpact() {
               {current.unlocks}
             </div>
             <div className="label-mono mt-3 text-[10px] text-muted-foreground">
-              FOR YOUR {current.label} GIFT
+              This {current.label} gift unlocks
             </div>
           </div>
           <p className="text-sm lg:text-base leading-relaxed text-foreground/80">

@@ -65,7 +65,7 @@ export function Navbar() {
                 BEAVERBOTS
               </span>
               <span className="label-mono text-[10px] text-primary">
-                FTC · ASHBURN, VA
+                FTC 26073 · ASHBURN, VA
               </span>
             </div>
           </Link>
@@ -106,9 +106,9 @@ export function Navbar() {
             <button
               onClick={() => setOpen(true)}
               aria-label="Open menu"
-              className="md:hidden text-foreground/90 hover:text-primary transition-colors p-2 -mr-2"
+              className="md:hidden text-foreground/90 hover:text-primary transition-colors p-3 -mr-3"
             >
-              <Menu className="h-7 w-7 stroke-[1.75]" />
+              <Menu className="h-8 w-8 stroke-[1.75]" />
             </button>
           </div>
         </div>
@@ -137,9 +137,9 @@ export function Navbar() {
             <button
               onClick={() => setOpen(false)}
               aria-label="Close menu"
-              className="p-2 -mr-2 hover:text-primary transition-colors"
+              className="p-3 -mr-3 hover:text-primary transition-colors"
             >
-              <X className="h-7 w-7" />
+              <X className="h-8 w-8" />
             </button>
           </div>
           <nav className="flex-1 px-6 py-8 flex flex-col gap-1">
@@ -150,7 +150,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "text-2xl font-semibold tracking-wide py-3 border-b border-border transition-colors",
+                    "text-2xl font-semibold tracking-wide py-4 min-h-[48px] flex items-center border-b border-border transition-colors",
                     active ? "text-primary" : "hover:text-primary"
                   )}
                 >

@@ -164,7 +164,7 @@ export default function BotPage() {
       </PageHeader>
 
       <section className="py-12 lg:py-16">
-        <div className="container-px mx-auto max-w-7xl grid lg:grid-cols-12 gap-8 items-start">
+        <div className="container-px mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* CAD render */}
           <Card className="lg:col-span-7 overflow-hidden border-border bg-background">
             <div className="relative aspect-[4/3] bg-secondary/40 border-b border-border">
@@ -218,8 +218,9 @@ export default function BotPage() {
                     </TooltipContent>
                   </Tooltip>
                 </div>
-                <Table>
-                  <TableBody>
+                <div className="overflow-x-auto -mx-4 lg:mx-0">
+                  <Table>
+                    <TableBody>
                     {SPECS.map((s) => {
                       const Icon = s.icon;
                       return (
@@ -247,13 +248,14 @@ export default function BotPage() {
                         </TableRow>
                       );
                     })}
-                  </TableBody>
-                </Table>
+                    </TableBody>
+                  </Table>
+                </div>
               </CardContent>
             </Card>
 
             <Card>
-              <CardContent className="p-6">
+              <CardContent className="p-4 lg:p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <Hammer className="h-5 w-5 text-primary" />
                   <h3 className="font-bold text-lg">Build Highlights</h3>
@@ -297,8 +299,9 @@ export default function BotPage() {
           </div>
 
           <Card className="overflow-hidden bg-background">
-            <Table>
-              <TableBody>
+            <div className="overflow-x-auto -mx-4 lg:mx-0">
+              <Table>
+                <TableBody>
                 {REVISIONS.map((r, i) => (
                   <TableRow key={r.rev} className="border-border">
                     <TableCell className="label-mono text-[10px] text-muted-foreground w-12 tabular-nums">
@@ -313,8 +316,9 @@ export default function BotPage() {
                     <TableCell className="text-sm">{r.note}</TableCell>
                   </TableRow>
                 ))}
-              </TableBody>
-            </Table>
+                </TableBody>
+              </Table>
+            </div>
           </Card>
         </div>
       </section>

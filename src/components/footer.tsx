@@ -41,7 +41,7 @@ export function Footer() {
               <div>
                 <div className="font-extrabold tracking-wider">BEAVERBOTS</div>
                 <div className="label-mono text-[10px] text-primary">
-                  FIRST TECH CHALLENGE · ASHBURN, VA
+                  FTC 26073 · ASHBURN, VA
                 </div>
               </div>
             </Link>
