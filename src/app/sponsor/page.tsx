@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,11 +10,6 @@ import {
   ProgressLabel,
   ProgressValue,
 } from "@/components/ui/progress";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 import {
   Table,
   TableBody,
@@ -44,57 +40,98 @@ export const metadata: Metadata = {
 
 const TIERS = [
   {
-    name: "Sapling",
-    amount: "$100",
+    name: "Bronze",
+    amount: "$500",
     perks: ["Thank-you on social media", "Team newsletter updates"],
   },
   {
-    name: "Branch",
-    amount: "$500",
+    name: "Gold",
+    amount: "$1,500",
     perks: [
-      "Everything in Sapling",
+      "Everything in Bronze",
       "Logo on team t-shirts",
       "Recognition at scrimmage events",
     ],
   },
   {
-    name: "Dam Builder",
-    amount: "$1,500",
+    name: "BeaverDam",
+    amount: "$2,000",
     perks: [
-      "Everything in Branch",
+      "Everything in Gold",
       "Logo on the robot",
       "Logo on competition banner",
       "Studio tour invitation",
     ],
     featured: true,
   },
-  {
-    name: "River Champion",
-    amount: "$5,000+",
-    perks: [
-      "Everything in Dam Builder",
-      "Naming rights to a subsystem",
-      "Custom robot demo at your office",
-      "Year-round STEM partnership",
-    ],
-  },
 ];
 
 const CURRENT_SPONSORS = [
   {
-    name: "Lockheed Martin",
-    tier: "River Champion",
-    note: "Defense & aerospace · supports CAD tooling & travel",
+    name: "Reinvent",
+    tier: "BeaverDam",
+    logo: "/sponsor-logos/reinvent.png",
   },
   {
-    name: "Northrop Grumman",
-    tier: "Dam Builder",
-    note: "Mentorship plus sponsorship since rookie season",
+    name: "22nd Century Technologies",
+    tier: "BeaverDam",
+    logo: "/sponsor-logos/22nd-century-technologies.png",
   },
-  { name: "MITRE", tier: "Dam Builder", note: "Engineering mentor pipeline" },
-  { name: "REV Robotics", tier: "Branch", note: "Hardware partner" },
-  { name: "GoBilda", tier: "Branch", note: "Drivetrain components" },
-  { name: "Onshape", tier: "Sapling", note: "Education licensing" },
+  {
+    name: "Maruthi.AI",
+    tier: "BeaverDam",
+    logo: "/sponsor-logos/maruthiai.png",
+  },
+  {
+    name: "ICF",
+    tier: "BeaverDam",
+    logo: "/sponsor-logos/icf.png",
+  },
+  {
+    name: "CVS",
+    tier: "BeaverDam",
+    logo: "/sponsor-logos/cvs.png",
+  },
+  {
+    name: "Apple",
+    tier: "BeaverDam",
+    logo: "/sponsor-logos/apple.png",
+  },
+  {
+    name: "Thai Ashburn",
+    tier: "Gold",
+    logo: "/sponsor-logos/thai-ashburn.png",
+  },
+  {
+    name: "Ohane Poke",
+    tier: "Gold",
+    logo: "/sponsor-logos/ohane-poke.png",
+  },
+  {
+    name: "Element Solutions",
+    tier: "Bronze",
+    logo: "/sponsor-logos/element-solutions.png",
+  },
+  {
+    name: "Golden Rule Builders",
+    tier: "Bronze",
+    logo: "/sponsor-logos/golden-rule-builders.png",
+  },
+  {
+    name: "Groundswell",
+    tier: "Bronze",
+    logo: "/sponsor-logos/groundswell.png",
+  },
+  {
+    name: "Rapidflare",
+    tier: "Bronze",
+    logo: "/sponsor-logos/rapidflare.png",
+  },
+  {
+    name: "Unison",
+    tier: "Bronze",
+    logo: "/sponsor-logos/unison.png",
+  },
 ];
 
 const BUDGET_ROWS = [
@@ -279,35 +316,30 @@ export default function SponsorPage() {
             Thank you to our sponsors.
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {CURRENT_SPONSORS.map((s) => (
-              <HoverCard key={s.name}>
-                <HoverCardTrigger
-                  render={
-                    <button
-                      type="button"
-                      className="h-20 rounded-xl border border-border bg-background flex flex-col items-center justify-center px-3 text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors cursor-help"
-                    />
-                  }
-                >
-                  <span className="truncate w-full text-center">{s.name}</span>
-                  <span className="label-mono text-[9px] text-primary mt-1">
-                    {s.tier}
-                  </span>
-                </HoverCardTrigger>
-                <HoverCardContent className="w-72">
-                  <div className="font-bold mb-1">{s.name}</div>
+              <Card key={s.name} className="group overflow-hidden border-border hover:border-primary/50 transition-colors bg-background">
+                <div className="relative aspect-[2/1] overflow-hidden bg-secondary flex items-center justify-center p-4">
+                  <Image
+                    src={s.logo}
+                    alt={s.name}
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                  />
+                </div>
+                <CardContent className="p-4">
+                  <div className="font-semibold text-sm text-center mb-2">
+                    {s.name}
+                  </div>
                   <Badge
                     variant="secondary"
-                    className="label-mono text-[10px] mb-2"
+                    className="label-mono text-[10px] w-full justify-center"
                   >
-                    {s.tier} sponsor
+                    {s.tier}
                   </Badge>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {s.note}
-                  </p>
-                </HoverCardContent>
-              </HoverCard>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

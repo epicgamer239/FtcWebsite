@@ -2,18 +2,11 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
 import {
   Tabs,
   TabsContent,
@@ -27,11 +20,11 @@ import {
   GraduationCap,
   ClipboardList,
   ArrowUpRight,
-  Sparkles,
   Calendar,
   Users2,
   MapPin,
   ArrowRight,
+  ExternalLink,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/reveal";
@@ -44,6 +37,21 @@ type Program = {
   description: string;
   cadence: string;
   reach: number;
+};
+
+type Event = {
+  name: string;
+  season: "2024-2025" | "2025-2026";
+  date: string;
+  location: string;
+  description: string;
+  stats?: {
+    participants?: string;
+    teams?: string;
+    games?: string;
+  };
+  image: string;
+  registrationUrl?: string;
 };
 
 const PROGRAMS: Program[] = [
@@ -94,15 +102,127 @@ const PROGRAMS: Program[] = [
   },
 ];
 
-const PHOTOS = [
-  "FTC Scrimmage · Nov 2025",
-  "CAD Camp · Cohort 3",
-  "Robo Kicks @ Lincoln ES",
-  "Robo Rumble Finals",
-  "Intro to FIRST · Ashburn Library",
-  "Mentoring FLL Team",
-  "Open Source Code Workshop",
-  "Family STEM Night",
+const EVENTS: Event[] = [
+  {
+    name: "Girls in Robotics 2.0",
+    season: "2025-2026",
+    date: "September 2025",
+    location: "Brambleton Library",
+    description:
+      "Our second Girls in Robotics event of the season, empowering young women in STEM through hands-on building activities and structural stability challenges.",
+    image: "/outreach-events/girls-in-robotics-2-0.png",
+  },
+  {
+    name: "Treasure Takedown Scrimmage",
+    season: "2025-2026",
+    date: "March 2026",
+    location: "Local Library",
+    description:
+      "Our first invitational scrimmage featuring Chesapeake Regional Championship-qualified teams. Over 120 participants and 5 teams from across the DMV networked and practiced before the championship.",
+    stats: {
+      participants: "120+",
+      teams: "5",
+    },
+    image: "/outreach-events/treasure-takedown-scrimmage.png",
+  },
+  {
+    name: "Fossil Faceoff Scrimmage",
+    season: "2025-2026",
+    date: "February 2026",
+    location: "Local Library",
+    description:
+      "Our second scrimmage with 150+ participants and 9 teams from Northern Virginia and Maryland. Featured 10+ games and was recorded for the full 2-hour duration.",
+    stats: {
+      participants: "150+",
+      teams: "9",
+      games: "10+",
+    },
+    image: "/outreach-events/fossil-faceoff-scrimmage.png",
+  },
+  {
+    name: "Artifact Arena Scrimmage",
+    season: "2025-2026",
+    date: "January 2026",
+    location: "Local Library",
+    description:
+      "Our first scrimmage of the season with 150+ participants and 7 teams. Hosted a simulated DECODE qualifier with 8+ games for teams to practice and network.",
+    stats: {
+      participants: "150+",
+      teams: "7",
+      games: "8+",
+    },
+    image: "/outreach-events/artifact-arena-scrimmage.png",
+  },
+  {
+    name: "Robo Rumble 2.0",
+    season: "2025-2026",
+    date: "Spring 2026",
+    location: "Master Lee's Martial Arts",
+    description:
+      "Our annual SuGo Bots competition returned! Students learned to build, design, and iterate robots for sumo-style competition rounds.",
+    image: "/outreach-events/robo-rumble-2-0.png",
+  },
+  {
+    name: "Onshape CAD Camp",
+    season: "2025-2026",
+    date: "Summer 2025",
+    location: "Brambleton Library",
+    description:
+      "In-person CAD Camp building on last year's skills. Students created name tags, LEGO bricks, and personalized designs using advanced Onshape techniques.",
+    image: "/outreach-events/onshape-cad-camp.png",
+  },
+  {
+    name: "ROBOKICKS STEM Camp",
+    season: "2025-2026",
+    date: "Summer 2025",
+    location: "Master Lee's Martial Arts",
+    description:
+      "Our second annual summer camp teaching robotics and STEM topics ranging from FIRST Lego League to AI development.",
+    image: "/outreach-events/robokicks-stem-camp.png",
+  },
+  {
+    name: "GIRLS IN ROBOTICS",
+    season: "2024-2025",
+    date: "Fall 2024",
+    location: "Brambleton Library",
+    description:
+      "The first outreach event of the 2024-2025 season, introducing young girls to STEM enrichment programs.",
+    image: "/outreach-events/girls-in-robotics.png",
+  },
+  {
+    name: "Coral Clash",
+    season: "2024-2025",
+    date: "February 1, 2025",
+    location: "Ashburn Library",
+    description:
+      "A scrimmage for robotics teams competing in states, held at Ashburn Library.",
+    registrationUrl: "https://forms.gle/dSddFRwf2ig3AkqBA",
+    image: "/outreach-events/coral-clash.png",
+  },
+  {
+    name: "Bubble Brawl",
+    season: "2024-2025",
+    date: "January 4, 2025",
+    location: "Ashburn Library",
+    description:
+      "Our solo-hosted second Into the Deep FTC scrimmage with 7 teams and 80+ attendees. Featured new audio and speaker system.",
+    stats: {
+      teams: "7",
+      participants: "80+",
+    },
+    registrationUrl: "https://forms.gle/L3zvsWqHccdYYCZy6",
+    image: "/outreach-events/bubble-brawl.png",
+  },
+  {
+    name: "Submarine Showdown",
+    season: "2024-2025",
+    date: "November 17, 2024",
+    location: "Ashburn Library",
+    description:
+      "Partnered with AlphaGo to host a scrimmage between rookie and veteran robotics teams.",
+    registrationUrl: "https://forms.gle/7Hy3LFPQRKQ1aq1NA",
+    image: "/outreach-events/submarine-showdown.png",
+  },
 ];
 
 const MARQUEE_ITEMS = [
@@ -117,21 +237,6 @@ const MARQUEE_ITEMS = [
 ];
 
 export default function OutreachPage() {
-  const [api, setApi] = React.useState<CarouselApi>();
-  const [current, setCurrent] = React.useState(0);
-  const [count, setCount] = React.useState(0);
-
-  React.useEffect(() => {
-    if (!api) return;
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
-    const onSelect = () => setCurrent(api.selectedScrollSnap() + 1);
-    api.on("select", onSelect);
-    return () => {
-      api.off("select", onSelect);
-    };
-  }, [api]);
-
   const totalReach = PROGRAMS.reduce((acc, p) => acc + p.reach, 0);
 
   return (
@@ -283,116 +388,137 @@ export default function OutreachPage() {
         </div>
       </section>
 
-      {/* Photo carousel + tabs */}
+      {/* Past Events */}
       <section className="py-16 lg:py-24 bg-background">
-        <div className="container-px mx-auto max-w-6xl">
+        <div className="container-px mx-auto max-w-7xl">
           <div className="label-mono text-[11px] text-primary mb-3">
-            Outreach Gallery
+            Past Events
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-8">
-            See us in action.
+            Our journey in action.
           </h2>
 
-          <Tabs defaultValue="photos">
+          <Tabs defaultValue="2025-2026">
             <TabsList>
-              <TabsTrigger value="photos">
-                <Sparkles className="h-3.5 w-3.5 mr-1.5" />
-                Photos
-              </TabsTrigger>
-              <TabsTrigger value="upcoming">
-                <Calendar className="h-3.5 w-3.5 mr-1.5" />
-                Upcoming Events
-              </TabsTrigger>
+              <TabsTrigger value="2025-2026">2025-2026 Season</TabsTrigger>
+              <TabsTrigger value="2024-2025">2024-2025 Season</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="photos" className="mt-6">
-              <Carousel
-                setApi={setApi}
-                opts={{ align: "start", loop: true }}
-                className="mx-12"
-              >
-                <CarouselContent>
-                  {PHOTOS.map((label, i) => (
-                    <CarouselItem
-                      key={label}
-                      className="md:basis-1/2 lg:basis-1/3"
-                    >
-                      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-border bg-secondary">
+            <TabsContent value="2025-2026" className="mt-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {EVENTS.filter((e) => e.season === "2025-2026").map((event, index) => (
+                  <Reveal key={event.name} index={index} delay={50} className="h-full">
+                    <Card className="group overflow-hidden border-border hover:border-primary/50 transition-colors h-full bg-background">
+                      <div className="relative aspect-[3/4] overflow-hidden bg-secondary">
+                        <Image
+                          src={event.image}
+                          alt={event.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
                         <Badge
                           variant="outline"
-                          className="label-mono absolute top-3 left-3 text-[10px] bg-background"
+                          className="label-mono absolute top-3 left-3 text-[10px] bg-background/90 backdrop-blur-sm"
                         >
-                          PLATE · {String(i + 1).padStart(2, "0")}
+                          {event.date}
                         </Badge>
-                        <div className="absolute bottom-3 left-3 right-3 text-sm font-medium">
-                          {label}
-                        </div>
                       </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
-              <div className="label-mono mt-4 text-center text-[10px] text-muted-foreground tabular-nums">
-                Plate {String(current).padStart(2, "0")} of{" "}
-                {String(count).padStart(2, "0")}
+                      <CardContent className="p-5">
+                        <h3 className="font-extrabold text-lg tracking-tight mb-2">
+                          {event.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                          {event.description}
+                        </p>
+                        {event.stats && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {event.stats.participants && (
+                              <Badge variant="secondary" className="label-mono text-[10px]">
+                                <Users2 className="h-3 w-3 mr-1" />
+                                {event.stats.participants}
+                              </Badge>
+                            )}
+                            {event.stats.teams && (
+                              <Badge variant="secondary" className="label-mono text-[10px]">
+                                {event.stats.teams} Teams
+                              </Badge>
+                            )}
+                            {event.stats.games && (
+                              <Badge variant="secondary" className="label-mono text-[10px]">
+                                {event.stats.games} Games
+                              </Badge>
+                            )}
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </Reveal>
+                ))}
               </div>
             </TabsContent>
 
-            <TabsContent value="upcoming" className="mt-6">
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  {
-                    date: "Nov 17",
-                    name: "FTC Scrimmage",
-                    place: "Ashburn Library",
-                    time: "3:00 to 5:00 PM",
-                  },
-                  {
-                    date: "Dec 03",
-                    name: "Robo Kicks · Lincoln ES",
-                    place: "Lincoln Elementary",
-                    time: "After School",
-                  },
-                  {
-                    date: "Jan 15",
-                    name: "Intro to FIRST Night",
-                    place: "Stone Bridge HS",
-                    time: "6:30 PM",
-                  },
-                  {
-                    date: "Mar 22",
-                    name: "Robo Rumble",
-                    place: "Loudoun Tech Center",
-                    time: "All Day",
-                  },
-                ].map((e) => (
-                  <Card key={e.name} className="border-border">
-                    <CardContent className="p-5 flex gap-4">
-                      <div className="h-16 w-16 rounded-xl bg-accent border border-border flex flex-col items-center justify-center text-primary shrink-0">
-                        <span className="label-mono text-[9px]">
-                          {e.date.split(" ")[0]}
-                        </span>
-                        <span className="text-xl font-extrabold">
-                          {e.date.split(" ")[1]}
-                        </span>
+            <TabsContent value="2024-2025" className="mt-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {EVENTS.filter((e) => e.season === "2024-2025").map((event, index) => (
+                  <Reveal key={event.name} index={index} delay={50} className="h-full">
+                    <Card className="group overflow-hidden border-border hover:border-primary/50 transition-colors h-full bg-background">
+                      <div className="relative aspect-[3/4] overflow-hidden bg-secondary">
+                        <Image
+                          src={event.image}
+                          alt={event.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                        <Badge
+                          variant="outline"
+                          className="label-mono absolute top-3 left-3 text-[10px] bg-background/90 backdrop-blur-sm"
+                        >
+                          {event.date}
+                        </Badge>
                       </div>
-                      <div className="flex-1">
-                        <div className="font-bold">{e.name}</div>
-                        <div className="mt-1 text-xs text-muted-foreground flex flex-wrap gap-x-3 gap-y-1">
-                          <span className="inline-flex items-center gap-1">
-                            <MapPin className="h-3 w-3" />
-                            {e.place}
-                          </span>
-                          <span className="inline-flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            {e.time}
-                          </span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                      <CardContent className="p-5">
+                        <h3 className="font-extrabold text-lg tracking-tight mb-2">
+                          {event.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                          {event.description}
+                        </p>
+                        {event.stats && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {event.stats.participants && (
+                              <Badge variant="secondary" className="label-mono text-[10px]">
+                                <Users2 className="h-3 w-3 mr-1" />
+                                {event.stats.participants}
+                              </Badge>
+                            )}
+                            {event.stats.teams && (
+                              <Badge variant="secondary" className="label-mono text-[10px]">
+                                {event.stats.teams} Teams
+                              </Badge>
+                            )}
+                            {event.stats.games && (
+                              <Badge variant="secondary" className="label-mono text-[10px]">
+                                {event.stats.games} Games
+                              </Badge>
+                            )}
+                          </div>
+                        )}
+                        {event.registrationUrl && (
+                          <Link
+                            href={event.registrationUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+                          >
+                            View Registration
+                            <ExternalLink className="h-3 w-3" />
+                          </Link>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </Reveal>
                 ))}
               </div>
             </TabsContent>
