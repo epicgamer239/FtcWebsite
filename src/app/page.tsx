@@ -243,7 +243,7 @@ export default function Home() {
         aria-labelledby="receipts-heading"
         className="border-y border-border bg-background"
       >
-        <div className="container-px mx-auto max-w-7xl py-12 lg:py-16">
+        <div className="container-px mx-auto max-w-7xl py-24 lg:py-28">
           <div className="flex items-baseline justify-between gap-4 flex-wrap mb-8">
             <div>
               <div className="label-mono text-[11px] text-muted-foreground mb-2">
@@ -265,18 +265,20 @@ export default function Home() {
             </Link>
           </div>
 
-          <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 divide-y sm:divide-y-0 lg:divide-y-0 lg:divide-x divide-border border border-border rounded-2xl overflow-hidden bg-background">
-            {RECEIPTS.map((r, i) => (
-              <div key={r.label} className="p-5 lg:p-6 relative">
-                <div className="label-mono absolute top-3 left-4 text-[10px] text-muted-foreground">
-                  {String(i + 1).padStart(2, "0")} / {String(RECEIPTS.length).padStart(2, "0")}
-                </div>
-                <dt className="label-mono mt-4 text-[10px] text-muted-foreground">
-                  {r.label}
-                </dt>
-                <dd className="mt-1 text-3xl lg:text-4xl font-extrabold tracking-tight text-primary leading-none">
-                  <Counter value={r.value} prefix={r.prefix} suffix={r.suffix} />
-                </dd>
+          <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12">
+            {RECEIPTS.map((r, i) => {
+              const isKeyStat = r.label === 'Best OPR' || r.label === 'Rank' || r.label === 'Auto Rank';
+              return (
+                <div key={r.label} className="">
+                  <dt className="label-mono text-[10px] text-muted-foreground">
+                    {r.label}
+                  </dt>
+                  <dd className={cn(
+                    "mt-1 text-4xl lg:text-5xl font-extrabold tracking-tight leading-none",
+                    isKeyStat ? "text-accent-blue" : "text-primary"
+                  )}>
+                    <Counter value={r.value} prefix={r.prefix} suffix={r.suffix} />
+                  </dd>
                 <div className="mt-3 text-xs text-muted-foreground">
                   {r.caption}
                 </div>
@@ -286,7 +288,8 @@ export default function Home() {
                   </div>
                 )}
               </div>
-            ))}
+              );
+            })}
           </dl>
         </div>
       </section>
@@ -312,7 +315,7 @@ export default function Home() {
           <div className="hidden md:block">
             <div className="relative">
               {/* Connecting line */}
-              <div className="absolute top-1/2 left-0 right-0 h-px bg-border -translate-y-1/2" />
+              <div className="absolute top-4 left-0 right-0 h-px bg-accent-blue/30" />
               
               <div className="flex items-center justify-between gap-4">
                 {SEASON_MILESTONES.map((milestone, index) => {
@@ -324,14 +327,14 @@ export default function Home() {
                       <div
                         className={cn(
                           "relative z-10 rounded-full border-4 bg-background transition-all duration-300 ease-in-out",
-                          "hover:scale-105 hover:shadow-[0_0_12px_oklch(0.52_0.21_295/0.4)]",
+                          "hover:scale-105 hover:shadow-[0_0_12px_oklch(0.65_0.18_230/0.4)]",
                           isActive
-                            ? "border-primary h-6 w-6"
+                            ? "border-accent-blue h-6 w-6"
                             : "border-border h-4 w-4"
                         )}
                       >
                         {isActive && (
-                          <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+                          <div className="absolute inset-0 rounded-full bg-accent-blue/20 animate-ping" />
                         )}
                       </div>
                       
@@ -340,7 +343,7 @@ export default function Home() {
                         <div
                           className={cn(
                             "label-mono text-[10px] mb-1 transition-all duration-300",
-                            isActive ? "text-primary" : "text-muted-foreground"
+                            isActive ? "text-accent-blue" : "text-muted-foreground"
                           )}
                         >
                           {milestone.date}
@@ -348,7 +351,7 @@ export default function Home() {
                         <div
                           className={cn(
                             "font-semibold text-sm transition-all duration-300",
-                            isActive && "text-primary"
+                            isActive && "text-accent-blue"
                           )}
                         >
                           {milestone.title}
@@ -365,7 +368,7 @@ export default function Home() {
           <div className="md:hidden">
             <div className="relative pl-8">
               {/* Connecting line */}
-              <div className="absolute left-3 top-0 bottom-0 w-px bg-border" />
+              <div className="absolute left-3 top-0 bottom-0 w-px bg-accent-blue/30" />
               
               <div className="flex flex-col gap-6">
                 {SEASON_MILESTONES.map((milestone, index) => {
@@ -377,14 +380,14 @@ export default function Home() {
                       <div
                         className={cn(
                           "absolute left-[-20px] top-1 rounded-full border-4 bg-background transition-all duration-300 ease-in-out",
-                          "hover:scale-105 hover:shadow-[0_0_12px_oklch(0.52_0.21_295/0.4)]",
+                          "hover:scale-105 hover:shadow-[0_0_12px_oklch(0.65_0.18_230/0.4)]",
                           isActive
-                            ? "border-primary h-5 w-5"
+                            ? "border-accent-blue h-5 w-5"
                             : "border-border h-3 w-3"
                         )}
                       >
                         {isActive && (
-                          <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+                          <div className="absolute inset-0 rounded-full bg-accent-blue/20 animate-ping" />
                         )}
                       </div>
                       
@@ -393,7 +396,7 @@ export default function Home() {
                         <div
                           className={cn(
                             "label-mono text-[10px] mb-1 transition-all duration-300",
-                            isActive ? "text-primary" : "text-muted-foreground"
+                            isActive ? "text-accent-blue" : "text-muted-foreground"
                           )}
                         >
                           {milestone.date}
@@ -401,7 +404,7 @@ export default function Home() {
                         <div
                           className={cn(
                             "font-semibold text-sm transition-all duration-300",
-                            isActive && "text-primary"
+                            isActive && "text-accent-blue"
                           )}
                         >
                           {milestone.title}
@@ -444,11 +447,8 @@ export default function Home() {
               return (
                 <Reveal key={p.href} index={i} className="h-full">
                   <Link href={p.href} className="group block h-full">
-                    <Card className="h-full border-border transition-all duration-300 ease-in-out hover:scale-[1.02] hover:border-primary/60 hover:shadow-paper-hover relative overflow-hidden">
+                    <Card className="h-full bg-[#f9fafb] transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md relative overflow-hidden">
                       <CardContent className="p-6 flex flex-col h-full">
-                        <div className="label-mono absolute top-5 right-5 text-[10px] text-muted-foreground">
-                          {String(i + 1).padStart(2, "0")} / {String(PAGE_CARDS.length).padStart(2, "0")}
-                        </div>
                         <div className="h-11 w-11 rounded-xl bg-accent border border-border flex items-center justify-center text-primary mb-5">
                           <Icon className="h-5 w-5" />
                         </div>

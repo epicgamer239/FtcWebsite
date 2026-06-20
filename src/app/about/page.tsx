@@ -223,12 +223,9 @@ export default function AboutPage() {
               const Icon = v.icon;
               return (
                 <Reveal key={v.title} index={i}>
-                  <Card className="border-border hover:border-primary/40 transition-colors h-full">
+                  <Card className="bg-[#f9fafb] hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
                     <CardContent className="p-6">
-                      <div className="label-mono text-[10px] text-muted-foreground mb-4">
-                        VALUE / {String(i + 1).padStart(2, "0")}
-                      </div>
-                      <div className="h-11 w-11 rounded-xl bg-accent border border-border flex items-center justify-center text-primary mb-5">
+                      <div className="h-11 w-11 rounded-xl bg-secondary border border-accent-blue/30 flex items-center justify-center text-primary mb-5">
                         <Icon className="h-5 w-5" />
                       </div>
                       <h3 className="font-bold text-lg mb-2">{v.title}</h3>
@@ -271,13 +268,13 @@ export default function AboutPage() {
           <ol className="relative grid md:grid-cols-4 gap-0">
             <span
               aria-hidden
-              className="hidden md:block absolute top-[18px] left-6 right-6 h-px bg-border"
+              className="hidden md:block absolute top-[14px] left-6 right-6 h-px bg-accent-blue/20"
             />
             {SEASONS.map((s, i) => (
-              <Reveal key={s.when} index={i} as="li" className="relative pl-7 md:pl-0 md:pr-6 md:pt-9 pb-6">
+              <Reveal key={s.when} index={i} as="li" className="relative pl-7 md:pl-0 md:pr-6 md:pt-9 pb-8">
                 <span
                   aria-hidden
-                  className="absolute left-0 md:left-0 top-0 md:top-3 md:relative md:block h-3 w-3 rounded-full border border-primary bg-background md:mb-0"
+                  className="absolute left-0 md:left-0 top-0 md:top-3 md:relative md:block h-3 w-3 rounded-full border border-accent-blue bg-background md:mb-0"
                 />
                 <span
                   aria-hidden
@@ -286,7 +283,7 @@ export default function AboutPage() {
                 {s.current ? (
                   <span
                     aria-hidden
-                    className="absolute -left-1 top-[-2px] md:top-[-2px] md:left-[-4px] h-5 w-5 rounded-full border-2 border-primary/40 animate-ping"
+                    className="absolute -left-1 top-[-2px] md:top-[-2px] md:left-[-4px] h-5 w-5 rounded-full border-2 border-accent-blue/40 animate-ping"
                   />
                 ) : null}
                 <div className="label-mono text-[10px] text-primary mb-2 mt-0 md:mt-2">
@@ -296,10 +293,8 @@ export default function AboutPage() {
                   {s.title}
                 </div>
                 <Badge
-                  variant="outline"
                   className={cn(
-                    "label-mono text-[9px] mt-2",
-                    s.current && "border-primary/40 bg-accent text-primary"
+                    "label-mono text-[9px] mt-2 bg-secondary/50 text-accent-blue border-accent-blue/30"
                   )}
                 >
                   {s.badge}
@@ -323,13 +318,13 @@ export default function AboutPage() {
             12 students. One robot.
           </h2>
 
-          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {MEMBERS.map((m, i) => (
               <Reveal key={m.name} index={i % 3} delay={60}>
                 <Tooltip>
                   <TooltipTrigger
                     render={
-                      <Card className="border-border hover:border-primary/40 transition-colors cursor-help w-full" />
+                      <Card className="bg-[#f9fafb] hover:-translate-y-1 hover:shadow-md transition-all duration-300 cursor-help w-full" />
                     }
                   >
                     <CardContent className="p-5 flex items-center gap-4">
@@ -348,8 +343,7 @@ export default function AboutPage() {
                         </div>
                       </div>
                       <Badge
-                        variant="secondary"
-                        className="label-mono text-[10px]"
+                        className="label-mono text-[10px] bg-accent-blue/10 text-sky-900 border-accent-blue/20"
                       >
                         {m.grade}
                       </Badge>
@@ -376,7 +370,7 @@ export default function AboutPage() {
             ].map((m) => (
               <div
                 key={m.n}
-                className="flex items-center gap-4 rounded-xl border border-border bg-background p-4"
+                className="flex items-center gap-4 rounded-xl bg-[#f9fafb] hover:-translate-y-1 hover:shadow-md transition-all duration-300 p-4"
               >
                 <Avatar className="h-11 w-11">
                   <AvatarFallback className="bg-accent text-primary font-bold">
