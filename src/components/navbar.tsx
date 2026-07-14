@@ -53,14 +53,14 @@ export function Navbar() {
             : "bg-background/95 border-b border-border"
         )}
       >
-        <div className="container-px mx-auto max-w-7xl flex items-center justify-between h-20">
+        <div className="container-px mx-auto grid h-20 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4">
           <Link
             href="/"
-            className="flex items-center gap-3 group shrink-0"
+            className="group flex shrink-0 items-center gap-3"
             aria-label="BeaverBots Home"
           >
-            <BeaverLogo className="h-12 transition-transform group-hover:-rotate-3" />
-            <div className="hidden sm:flex flex-col leading-none">
+            <BeaverLogo className="h-12 w-auto transition-transform group-hover:-rotate-3" />
+            <div className="hidden flex-col leading-none sm:flex">
               <span className="text-base font-extrabold tracking-wider">
                 BEAVERBOTS
               </span>
@@ -70,29 +70,31 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop horizontal nav */}
-          <nav className="hidden md:flex items-center gap-7 lg:gap-9">
-            {NAV_LINKS.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "text-sm font-semibold tracking-[0.16em] uppercase transition-colors relative",
-                    "after:absolute after:left-0 after:right-0 after:-bottom-1.5 after:h-px after:bg-primary after:transition-transform after:duration-300 after:origin-left",
-                    active
-                      ? "text-primary after:scale-x-100"
-                      : "text-foreground/85 hover:text-primary after:scale-x-0 hover:after:scale-x-100"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+          <nav className="hidden min-w-0 justify-center md:flex">
+            <ul className="flex flex-nowrap items-center">
+              {NAV_LINKS.map((link) => {
+                const active = isActive(link.href);
+                return (
+                  <li key={link.href} className="shrink-0">
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "relative block px-3 text-sm font-semibold uppercase tracking-[0.16em] transition-colors lg:px-4",
+                        "after:absolute after:-bottom-1.5 after:left-3 after:right-3 after:h-px after:bg-primary after:transition-transform after:duration-300 after:origin-left lg:after:left-4 lg:after:right-4",
+                        active
+                          ? "text-primary after:scale-x-100"
+                          : "text-foreground/85 hover:text-primary after:scale-x-0 hover:after:scale-x-100"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-end gap-3">
             <Link
               href="/sponsor#donate"
               className={cn(

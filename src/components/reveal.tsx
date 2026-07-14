@@ -4,13 +4,14 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Staggered fade-up on viewport entry. Respects prefers-reduced-motion via CSS;
- * the IntersectionObserver itself is a one-shot.
+ * Fade + rise on viewport entry. `float` matches simbotics.org motion-floatIn
+ * (800ms, 60px rise). Respects prefers-reduced-motion via CSS.
  */
 export function Reveal({
   as: As = "div",
   index = 0,
   delay = 80,
+  motion = "up",
   className,
   children,
   ...rest
@@ -18,6 +19,7 @@ export function Reveal({
   as?: React.ElementType;
   index?: number;
   delay?: number;
+  motion?: "up" | "float";
   className?: string;
   children: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>) {
@@ -41,7 +43,7 @@ export function Reveal({
           }
         }
       },
-      { rootMargin: "-40px 0px", threshold: 0.1 }
+      { rootMargin: "0px 0px -40px 0px", threshold: 0.12 }
     );
     io.observe(node);
     return () => io.disconnect();
@@ -51,7 +53,7 @@ export function Reveal({
     <As
       ref={ref as React.Ref<HTMLElement>}
       data-reveal={shown ? "true" : "false"}
-      className={cn("reveal", className)}
+      className={cn(motion === "float" ? "float-in" : "reveal", className)}
       style={{ animationDelay: shown ? `${index * delay}ms` : undefined }}
       {...rest}
     >

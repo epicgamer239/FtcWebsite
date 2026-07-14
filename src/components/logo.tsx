@@ -11,7 +11,7 @@ export function BeaverLogo({ className }: { className?: string }) {
       alt="BeaverBots FTC Team 26073"
       width={LOGO_WIDTH}
       height={LOGO_HEIGHT}
-      className={cn("h-10 w-auto object-contain shrink-0", className)}
+      className={cn("h-10 w-auto shrink-0 object-contain", className)}
       priority
     />
   );

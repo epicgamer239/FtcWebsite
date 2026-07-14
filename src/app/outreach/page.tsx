@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
+import { SectionHeading } from "@/components/section-heading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -19,16 +19,12 @@ import {
   Swords,
   GraduationCap,
   ClipboardList,
-  ArrowUpRight,
   Calendar,
   Users2,
-  MapPin,
   ArrowRight,
   ExternalLink,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Reveal } from "@/components/reveal";
-import { Counter } from "@/components/counter";
 
 type Program = {
   name: string;
@@ -43,62 +39,57 @@ type Event = {
   name: string;
   season: "2024-2025" | "2025-2026";
   date: string;
-  location: string;
   description: string;
-  stats?: {
-    participants?: string;
-    teams?: string;
-    games?: string;
-  };
+  stats?: { participants?: string; teams?: string; games?: string };
   image: string;
   registrationUrl?: string;
 };
 
 const PROGRAMS: Program[] = [
   {
-    name: "ROBO KICKS",
+    name: "Robo Kicks",
     icon: Gamepad2,
-    audience: "Elementary · K-5",
-    cadence: "Weekly · After School",
+    audience: "Elementary · K–5",
+    cadence: "Weekly · After school",
     reach: 540,
     description:
-      "A free, hands-on intro to robotics that teaches grade-schoolers the joy of building. Sensors, motors, and a whole lot of high-fives.",
+      "A free intro to robotics for grade-schoolers. Sensors, motors, and hands-on building.",
   },
   {
-    name: "CAD CAMP",
+    name: "CAD Camp",
     icon: Box,
-    audience: "Middle School · 6-8",
-    cadence: "Summer · 3-Day Intensive",
+    audience: "Middle school · 6–8",
+    cadence: "Summer · 3-day intensive",
     reach: 96,
     description:
-      "Three-day Onshape intensive where students design their own robot parts from scratch. Every camper goes home with 3D-printed proof.",
+      "Onshape camp where students design robot parts and take home 3D-printed projects.",
   },
   {
-    name: "ROBO RUMBLE",
+    name: "Robo Rumble",
     icon: Swords,
-    audience: "All Ages · Family Friendly",
+    audience: "All ages",
     cadence: "Annual · Spring",
     reach: 380,
     description:
-      "Our annual community sumo-bot showdown. Bring your robot, win a trophy, eat too much pizza.",
+      "Community sumo-bot competition. Families build, compete, and connect with local STEM programs.",
   },
   {
-    name: "INTRO TO FIRST",
+    name: "Intro to FIRST",
     icon: GraduationCap,
-    audience: "Parents & Students",
-    cadence: "Quarterly · Evenings",
+    audience: "Parents & students",
+    cadence: "Quarterly evenings",
     reach: 220,
     description:
-      "An evening walkthrough of the FIRST® ecosystem (FLL, FTC, and FRC) so families know exactly what their kid is signing up for.",
+      "Walkthrough of FLL, FTC, and FRC so families know what they're signing up for.",
   },
   {
-    name: "FTC SCRIMMAGE",
+    name: "FTC Scrimmage",
     icon: ClipboardList,
-    audience: "Local FTC Teams",
+    audience: "Local FTC teams",
     cadence: "November · Annual",
     reach: 168,
     description:
-      "We host an off-season scrimmage at the Ashburn Library every November so teams across the region can test, learn, and connect.",
+      "Off-season scrimmage at the Ashburn Library for teams across the region.",
   },
 ];
 
@@ -107,95 +98,74 @@ const EVENTS: Event[] = [
     name: "Girls in Robotics 2.0",
     season: "2025-2026",
     date: "September 2025",
-    location: "Brambleton Library",
     description:
-      "Our second Girls in Robotics event of the season, empowering young women in STEM through hands-on building activities and structural stability challenges.",
+      "Hands-on STEM for young women through building activities and engineering challenges.",
     image: "/outreach-events/girls-in-robotics-2-0.png",
   },
   {
     name: "Treasure Takedown Scrimmage",
     season: "2025-2026",
     date: "March 2026",
-    location: "Local Library",
     description:
-      "Our first invitational scrimmage featuring Chesapeake Regional Championship-qualified teams. Over 120 participants and 5 teams from across the DMV networked and practiced before the championship.",
-    stats: {
-      participants: "120+",
-      teams: "5",
-    },
+      "Invitational scrimmage with Chesapeake Regional Championship–qualified teams. 120+ participants, 5 teams.",
+    stats: { participants: "120+", teams: "5" },
     image: "/outreach-events/treasure-takedown-scrimmage.png",
   },
   {
     name: "Fossil Faceoff Scrimmage",
     season: "2025-2026",
     date: "February 2026",
-    location: "Local Library",
     description:
-      "Our second scrimmage with 150+ participants and 9 teams from Northern Virginia and Maryland. Featured 10+ games and was recorded for the full 2-hour duration.",
-    stats: {
-      participants: "150+",
-      teams: "9",
-      games: "10+",
-    },
+      "150+ participants and 9 teams from Northern Virginia and Maryland. 10+ practice matches.",
+    stats: { participants: "150+", teams: "9", games: "10+" },
     image: "/outreach-events/fossil-faceoff-scrimmage.png",
   },
   {
     name: "Artifact Arena Scrimmage",
     season: "2025-2026",
     date: "January 2026",
-    location: "Local Library",
     description:
-      "Our first scrimmage of the season with 150+ participants and 7 teams. Hosted a simulated DECODE qualifier with 8+ games for teams to practice and network.",
-    stats: {
-      participants: "150+",
-      teams: "7",
-      games: "8+",
-    },
+      "First scrimmage of the season with 150+ participants and 7 teams.",
+    stats: { participants: "150+", teams: "7", games: "8+" },
     image: "/outreach-events/artifact-arena-scrimmage.png",
   },
   {
     name: "Robo Rumble 2.0",
     season: "2025-2026",
     date: "Spring 2026",
-    location: "Master Lee's Martial Arts",
     description:
-      "Our annual SuGo Bots competition returned! Students learned to build, design, and iterate robots for sumo-style competition rounds.",
+      "Annual sumo-bot competition. Students design and iterate robots for tournament rounds.",
     image: "/outreach-events/robo-rumble-2-0.png",
   },
   {
     name: "Onshape CAD Camp",
     season: "2025-2026",
     date: "Summer 2025",
-    location: "Brambleton Library",
     description:
-      "In-person CAD Camp building on last year's skills. Students created name tags, LEGO bricks, and personalized designs using advanced Onshape techniques.",
+      "CAD camp at Brambleton Library. Students built name tags, LEGO bricks, and custom designs.",
     image: "/outreach-events/onshape-cad-camp.png",
   },
   {
-    name: "ROBOKICKS STEM Camp",
+    name: "RoboKicks STEM Camp",
     season: "2025-2026",
     date: "Summer 2025",
-    location: "Master Lee's Martial Arts",
     description:
-      "Our second annual summer camp teaching robotics and STEM topics ranging from FIRST Lego League to AI development.",
+      "Summer camp covering robotics, FLL basics, and introductory AI topics.",
     image: "/outreach-events/robokicks-stem-camp.png",
   },
   {
-    name: "GIRLS IN ROBOTICS",
+    name: "Girls in Robotics",
     season: "2024-2025",
     date: "Fall 2024",
-    location: "Brambleton Library",
     description:
-      "The first outreach event of the 2024-2025 season, introducing young girls to STEM enrichment programs.",
+      "First outreach event of the 2024–25 season, introducing girls to STEM programs.",
     image: "/outreach-events/girls-in-robotics.png",
   },
   {
     name: "Coral Clash",
     season: "2024-2025",
     date: "February 1, 2025",
-    location: "Ashburn Library",
-    description:
-      "A scrimmage for robotics teams competing in states, held at Ashburn Library.",
+    description: "Scrimmage for teams competing in states, at Ashburn Library.",
     registrationUrl: "https://forms.gle/dSddFRwf2ig3AkqBA",
     image: "/outreach-events/coral-clash.png",
   },
@@ -203,13 +173,9 @@ const EVENTS: Event[] = [
     name: "Bubble Brawl",
     season: "2024-2025",
     date: "January 4, 2025",
-    location: "Ashburn Library",
     description:
-      "Our solo-hosted second Into the Deep FTC scrimmage with 7 teams and 80+ attendees. Featured new audio and speaker system.",
-    stats: {
-      teams: "7",
-      participants: "80+",
-    },
+      "Into the Deep scrimmage with 7 teams and 80+ attendees at Ashburn Library.",
+    stats: { teams: "7", participants: "80+" },
     registrationUrl: "https://forms.gle/L3zvsWqHccdYYCZy6",
     image: "/outreach-events/bubble-brawl.png",
   },
@@ -217,24 +183,70 @@ const EVENTS: Event[] = [
     name: "Submarine Showdown",
     season: "2024-2025",
     date: "November 17, 2024",
-    location: "Ashburn Library",
     description:
-      "Partnered with AlphaGo to host a scrimmage between rookie and veteran robotics teams.",
+      "Partnered with AlphaGo to host a scrimmage for rookie and veteran teams.",
     registrationUrl: "https://forms.gle/7Hy3LFPQRKQ1aq1NA",
     image: "/outreach-events/submarine-showdown.png",
   },
 ];
 
-const MARQUEE_ITEMS = [
-  "ROBO KICKS",
-  "CAD CAMP",
-  "ROBO RUMBLE",
-  "INTRO TO FIRST",
-  "FTC SCRIMMAGE",
-  "FAMILY STEM NIGHT",
-  "MENTORING FLL",
-  "OPEN-SOURCE WORKSHOP",
-];
+function EventGrid({ season }: { season: Event["season"] }) {
+  const events = EVENTS.filter((e) => e.season === season);
+
+  return (
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {events.map((event) => (
+        <Card key={event.name} className="overflow-hidden border-border">
+          <div className="relative aspect-[3/4] bg-muted">
+            <Image
+              src={event.image}
+              alt={event.name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            <Badge className="absolute left-3 top-3 bg-background/90 backdrop-blur-sm">
+              {event.date}
+            </Badge>
+          </div>
+          <CardContent className="p-5">
+            <h3 className="text-lg font-bold">{event.name}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {event.description}
+            </p>
+            {event.stats ? (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {event.stats.participants ? (
+                  <Badge variant="secondary">
+                    <Users2 className="mr-1 h-3 w-3" />
+                    {event.stats.participants}
+                  </Badge>
+                ) : null}
+                {event.stats.teams ? (
+                  <Badge variant="secondary">{event.stats.teams} teams</Badge>
+                ) : null}
+                {event.stats.games ? (
+                  <Badge variant="secondary">{event.stats.games} games</Badge>
+                ) : null}
+              </div>
+            ) : null}
+            {event.registrationUrl ? (
+              <Link
+                href={event.registrationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+              >
+                Registration
+                <ExternalLink className="h-3 w-3" />
+              </Link>
+            ) : null}
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
 
 export default function OutreachPage() {
   const totalReach = PROGRAMS.reduce((acc, p) => acc + p.reach, 0);
@@ -242,313 +254,129 @@ export default function OutreachPage() {
   return (
     <>
       <PageHeader
-        eyebrow="OUTREACH & IMPACT"
+        eyebrow="Outreach"
         crumb="Outreach"
         title={
           <>
-            <span className="text-primary">OUTREACH</span>
+            <span className="text-primary">1,400+ kids</span> reached every year
           </>
         }
-        description="A goal for the BeaverBots is to help educate our youth about the wonders of STEM. Our programs reach over 1,400 students every year across Loudoun County."
+        description="We run free STEM programs across Loudoun County — camps, scrimmages, and school visits that introduce robotics to the next generation."
       />
 
-      {/* Marquee program names */}
-      <div
-        aria-hidden
-        className="border-y border-border bg-background overflow-hidden py-3"
-      >
-        <div className="flex w-max gap-12 animate-marquee">
-          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((m, i) => (
-            <span
-              key={i}
-              className="label-mono text-xs text-muted-foreground inline-flex items-center gap-12 whitespace-nowrap"
-            >
-              {m}
-              <span aria-hidden className="h-1 w-1 rounded-full bg-primary" />
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* 1,400+ typographic moment — yearbook full-bleed page number */}
-      <section className="py-16 lg:py-24 bg-background overflow-hidden">
+      <section className="border-b border-border bg-primary py-12 text-primary-foreground lg:py-16">
         <div className="container-px mx-auto max-w-7xl">
-          <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start mb-8">
-            <div className="lg:col-span-7">
-              <div className="label-mono text-[11px] text-primary mb-3">
-                Reach · 2024-26
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.05]">
-                Over <span className="text-primary">1,400 kids</span> reached.
-                Every year.
-              </h2>
-            </div>
-            <p className="lg:col-span-5 text-base text-muted-foreground leading-relaxed">
-              The robot is the easy part. The harder part is making sure the
-              next class of Ashburn engineers gets to start the same way we
-              did: with a 3D-printed gear in their hands.
-            </p>
-          </div>
-
-          <div className="border-t border-border pt-6 flex items-end justify-between gap-6">
+          <div className="grid items-end gap-6 lg:grid-cols-2">
             <div>
-              <div className="label-mono text-[10px] text-muted-foreground mb-1">
-                Kids served · all programs
-              </div>
-              <div className="label-mono text-[10px] text-muted-foreground">
-                FY 2024-25 → FY 2025-26
-              </div>
+              <p className="text-sm font-medium text-primary-foreground/80">
+                Total outreach reach
+              </p>
+              <p className="mt-1 text-5xl font-bold tabular-nums sm:text-6xl">
+                {totalReach.toLocaleString()}+
+              </p>
+              <p className="mt-2 text-primary-foreground/80">
+                Students and families served across all programs
+              </p>
             </div>
-            <div
-              aria-label={`${totalReach}+ kids reached`}
-              className="text-[clamp(5rem,14vw,11rem)] font-extrabold leading-[0.85] tracking-tighter text-primary"
-            >
-              <Counter value={totalReach} suffix="+" />
-            </div>
+            <p className="text-primary-foreground/90 leading-relaxed">
+              Outreach is a core part of who we are. We host events year-round so
+              kids in our community get the same opportunities we had.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Programs */}
-      <section className="py-12 lg:py-16 border-y border-border bg-secondary/40">
+      <section className="py-14 lg:py-20">
         <div className="container-px mx-auto max-w-7xl">
-          <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
-            <div>
-              <div className="label-mono text-[11px] text-primary mb-3">
-                Our Programs
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-                Five programs. One mission.
-              </h2>
-            </div>
-            <Badge variant="outline" className="label-mono text-[10px] py-1">
-              INDEX · 01 to 05
-            </Badge>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PROGRAMS.map((p, idx) => {
+          <SectionHeading
+            eyebrow="Programs"
+            title="Five programs, one mission"
+            className="mb-10"
+          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {PROGRAMS.map((p) => {
               const Icon = p.icon;
               return (
-                <Reveal
+                <Card
                   key={p.name}
-                  index={idx}
-                  delay={70}
-                  className={cn(idx === 0 && "sm:col-span-2", "h-full")}
+                  className={cn(
+                    "border-border",
+                    p.name === "Robo Kicks" && "sm:col-span-2 lg:col-span-1"
+                  )}
                 >
-                  <Card className="group relative overflow-hidden border-border hover:border-primary/50 transition-colors h-full bg-background">
-                    <div className="absolute top-5 left-6 label-mono text-[10px] text-muted-foreground">
-                      {String(idx + 1).padStart(2, "0")} /{" "}
-                      {String(PROGRAMS.length).padStart(2, "0")}
+                  <CardContent className="flex h-full flex-col p-6">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-border bg-accent text-primary">
+                      <Icon className="h-6 w-6" />
                     </div>
-                    <CardContent className="p-6 pt-12 flex flex-col h-full">
-                      <div className="flex items-start justify-between mb-5">
-                        <div className="h-14 w-14 rounded-2xl bg-accent border border-border flex items-center justify-center text-primary">
-                          <Icon className="h-6 w-6" />
-                        </div>
-                        <ArrowUpRight className="h-5 w-5 text-primary/70 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
-                      </div>
-
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <Badge
-                          variant="secondary"
-                          className="label-mono text-[10px]"
-                        >
-                          <Users2 className="h-3 w-3 mr-1" />
-                          {p.audience}
-                        </Badge>
-                        <Badge
-                          variant="outline"
-                          className="label-mono text-[10px]"
-                        >
-                          <Calendar className="h-3 w-3 mr-1" />
-                          {p.cadence}
-                        </Badge>
-                      </div>
-                      <h3 className="font-extrabold text-xl tracking-tight mb-2">
-                        {p.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                        {p.description}
-                      </p>
-                      <div className="mt-5 pt-4 border-t border-border flex items-baseline justify-between">
-                        <span className="label-mono text-[10px] text-muted-foreground">
-                          Kids reached
-                        </span>
-                        <span className="font-mono text-sm font-bold tabular-nums text-primary">
-                          {p.reach.toLocaleString()}
-                        </span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Reveal>
+                    <div className="mb-3 flex flex-wrap gap-2">
+                      <Badge variant="secondary">
+                        <Users2 className="mr-1 h-3 w-3" />
+                        {p.audience}
+                      </Badge>
+                      <Badge variant="outline">
+                        <Calendar className="mr-1 h-3 w-3" />
+                        {p.cadence}
+                      </Badge>
+                    </div>
+                    <h3 className="text-xl font-bold">{p.name}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                      {p.description}
+                    </p>
+                    <p className="mt-4 border-t border-border pt-4 text-sm">
+                      <span className="text-muted-foreground">Kids reached: </span>
+                      <span className="font-bold text-primary">
+                        {p.reach.toLocaleString()}
+                      </span>
+                    </p>
+                  </CardContent>
+                </Card>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Past Events */}
-      <section className="py-16 lg:py-24 bg-background">
+      <section className="border-t border-border bg-muted/30 py-14 lg:py-20">
         <div className="container-px mx-auto max-w-7xl">
-          <div className="label-mono text-[11px] text-primary mb-3">
-            Past Events
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-8">
-            Our journey in action.
-          </h2>
-
+          <SectionHeading
+            eyebrow="Events"
+            title="Past events"
+            className="mb-8"
+          />
           <Tabs defaultValue="2025-2026">
             <TabsList>
-              <TabsTrigger value="2025-2026">2025-2026 Season</TabsTrigger>
-              <TabsTrigger value="2024-2025">2024-2025 Season</TabsTrigger>
+              <TabsTrigger value="2025-2026">2025–26 season</TabsTrigger>
+              <TabsTrigger value="2024-2025">2024–25 season</TabsTrigger>
             </TabsList>
-
             <TabsContent value="2025-2026" className="mt-8">
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {EVENTS.filter((e) => e.season === "2025-2026").map((event, index) => (
-                  <Reveal key={event.name} index={index} delay={50} className="h-full">
-                    <Card className="group overflow-hidden border-border hover:border-primary/50 transition-colors h-full bg-background">
-                      <div className="relative aspect-[3/4] overflow-hidden bg-secondary">
-                        <Image
-                          src={event.image}
-                          alt={event.name}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                        <Badge
-                          variant="outline"
-                          className="label-mono absolute top-3 left-3 text-[10px] bg-background/90 backdrop-blur-sm"
-                        >
-                          {event.date}
-                        </Badge>
-                      </div>
-                      <CardContent className="p-5">
-                        <h3 className="font-extrabold text-lg tracking-tight mb-2">
-                          {event.name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                          {event.description}
-                        </p>
-                        {event.stats && (
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {event.stats.participants && (
-                              <Badge variant="secondary" className="label-mono text-[10px]">
-                                <Users2 className="h-3 w-3 mr-1" />
-                                {event.stats.participants}
-                              </Badge>
-                            )}
-                            {event.stats.teams && (
-                              <Badge variant="secondary" className="label-mono text-[10px]">
-                                {event.stats.teams} Teams
-                              </Badge>
-                            )}
-                            {event.stats.games && (
-                              <Badge variant="secondary" className="label-mono text-[10px]">
-                                {event.stats.games} Games
-                              </Badge>
-                            )}
-                          </div>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </Reveal>
-                ))}
-              </div>
+              <EventGrid season="2025-2026" />
             </TabsContent>
-
             <TabsContent value="2024-2025" className="mt-8">
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {EVENTS.filter((e) => e.season === "2024-2025").map((event, index) => (
-                  <Reveal key={event.name} index={index} delay={50} className="h-full">
-                    <Card className="group overflow-hidden border-border hover:border-primary/50 transition-colors h-full bg-background">
-                      <div className="relative aspect-[3/4] overflow-hidden bg-secondary">
-                        <Image
-                          src={event.image}
-                          alt={event.name}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                        <Badge
-                          variant="outline"
-                          className="label-mono absolute top-3 left-3 text-[10px] bg-background/90 backdrop-blur-sm"
-                        >
-                          {event.date}
-                        </Badge>
-                      </div>
-                      <CardContent className="p-5">
-                        <h3 className="font-extrabold text-lg tracking-tight mb-2">
-                          {event.name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                          {event.description}
-                        </p>
-                        {event.stats && (
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {event.stats.participants && (
-                              <Badge variant="secondary" className="label-mono text-[10px]">
-                                <Users2 className="h-3 w-3 mr-1" />
-                                {event.stats.participants}
-                              </Badge>
-                            )}
-                            {event.stats.teams && (
-                              <Badge variant="secondary" className="label-mono text-[10px]">
-                                {event.stats.teams} Teams
-                              </Badge>
-                            )}
-                            {event.stats.games && (
-                              <Badge variant="secondary" className="label-mono text-[10px]">
-                                {event.stats.games} Games
-                              </Badge>
-                            )}
-                          </div>
-                        )}
-                        {event.registrationUrl && (
-                          <Link
-                            href={event.registrationUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
-                          >
-                            View Registration
-                            <ExternalLink className="h-3 w-3" />
-                          </Link>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </Reveal>
-                ))}
-              </div>
+              <EventGrid season="2024-2025" />
             </TabsContent>
           </Tabs>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 lg:py-24 border-t border-border">
+      <section className="py-14 lg:py-20">
         <div className="container-px mx-auto max-w-4xl">
-          <Card className="border-primary/30 shadow-paper">
-            <CardContent className="p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center gap-6 justify-between">
-              <div className="flex-1">
-                <div className="label-mono text-[10px] text-primary mb-2">
-                  Want to host us?
-                </div>
-                <h3 className="text-2xl lg:text-3xl font-extrabold tracking-tight">
-                  Bring the BeaverBots to your school.
+          <Card className="border-primary/30">
+            <CardContent className="flex flex-col items-start justify-between gap-6 p-8 lg:flex-row lg:items-center">
+              <div>
+                <h3 className="text-2xl font-bold">
+                  Bring the BeaverBots to your school
                 </h3>
                 <p className="mt-2 text-muted-foreground">
-                  We do free demos, workshops, and Q&amp;A sessions across
-                  Loudoun County. Just email us.
+                  Free demos, workshops, and Q&amp;A sessions across Loudoun
+                  County.
                 </p>
               </div>
               <Link
                 href="mailto:beaverbotsftc@gmail.com"
-                className={cn(buttonVariants({ size: "lg" }), "group")}
+                className={cn(buttonVariants({ size: "lg" }), "gap-2 shrink-0")}
               >
                 Email us
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </CardContent>
           </Card>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
+import { SectionHeading } from "@/components/section-heading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -22,20 +23,17 @@ import {
   Check,
   ArrowRight,
   HandCoins,
-  Sparkles,
   Heart,
   Mail,
-  TrendingUp,
   Shield,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DonationImpact } from "@/components/donation-impact";
-import { Counter } from "@/components/counter";
 
 export const metadata: Metadata = {
   title: "Sponsor · BeaverBots FTC",
   description:
-    "Sponsor or donate to the BeaverBots. Help send our team to the 2026 FIRST Worlds Championship.",
+    "Sponsor or donate to the BeaverBots. Help send our team to the 2026 FIRST World Championship.",
 };
 
 const TIERS = [
@@ -67,46 +65,18 @@ const TIERS = [
 ];
 
 const CURRENT_SPONSORS = [
-  {
-    name: "Reinvent",
-    tier: "BeaverDam",
-    logo: "/sponsor-logos/reinvent.png",
-  },
+  { name: "Reinvent", tier: "BeaverDam", logo: "/sponsor-logos/reinvent.png" },
   {
     name: "22nd Century Technologies",
     tier: "BeaverDam",
     logo: "/sponsor-logos/22nd-century-technologies.png",
   },
-  {
-    name: "Maruthi.AI",
-    tier: "BeaverDam",
-    logo: "/sponsor-logos/maruthiai.png",
-  },
-  {
-    name: "ICF",
-    tier: "BeaverDam",
-    logo: "/sponsor-logos/icf.png",
-  },
-  {
-    name: "CVS",
-    tier: "BeaverDam",
-    logo: "/sponsor-logos/cvs.png",
-  },
-  {
-    name: "Apple",
-    tier: "BeaverDam",
-    logo: "/sponsor-logos/apple.png",
-  },
-  {
-    name: "Thai Ashburn",
-    tier: "Gold",
-    logo: "/sponsor-logos/thai-ashburn.png",
-  },
-  {
-    name: "Ohane Poke",
-    tier: "Gold",
-    logo: "/sponsor-logos/ohane-poke.png",
-  },
+  { name: "Maruthi.AI", tier: "BeaverDam", logo: "/sponsor-logos/maruthiai.png" },
+  { name: "ICF", tier: "BeaverDam", logo: "/sponsor-logos/icf.png" },
+  { name: "CVS", tier: "BeaverDam", logo: "/sponsor-logos/cvs.png" },
+  { name: "Apple", tier: "BeaverDam", logo: "/sponsor-logos/apple.png" },
+  { name: "Thai Ashburn", tier: "Gold", logo: "/sponsor-logos/thai-ashburn.png" },
+  { name: "Ohane Poke", tier: "Gold", logo: "/sponsor-logos/ohane-poke.png" },
   {
     name: "Element Solutions",
     tier: "Bronze",
@@ -117,21 +87,9 @@ const CURRENT_SPONSORS = [
     tier: "Bronze",
     logo: "/sponsor-logos/golden-rule-builders.png",
   },
-  {
-    name: "Groundswell",
-    tier: "Bronze",
-    logo: "/sponsor-logos/groundswell.png",
-  },
-  {
-    name: "Rapidflare",
-    tier: "Bronze",
-    logo: "/sponsor-logos/rapidflare.png",
-  },
-  {
-    name: "Unison",
-    tier: "Bronze",
-    logo: "/sponsor-logos/unison.png",
-  },
+  { name: "Groundswell", tier: "Bronze", logo: "/sponsor-logos/groundswell.png" },
+  { name: "Rapidflare", tier: "Bronze", logo: "/sponsor-logos/rapidflare.png" },
+  { name: "Unison", tier: "Bronze", logo: "/sponsor-logos/unison.png" },
 ];
 
 const BUDGET_ROWS = [
@@ -147,14 +105,14 @@ export default function SponsorPage() {
   return (
     <>
       <PageHeader
-        eyebrow="PARTNER WITH US"
+        eyebrow="Sponsor"
         crumb="Sponsor"
         title={
           <>
-            Help us get to <span className="text-primary">Worlds.</span>
+            Help us get to <span className="text-primary">Worlds</span>
           </>
         }
-        description="Robots aren't cheap, and neither is sending 12 students from Virginia to Texas. Every sponsor is a mentor, a champion, and the reason this program exists."
+        description="Sending 12 students from Virginia to Houston takes real money. Every sponsor helps us compete at the highest level and keep our outreach programs running."
       >
         <div className="flex flex-wrap gap-3">
           <Link
@@ -162,141 +120,107 @@ export default function SponsorPage() {
             href="https://www.gofundme.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className={cn(
-              buttonVariants({ size: "lg" }),
-              "px-6 py-5 text-base group bg-primary hover:bg-primary/90"
-            )}
+            className={cn(buttonVariants({ size: "lg" }), "gap-2")}
           >
             <Heart className="h-4 w-4" />
-            Donate Now
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            Donate now
+            <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             href="mailto:beaverbotsftc@gmail.com?subject=Sponsorship%20Inquiry"
-            className={cn(
-              buttonVariants({ size: "lg", variant: "outline" }),
-              "px-6 py-5 text-base"
-            )}
+            className={cn(buttonVariants({ size: "lg", variant: "outline" }), "gap-2")}
           >
             <Mail className="h-4 w-4" />
-            Email Sponsorship
+            Email us
           </Link>
         </div>
       </PageHeader>
 
-      {/* Worlds fund progress */}
       <section className="pb-12">
         <div className="container-px mx-auto max-w-4xl">
-          <Card className="border-primary/30 shadow-paper">
-            <CardContent className="p-8 lg:p-10">
-              <div className="flex items-center gap-4 mb-5">
-                <div className="h-12 w-12 rounded-xl bg-accent border border-border flex items-center justify-center text-primary shrink-0">
+          <Card className="border-primary/30">
+            <CardContent className="p-8">
+              <div className="mb-5 flex items-center gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-border bg-accent text-primary">
                   <HandCoins className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="label-mono text-[10px] text-primary">
-                    2026 Worlds Travel Fund
-                  </div>
-                  <div className="text-2xl lg:text-3xl font-extrabold tracking-tight tabular-nums">
-                    $<Counter value={13650} /> of $20,000
-                  </div>
+                  <p className="text-sm font-medium text-primary">
+                    2026 Worlds travel fund
+                  </p>
+                  <p className="text-2xl font-bold tabular-nums lg:text-3xl">
+                    $13,650 of $20,000
+                  </p>
                 </div>
               </div>
-
-              <Progress value={68} aria-label="Worlds Travel Fund">
-                <ProgressLabel className="label-mono text-[10px]">
-                  Funded
-                </ProgressLabel>
-                <ProgressValue className="font-mono text-xs" />
+              <Progress value={68} aria-label="Worlds travel fund">
+                <ProgressLabel className="text-sm">Funded</ProgressLabel>
+                <ProgressValue className="text-xs" />
               </Progress>
-
-              <div className="label-mono mt-3 flex justify-between text-[10px] text-muted-foreground">
-                <span>68% raised</span>
-                <span>$6,350 to go</span>
-              </div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                $6,350 to go · 68% raised
+              </p>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* Donation Impact Calculator */}
-      <section className="pb-16 lg:pb-24">
+      <section className="pb-16">
         <div className="container-px mx-auto max-w-4xl">
           <DonationImpact />
         </div>
       </section>
 
-      {/* Budget breakdown */}
-      <section className="py-16 lg:py-20 border-y border-border bg-secondary/40">
+      <section className="border-y border-border bg-muted/30 py-16">
         <div className="container-px mx-auto max-w-5xl">
-          <div className="flex items-end justify-between flex-wrap gap-3 mb-8">
-            <div>
-              <div className="label-mono text-[11px] text-primary mb-2">
-                Where every dollar goes
-              </div>
-              <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight">
-                Transparent budget.
-              </h2>
-            </div>
-            <Badge variant="outline" className="label-mono text-[10px]">
-              <Shield className="h-3 w-3 mr-1.5" />
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
+            <SectionHeading
+              eyebrow="Budget"
+              title="Where every dollar goes"
+            />
+            <Badge variant="outline" className="gap-1.5">
+              <Shield className="h-3 w-3" />
               501(c)(3) · Tax deductible
             </Badge>
           </div>
-
-          <Card className="overflow-hidden bg-background">
+          <Card className="overflow-hidden">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="label-mono text-[10px] w-16">
-                    No.
-                  </TableHead>
-                  <TableHead className="label-mono text-[10px]">
-                    Line Item
-                  </TableHead>
-                  <TableHead className="label-mono text-[10px] w-32 hidden sm:table-cell">
-                    Allocation
-                  </TableHead>
-                  <TableHead className="label-mono text-right text-[10px] w-32">
-                    Cost
-                  </TableHead>
+                  <TableHead>Line item</TableHead>
+                  <TableHead className="hidden w-28 sm:table-cell">Share</TableHead>
+                  <TableHead className="w-28 text-right">Cost</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {BUDGET_ROWS.map((b, i) => (
+                {BUDGET_ROWS.map((b) => (
                   <TableRow key={b.label}>
-                    <TableCell className="label-mono text-[10px] text-muted-foreground tabular-nums">
-                      {String(i + 1).padStart(2, "0")}
-                    </TableCell>
                     <TableCell className="font-medium">{b.label}</TableCell>
                     <TableCell className="hidden sm:table-cell">
                       <div className="flex items-center gap-2">
-                        <div className="h-1.5 flex-1 rounded-full bg-secondary overflow-hidden max-w-24">
+                        <div className="h-1.5 max-w-24 flex-1 overflow-hidden rounded-full bg-secondary">
                           <div
                             className="h-full bg-primary"
                             style={{ width: `${b.percent}%` }}
                             aria-hidden
                           />
                         </div>
-                        <span className="label-mono text-[10px] text-muted-foreground tabular-nums w-8 text-right">
+                        <span className="text-xs text-muted-foreground">
                           {b.percent}%
                         </span>
                       </div>
                     </TableCell>
-                    <TableCell className="text-right tabular-nums font-mono">
+                    <TableCell className="text-right font-medium tabular-nums">
                       {b.amount}
                     </TableCell>
                   </TableRow>
                 ))}
-                <TableRow className="border-t-2 border-primary/40">
-                  <TableCell className="label-mono text-[10px] text-primary">
-                    Σ
-                  </TableCell>
+                <TableRow className="border-t-2 border-primary/30">
                   <TableCell className="font-bold">Total</TableCell>
-                  <TableCell className="hidden sm:table-cell label-mono text-[10px] text-muted-foreground">
-                    FY 2025-26
+                  <TableCell className="hidden sm:table-cell text-muted-foreground">
+                    FY 2025–26
                   </TableCell>
-                  <TableCell className="text-right tabular-nums font-mono font-bold text-primary">
+                  <TableCell className="text-right font-bold text-primary tabular-nums">
                     $20,000
                   </TableCell>
                 </TableRow>
@@ -306,36 +230,29 @@ export default function SponsorPage() {
         </div>
       </section>
 
-      {/* Current sponsors */}
-      <section className="py-16 lg:py-20 bg-background">
+      <section className="py-16">
         <div className="container-px mx-auto max-w-6xl">
-          <div className="label-mono text-[11px] text-primary mb-3 text-center">
-            Current partners
-          </div>
-          <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-center mb-10">
-            Thank you to our sponsors.
-          </h2>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          <SectionHeading
+            eyebrow="Partners"
+            title="Thank you to our sponsors"
+            align="center"
+            className="mb-10"
+          />
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
             {CURRENT_SPONSORS.map((s) => (
-              <Card key={s.name} className="group overflow-hidden border-border hover:border-primary/50 transition-colors bg-background">
-                <div className="relative aspect-[2/1] overflow-hidden bg-secondary flex items-center justify-center p-4">
+              <Card key={s.name} className="border-border">
+                <div className="relative flex aspect-[2/1] items-center justify-center bg-muted p-4">
                   <Image
                     src={s.logo}
                     alt={s.name}
                     fill
-                    className="object-contain group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                    className="object-contain p-2"
+                    sizes="(max-width: 768px) 50vw, 25vw"
                   />
                 </div>
-                <CardContent className="p-4">
-                  <div className="font-semibold text-sm text-center mb-2">
-                    {s.name}
-                  </div>
-                  <Badge
-                    variant="secondary"
-                    className="label-mono text-[10px] w-full justify-center"
-                  >
+                <CardContent className="p-4 text-center">
+                  <p className="text-sm font-semibold">{s.name}</p>
+                  <Badge variant="secondary" className="mt-2">
                     {s.tier}
                   </Badge>
                 </CardContent>
@@ -345,55 +262,37 @@ export default function SponsorPage() {
         </div>
       </section>
 
-      {/* Tiers */}
-      <section className="py-16 lg:py-24 border-t border-border bg-secondary/40">
+      <section className="border-t border-border bg-muted/30 py-16">
         <div className="container-px mx-auto max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="label-mono text-[11px] text-primary mb-3">
-              Sponsorship Tiers
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-              Choose your tier.
-            </h2>
-            <p className="mt-4 text-base lg:text-lg text-muted-foreground">
-              Every tier is a tax-deductible donation to our 501(c)(3).
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {TIERS.map((t, i) => (
+          <SectionHeading
+            eyebrow="Sponsorship tiers"
+            title="Choose a level that works for you"
+            description="Every tier is a tax-deductible donation to our 501(c)(3)."
+            align="center"
+            className="mx-auto mb-12"
+          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {TIERS.map((t) => (
               <Card
                 key={t.name}
                 className={cn(
-                  "relative flex flex-col transition-all bg-background",
-                  t.featured
-                    ? "border-primary/60 shadow-paper lg:-translate-y-2"
-                    : "border-border hover:border-primary/40 hover:-translate-y-0.5"
+                  "relative flex flex-col",
+                  t.featured ? "border-primary" : "border-border"
                 )}
               >
-                {t.featured && (
-                  <Badge className="label-mono absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Sparkles className="h-3 w-3 mr-1" />
-                    MOST POPULAR
+                {t.featured ? (
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    Most popular
                   </Badge>
-                )}
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="label-mono text-[10px] text-muted-foreground mb-3">
-                    TIER {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <div className="font-bold text-lg">{t.name}</div>
-                  <div className="mt-3 flex items-baseline gap-1">
-                    <span className="text-3xl font-extrabold tracking-tight">
-                      {t.amount}
-                    </span>
-                    <span className="text-xs text-muted-foreground">
-                      / season
-                    </span>
-                  </div>
-                  <ul className="mt-5 space-y-2.5 text-sm flex-1">
+                ) : null}
+                <CardContent className="flex h-full flex-col p-6">
+                  <p className="text-lg font-bold">{t.name}</p>
+                  <p className="mt-2 text-3xl font-bold">{t.amount}</p>
+                  <p className="text-xs text-muted-foreground">per season</p>
+                  <ul className="mt-5 flex-1 space-y-2 text-sm">
                     {t.perks.map((p) => (
                       <li key={p} className="flex gap-2">
-                        <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                         <span className="text-muted-foreground">{p}</span>
                       </li>
                     ))}
@@ -404,7 +303,7 @@ export default function SponsorPage() {
                       buttonVariants({
                         variant: t.featured ? "default" : "outline",
                       }),
-                      "mt-6"
+                      "mt-6 gap-2"
                     )}
                   >
                     Become a sponsor
@@ -417,43 +316,33 @@ export default function SponsorPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container-px mx-auto max-w-4xl">
-          <Card className="border-primary/30 overflow-hidden shadow-paper">
-            <CardContent className="p-8 lg:p-12 text-center">
-              <TrendingUp className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h2 className="text-2xl lg:text-3xl font-extrabold tracking-tight mb-3">
-                Help write the next chapter.
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                The BeaverBots went from rookie team to Worlds qualifiers in
-                two years. With your support, we can keep that trajectory and
-                inspire the next class of Ashburn engineers.
-              </p>
-              <div className="mt-6 flex justify-center gap-3 flex-wrap">
-                <Link
-                  href="https://www.gofundme.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(buttonVariants({ size: "lg" }), "group")}
-                >
-                  <Heart className="h-4 w-4" />
-                  Donate today
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-                <Link
-                  href="mailto:beaverbotsftc@gmail.com"
-                  className={cn(
-                    buttonVariants({ size: "lg", variant: "outline" })
-                  )}
-                >
-                  <Mail className="h-4 w-4" />
-                  beaverbotsftc@gmail.com
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
+      <section className="py-16">
+        <div className="container-px mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl font-bold lg:text-3xl">
+            From rookie team to Worlds in two years
+          </h2>
+          <p className="mt-4 leading-relaxed text-muted-foreground">
+            With your support, we keep competing at the highest level and
+            running free STEM programs for kids across Loudoun County.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link
+              href="https://www.gofundme.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(buttonVariants({ size: "lg" }), "gap-2")}
+            >
+              <Heart className="h-4 w-4" />
+              Donate today
+            </Link>
+            <Link
+              href="mailto:beaverbotsftc@gmail.com"
+              className={cn(buttonVariants({ size: "lg", variant: "outline" }), "gap-2")}
+            >
+              <Mail className="h-4 w-4" />
+              beaverbotsftc@gmail.com
+            </Link>
+          </div>
         </div>
       </section>
     </>

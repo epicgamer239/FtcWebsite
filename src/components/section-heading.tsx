@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 export function SectionHeading({
@@ -8,7 +7,7 @@ export function SectionHeading({
   align = "left",
   className,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
   align?: "left" | "center";
@@ -22,17 +21,10 @@ export function SectionHeading({
         className
       )}
     >
-      <Badge
-        variant="outline"
-        className="border-primary/40 bg-primary/10 text-primary font-mono tracking-widest mb-4"
-      >
-        {eyebrow}
-      </Badge>
-      <h2 className="text-balance text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-        {title}
-      </h2>
+      {eyebrow ? <p className="section-eyebrow mb-2">{eyebrow}</p> : null}
+      <h2 className="section-title">{title}</h2>
       {description ? (
-        <p className="mt-4 text-base lg:text-lg text-muted-foreground text-balance leading-relaxed">
+        <p className="mt-3 text-base leading-relaxed text-muted-foreground lg:text-lg">
           {description}
         </p>
       ) : null}

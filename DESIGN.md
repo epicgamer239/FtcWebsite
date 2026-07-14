@@ -1,6 +1,6 @@
 ---
 name: BeaverBots FTC
-description: An engineering yearbook for a second-year FIRST Tech Challenge team headed to the 2026 World Championship.
+description: A clear, professional FTC team website for sponsors, parents, and judges — second-year Team 26073 headed to the 2026 World Championship.
 colors:
   background: "oklch(1 0 0)"
   foreground: "oklch(0.22 0.03 290)"
