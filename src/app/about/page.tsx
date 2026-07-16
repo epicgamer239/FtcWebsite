@@ -213,22 +213,13 @@ export default function AboutPage() {
                   {m.name}
                 </p>
                 <div className="relative aspect-[3/4] w-full max-w-[220px] overflow-hidden bg-[oklch(0.92_0.01_85)]">
-                  {m.image ? (
-                    <Image
-                      src={m.image}
-                      alt={`${m.name}, ${m.role}`}
-                      fill
-                      sizes="220px"
-                      className="object-cover object-top"
-                    />
-                  ) : (
-                    <div
-                      className="flex h-full w-full items-end justify-center pb-8 text-4xl font-extrabold text-primary/25"
-                      aria-hidden
-                    >
-                      {m.name[0]}
-                    </div>
-                  )}
+                  <Image
+                    src={m.image}
+                    alt={`${m.name}, ${m.role}`}
+                    fill
+                    sizes="220px"
+                    className="object-cover object-top"
+                  />
                 </div>
                 <p className="mt-3 text-sm font-medium text-foreground">
                   {m.role}
