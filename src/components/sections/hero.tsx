@@ -17,15 +17,6 @@ export function Hero() {
         aria-hidden
       />
 
-      {/* Darken busy photo so the brand title stays legible */}
-      <div
-        className="absolute inset-0 bg-[oklch(0.12_0.02_290/0.55)]"
-        aria-hidden
-      />
-
-      {/* Diagonal scanline hatch */}
-      <div className="hero-scanlines absolute inset-0" aria-hidden />
-
       <div className="hero-copy relative z-10 mx-auto max-w-6xl px-4 py-24 text-center sm:px-8">
         <h1 className="hero-copy-title whitespace-nowrap text-[clamp(1.15rem,5.2vw+0.25rem,4.75rem)] font-extrabold italic uppercase leading-[0.95] tracking-tight text-[oklch(0.98_0.01_290)]">
           Team 26073 - BeaverBots
