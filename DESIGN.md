@@ -114,19 +114,19 @@ components:
 
 ## 1. Overview
 
-**Creative North Star: "The Engineering Yearbook"**
+**Creative North Star: "Premium team site, photo-led"**
 
-This site is the yearbook of a second-year FTC team — a documentary record, not a marketing campaign. Real photographs of real students, real budget tables, real sponsor names, real outreach numbers. Decoration is suspect. Every surface is white paper, every line is a thin printed rule, every label is set in monospace like a caption underneath an archive photo. The team appears alongside its receipts.
+A clean, light, minimal marketing site for a second-year FTC team. Real photographs of real students and robots do the heavy lifting. Typography is calm sans; layout stays sparse. Decoration is suspect. The site should feel premium and contemporary — not a yearbook of captions, not a "by the numbers" dashboard, and not a stack of diagrams.
 
 The system reads as quietly authoritative: confident enough that a $5,000 sponsor takes the team seriously, restrained enough that a parent or judge can scan it in 30 seconds and trust what they see. The single accent — **BeaverBots Royal** — appears on actions, status, and emphasis only. It is never decoration. The mascot stays in the logo; the writing carries the brand.
 
-This system explicitly rejects: generic SaaS landings (hero / three feature cards / pricing), kid-themed STEM aesthetics (Comic Sans, cartoon robots, "fun!"), school-PowerPoint clutter (drop shadows, three fonts, random clip art), dark-mode neon (gamer Discord vibe, magenta-cyan glow), and corporate stock photography (suits, handshakes).
+This system explicitly rejects: generic SaaS landings (hero / three feature cards / pricing), kid-themed STEM aesthetics (Comic Sans, cartoon robots, "fun!"), school-PowerPoint clutter (drop shadows, three fonts, random clip art), dark-mode neon (gamer Discord vibe, magenta-cyan glow), corporate stock photography (suits, handshakes), and diagram / stats-dashboard layouts (budget tables as hero content, flowchart panels, mono caption clutter).
 
 **Key Characteristics:**
-- White paper foreground with one purple accent used as ink, never as wallpaper.
-- Inter for everything readable, JetBrains Mono for labels, captions, and metadata.
+- Light surfaces with one purple accent used as ink, never as wallpaper.
+- Sans for body, headers, and labels. Mono is optional and rare — never the signature voice.
 - Borders and spacing carry hierarchy; shadows almost never do.
-- Real photos with real captions. Decorative imagery is forbidden.
+- Real photos first. Decorative imagery and diagram blocks are forbidden as the main idea.
 - Generous line-height and capped line-length; older donors and mentors must read it comfortably.
 
 ## 2. Colors
@@ -134,7 +134,7 @@ This system explicitly rejects: generic SaaS landings (hero / three feature card
 A near-monochrome paper system with one royal-purple accent that earns every appearance.
 
 ### Primary
-- **BeaverBots Royal** (`oklch(0.52 0.21 295)` / `#7028b8`): The single brand voice. Used on the primary CTA, active navigation underline, focused form rings, the progress fill of the Worlds Travel Fund, and key statistic numbers. Treated as ink, not as decoration. Never used as a section background, never as a gradient stop.
+- **BeaverBots Royal** (`oklch(0.52 0.21 295)` / `#7028b8`): The single brand voice. Used on the primary CTA, active navigation underline, focused form rings, and occasional emphasis. Treated as ink, not as decoration. Never used as a section background, never as a gradient stop.
 - **Royal Soft** (`oklch(0.94 0.04 295)`): The 5–10% tint that hosts eyebrow badges, secondary chips, and the rare emphasis fill (e.g., the avatar fallback behind a teammate's initials). Always paired with Royal text.
 - **Royal Cream** (`oklch(0.96 0.02 295)`): The quietest possible purple. Used for `--secondary` surfaces (zebra-stripe table rows, alternating section bands). Faint enough that the eye reads it as paper, not color.
 
@@ -154,28 +154,28 @@ A near-monochrome paper system with one royal-purple accent that earns every app
 
 **The No-Cream Rule.** There is no off-white card surface. Cards are page-white with a 1px Rule border. The instant you see two adjacent whites trying to layer with shadow, the design has drifted.
 
-**The Receipts Rule.** A color in the system must serve information, not mood. If a stat is decorative, it leaves. If a stat is real (12 students, 1,400 kids, $13,650), the number gets Royal Purple and the unit stays Ink Muted.
+**The Sparse Stats Rule.** Do not build pages around number grids, progress fund cards, or diagram panels. If a real number appears in copy, it may use Royal Purple for emphasis — but stats are never the visual theme.
 
 ## 3. Typography
 
 **Display Font:** Inter (with `ui-sans-serif, system-ui, sans-serif` fallback)
 **Body Font:** Inter (same)
-**Label / Mono Font:** JetBrains Mono (with `ui-monospace, monospace` fallback)
+**Label Font:** Inter (same sans stack). JetBrains Mono may exist in the repo but is not a design requirement.
 
-**Character:** Inter at extra-bold (800) with a tight tracking carries every headline; Inter at regular (400) carries body copy at 16px and up. JetBrains Mono sets every label, eyebrow, caption, and table header — anything that should read as a caption beneath a yearbook photo.
+**Character:** Inter at extra-bold (800) with a tight tracking carries every headline; Inter at regular (400) carries body copy at 16px and up. Labels and eyebrows use the same sans family at medium weight — not monospace, not all-caps tracking as a default.
 
 ### Hierarchy
-- **Display** (800, `clamp(2.25rem, 5vw + 1rem, 4.5rem)`, line-height 1.05): Page-hero headline, one per page. The "**The BeaverBots are heading to the 2026 FIRST Worlds Championship!**" type slot.
-- **Headline** (800, `clamp(1.875rem, 2.5vw + 1rem, 3rem)`, line-height 1.1): Section headings. "**Five programs. One mission.**" "**Transparent budget.**"
+- **Display** (800, `clamp(2.25rem, 5vw + 1rem, 4.5rem)`, line-height 1.05): Page-hero headline, one per page.
+- **Headline** (800, `clamp(1.875rem, 2.5vw + 1rem, 3rem)`, line-height 1.1): Section headings.
 - **Title** (700, `1.125rem`, line-height 1.3): Card titles, member names, subsystem names. Small, present.
 - **Body** (400, `1rem`, line-height 1.6): Paragraph copy. Body line length capped 65–75ch; never wider. Older readers must be served.
-- **Label** (500, `0.75rem`, letter-spacing `0.16em`, uppercase, mono): The signature yearbook caption voice. Eyebrows, badges, table headers, status meta, breadcrumbs, the FIRST CHESAPEAKE · 2025 photo caption.
+- **Label** (500, `0.875rem`, sans): Eyebrows, badges, breadcrumbs, quiet meta. No forced uppercase mono.
 
 ### Named Rules
 
-**The Caption Rule.** Anything below the running body type — eyebrows, photo credits, status pills, breadcrumbs, table column heads — is set in JetBrains Mono with `0.16em` tracking and uppercase. That single mono voice is the most distinctive thread in the system; never replace it with a smaller-sans variant.
+**The Sans Caption Rule.** Eyebrows, photo credits, status pills, breadcrumbs, and quiet meta use the default sans at medium weight. Do not default to JetBrains Mono uppercase tracking as the brand voice.
 
-**The Two-Tone Rule.** The headline scale uses two weights only — Body 400 and Display/Title 700/800 — with no 500 or 600 intermediates. Hierarchy comes from scale-plus-mono labels, not from a five-step weight ladder. The contrast is the point.
+**The Two-Tone Rule.** The headline scale uses two weights only — Body 400 and Display/Title 700/800 — with no 500 or 600 intermediates on long headlines. Hierarchy comes from scale and color, not mono labels.
 
 **The Wide-Read Rule.** Body type never falls below 16px and never exceeds 75ch line-width. The donor demographic skews older; legibility is a brand value, not an accessibility afterthought.
 
@@ -184,12 +184,12 @@ A near-monochrome paper system with one royal-purple accent that earns every app
 Flat by default. Surfaces sit on page-white with 1px hairline Rule borders; depth comes from borders, spacing, and where things land on the page — not from shadow. Cards do not levitate. Modals and dialogs are the rare exception, and even they use the lightest possible scrim.
 
 ### Shadow Vocabulary
-- **shadow-sm** (`box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05)`): The only ambient shadow in the system. Applied to a small set of feature cards (Worlds Travel Fund card, tier cards) that must read as the receipt the user is meant to act on. Not applied to ordinary content cards.
+- **shadow-sm** (`box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05)`): The only ambient shadow in the system. Applied sparingly to feature cards that need a light lift (e.g. sponsor tier cards). Not applied to ordinary content cards.
 - **shadow-hover** (`box-shadow: 0 10px 32px -16px oklch(0.22 0.03 290 / 0.18)`): Reserved for the hover state on a nav card or a feature card. Appears only as a response to interaction.
 
 ### Named Rules
 
-**The Flat-By-Default Rule.** Surfaces are flat at rest. A shadow is a response (hover, focus, active modal), not a property. Any card you ship with a static shadow has to earn it by being a primary call-to-action or a fund tracker.
+**The Flat-By-Default Rule.** Surfaces are flat at rest. A shadow is a response (hover, focus, active modal), not a property. Any card you ship with a static shadow has to earn it by being a primary call-to-action.
 
 **The No-Glow Rule.** Glows, backdrop blurs, and glassmorphism overlays are forbidden. The system uses one ambient shadow and one hover shadow. Anything else is decoration.
 
@@ -203,7 +203,7 @@ Flat by default. Surfaces sit on page-white with 1px hairline Rule borders; dept
 - **No Ghost Button.** A bare text button without a background or border is a link. We have a Link variant for that.
 
 ### Badges
-- **Eyebrow (`badge-eyebrow`):** Pill-shaped, Royal Soft fill at 5% tint, Royal Purple text, JetBrains Mono `0.16em` uppercase. The signature element of every page header — "**2026 FIRST® WORLDS CHAMPIONSHIP QUALIFIER**", "**ABOUT THE TEAM**".
+- **Eyebrow (`badge-eyebrow`):** Optional quiet label in sans, Royal Soft fill, Royal Purple text. Prefer breadcrumb + headline without a redundant page-name pill.
 - **Secondary (`badge-secondary`):** Royal Cream fill, Royal Purple text, used for inline meta (member grade, event audience).
 - **State:** Badges never animate or hover. They are labels, not buttons.
 
@@ -211,7 +211,7 @@ Flat by default. Surfaces sit on page-white with 1px hairline Rule borders; dept
 - **Corner Style:** `0.75rem` corner radius (Tailwind `rounded-xl`).
 - **Background:** Page White.
 - **Border:** 1px Rule, always.
-- **Shadow Strategy:** Per the Flat-By-Default Rule, the default card has no shadow. Feature cards (Worlds Travel Fund, sponsor tiers, mission-CTA card) opt into `shadow-sm`. Hover state on a clickable card adds the hover shadow.
+- **Shadow Strategy:** Per the Flat-By-Default Rule, the default card has no shadow. Sponsor tier cards may opt into `shadow-sm`. Hover state on a clickable card adds the hover shadow.
 - **Internal Padding:** `1.25rem` standard (`card-padding`), `2rem` for hero/feature cards (`card-padding-lg`). Never less. Cards never nest inside cards.
 
 ### Inputs
@@ -220,28 +220,28 @@ Flat by default. Surfaces sit on page-white with 1px hairline Rule borders; dept
 - **Error / Disabled:** Error shows Caution Red border and ring; disabled drops opacity to 50%.
 
 ### Navigation (top bar)
-- **Style:** Fixed top bar, page-white background with a 1px bottom Rule and a barely-perceptible `shadow-sm` on scroll. JetBrains Mono labels with `0.16em` tracking, uppercase.
+- **Style:** Fixed top bar, page-white background with a 1px bottom Rule and a barely-perceptible `shadow-sm` on scroll. Sans labels at medium weight.
 - **Default state:** Foreground Ink, no underline.
 - **Hover state:** Royal Purple text plus an underline that scales from left.
 - **Active state:** Royal Purple text plus a permanent underline (the underline grows in on mount).
 - **Mobile:** Below `md`, the nav collapses to a hamburger that opens a right-side drawer covering the full viewport. The drawer uses the same Page-White surface and a thin overlay (Ink at 20% opacity) on the rest of the page.
 
 ### Breadcrumb
-A row of JetBrains Mono `0.16em` labels separated by chevron icons. The current page sits in Royal Purple; ancestors are Ink Muted. Appears at the top of every non-home page below the eyebrow.
+A row of sans labels separated by chevron icons. The current page sits in Royal Purple; ancestors are Ink Muted. Appears at the top of every non-home page.
 
 ### Signature Component: PageHeader
-Every non-home page leads with the same band: breadcrumb → eyebrow badge → Display headline with a single Royal Purple emphasis word → optional description → optional CTA row. The consistency is the brand. The headline always emphasizes exactly one word in Royal Purple ("**Beavers.**", "**OUTREACH**", "**Worlds.**", "**DAM-1**", "**for every age.**"); never a phrase, never a gradient.
+Every non-home page leads with: breadcrumb → Display headline with optional Royal Purple emphasis → optional description → optional CTA row. No duplicate page-name badge. No FILE path indicators.
 
-### Signature Component: Worlds Travel Fund Card
-A small white card with a `shadow-sm`, an eyebrow label ("**WORLDS TRAVEL FUND**" in Royal Purple mono), a Royal Purple progress fill, and tabular-num figures (`$13,650 raised` / `Goal: $20,000`). It is the single most important conversion surface on the home and sponsor pages; the receipts rule and the one-ink rule meet inside this card.
+### Signature Component: Photo-led sections
+Prefer full-bleed or large real photos over fund trackers, budget diagrams, and stat dashboards. Sponsor conversion is a clear CTA and clean partner logos — not a Worlds travel fund card.
 
 ## 6. Do's and Don'ts
 
 ### Do
 - **Do** keep the entire site on a Page-White background (`oklch(1 0 0)`); cards sit on it with a 1px Rule border.
-- **Do** use BeaverBots Royal (`oklch(0.52 0.21 295)`) as ink on text, icons, focus rings, the primary CTA, the active nav underline, and the progress fill — and nowhere else.
-- **Do** set every eyebrow, badge, breadcrumb, photo caption, and table header in JetBrains Mono at `0.16em` tracking, uppercase.
-- **Do** cite real numbers and real names ("12 students," "1,400 kids reached," "Lockheed Martin"). The Receipts Rule beats every adjective.
+- **Do** use BeaverBots Royal (`oklch(0.52 0.21 295)`) as ink on text, icons, focus rings, the primary CTA, and the active nav underline — and nowhere else.
+- **Do** keep eyebrows, breadcrumbs, and captions in the default sans at medium weight.
+- **Do** prefer real photos and short copy over diagrams, budget tables, and "by the numbers" layouts.
 - **Do** keep body type ≥ 16px with line-length capped at 75ch and line-height 1.6.
 - **Do** respect `prefers-reduced-motion`. Disable carousels and hover translations when it is set.
 - **Do** show a focus ring at all times (3px Royal Purple, 50% opacity). No `outline: none` without a replacement.
@@ -259,3 +259,4 @@ A small white card with a `shadow-sm`, an eyebrow label ("**WORLDS TRAVEL FUND**
 - **Don't** add stock-photo corporate imagery (suits shaking hands, motion-blur cityscapes) — the "**corporate stock photography**" anti-reference. Only real team photos.
 - **Don't** use em-dashes in UI copy. Comma, colon, semicolon, or period.
 - **Don't** stack section padding identically — vary `5rem` / `7rem` for vertical rhythm.
+- **Don't** center the visual system on stats grids, fund progress cards, flowchart diagrams, or yearbook mono captions — those older teach answers are retired.

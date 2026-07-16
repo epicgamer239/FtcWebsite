@@ -73,7 +73,7 @@ export function NavPanels() {
                 alt={panel.alt}
                 style={panel.imageStyle}
                 className={cn(
-                  "object-cover grayscale brightness-90 contrast-95 transition-[filter] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:grayscale-0 group-hover:brightness-110 group-hover:saturate-150 group-hover:contrast-110 group-focus-visible:grayscale-0 group-focus-visible:brightness-110 group-focus-visible:saturate-150 group-focus-visible:contrast-110 motion-reduce:transition-none",
+                  "object-cover brightness-95 transition-[filter] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:brightness-105 group-focus-visible:brightness-105 motion-reduce:transition-none",
                   panel.imageStyle ? "" : "absolute inset-0 h-full w-full"
                 )}
               />
@@ -87,7 +87,7 @@ export function NavPanels() {
                     {PANEL_SPONSOR_LOGOS.slice(0, 3).map((s) => (
                       <div
                         key={s.name}
-                        className="flex aspect-[5/3] items-center justify-center rounded-md bg-white/90 p-1.5 shadow-sm ring-1 ring-black/10 backdrop-blur-[2px] transition-[background-color] duration-500 group-hover:bg-white"
+                        className="flex aspect-[5/3] items-center justify-center rounded-md bg-background/95 p-1.5 shadow-sm ring-1 ring-border transition-[background-color] duration-500 group-hover:bg-background"
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
@@ -102,7 +102,7 @@ export function NavPanels() {
                     {PANEL_SPONSOR_LOGOS.slice(3, 6).map((s) => (
                       <div
                         key={s.name}
-                        className="flex aspect-[5/3] items-center justify-center rounded-md bg-white/90 p-1.5 shadow-sm ring-1 ring-black/10 backdrop-blur-[2px] transition-[background-color] duration-500 group-hover:bg-white"
+                        className="flex aspect-[5/3] items-center justify-center rounded-md bg-background/95 p-1.5 shadow-sm ring-1 ring-border transition-[background-color] duration-500 group-hover:bg-background"
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
@@ -125,17 +125,8 @@ export function NavPanels() {
                 )}
                 aria-hidden
               />
-              <div className="absolute inset-x-0 top-1/2 z-10 flex h-[15%] min-h-[58px] -translate-y-1/2 items-center justify-center bg-[rgb(0_0_0/0.72)] px-3 transition-[background-color] duration-500 group-hover:bg-[rgb(0_0_0/0.82)]">
-                <span
-                  className="block text-center text-[29px] font-medium leading-[1.4] text-white"
-                  style={{
-                    fontFamily:
-                      'Futura, "Futura Std", futura-lt-w01-book, var(--font-panel), "Century Gothic", CenturyGothic, sans-serif',
-                    letterSpacing: "normal",
-                    textTransform: "none",
-                    fontWeight: 500,
-                  }}
-                >
+              <div className="absolute inset-x-0 top-1/2 z-10 flex h-[15%] min-h-[58px] -translate-y-1/2 items-center justify-center bg-foreground/75 px-3 transition-[background-color] duration-500 group-hover:bg-foreground/85">
+                <span className="block text-center font-[family-name:var(--font-panel)] text-3xl font-medium leading-snug text-background">
                   {panel.label}
                 </span>
               </div>

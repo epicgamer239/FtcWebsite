@@ -2,8 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { SectionHeading } from "@/components/section-heading";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Table,
@@ -13,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Blocks, Cog, Cpu, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -28,7 +27,6 @@ const PROGRAMS = [
     short: "FLL",
     name: "FIRST LEGO League",
     age: "Ages 4–16",
-    icon: Blocks,
     description:
       "Students build and program LEGO robots while learning core STEM skills.",
   },
@@ -37,7 +35,6 @@ const PROGRAMS = [
     short: "FTC",
     name: "FIRST Tech Challenge",
     age: "Grades 7–12",
-    icon: Cog,
     description:
       "Students build metal robots with custom parts and code. BeaverBots competes in FTC.",
     featured: true,
@@ -47,7 +44,6 @@ const PROGRAMS = [
     short: "FRC",
     name: "FIRST Robotics Competition",
     age: "Grades 9–12",
-    icon: Cpu,
     description:
       "Large robots and high-school FIRST competition at full field scale.",
   },
@@ -60,17 +56,10 @@ const COMPARE = [
   { spec: "Coding", fll: "Blocks / Python", ftc: "Java / Kotlin", frc: "Java / C++" },
 ];
 
-const STATS = [
-  { value: "1M+", label: "Students worldwide" },
-  { value: "110+", label: "Countries" },
-  { value: "$80M", label: "Scholarships annually" },
-];
-
 export default function FirstPage() {
   return (
     <>
       <PageHeader
-        eyebrow="FIRST"
         crumb="FIRST"
         title={
           <>
@@ -91,39 +80,35 @@ export default function FirstPage() {
         </Link>
       </PageHeader>
 
-      <section className="py-14 lg:py-20">
+      <section className="bg-background py-14 lg:py-20">
         <div className="container-px mx-auto max-w-7xl">
           <div className="grid gap-6 md:grid-cols-3">
-            {PROGRAMS.map((p) => {
-              const Icon = p.icon;
-              return (
-                <Card
-                  key={p.id}
-                  className={cn(
-                    "border-border",
-                    p.featured && "border-primary"
-                  )}
-                >
-                  {p.featured ? (
-                    <Badge className="absolute right-4 top-4">Our program</Badge>
-                  ) : null}
-                  <CardContent className="p-6 pt-8">
-                    <Icon className="mb-4 h-8 w-8 text-primary" />
-                    <p className="text-2xl font-bold text-primary/25">{p.short}</p>
-                    <h3 className="mt-1 text-lg font-bold">{p.name}</h3>
-                    <p className="text-sm text-muted-foreground">{p.age}</p>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {p.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
+            {PROGRAMS.map((p) => (
+              <article
+                key={p.id}
+                className={cn(
+                  "rounded-xl border border-border bg-background p-6",
+                  p.featured && "border-primary"
+                )}
+              >
+                {p.featured ? (
+                  <p className="mb-3 text-sm font-medium text-primary">
+                    Our program
+                  </p>
+                ) : null}
+                <p className="text-sm text-muted-foreground">{p.short}</p>
+                <h3 className="mt-1 text-lg font-bold">{p.name}</h3>
+                <p className="text-sm text-muted-foreground">{p.age}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {p.description}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="border-y border-border bg-muted/30 py-14 lg:py-20">
+      <section className="border-y border-border bg-background py-14 lg:py-20">
         <div className="container-px mx-auto max-w-4xl">
           <SectionHeading title="Compare programs" className="mb-8" />
           <Card className="overflow-hidden border-border bg-background">
@@ -150,21 +135,6 @@ export default function FirstPage() {
               </TableBody>
             </Table>
           </Card>
-        </div>
-      </section>
-
-      <section className="py-14 lg:py-20">
-        <div className="container-px mx-auto max-w-4xl">
-          <div className="grid grid-cols-3 gap-6 text-center">
-            {STATS.map((s) => (
-              <div key={s.label}>
-                <p className="text-2xl font-bold text-primary sm:text-3xl">
-                  {s.value}
-                </p>
-                <p className="mt-1 text-sm text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
     </>

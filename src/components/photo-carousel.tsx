@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type CarouselSlide = {
@@ -20,13 +20,20 @@ export function PhotoCarousel({
   aspectClassName?: string;
 }) {
   const [index, setIndex] = React.useState(0);
+  const [autoplay, setAutoplay] = React.useState(true);
   const count = slides.length;
 
-  const prev = () => setIndex((i) => (i - 1 + count) % count);
-  const next = () => setIndex((i) => (i + 1) % count);
+  const prev = () => {
+    setAutoplay(false);
+    setIndex((i) => (i - 1 + count) % count);
+  };
+  const next = () => {
+    setAutoplay(false);
+    setIndex((i) => (i + 1) % count);
+  };
 
   React.useEffect(() => {
-    if (count <= 1) return;
+    if (count <= 1 || !autoplay) return;
     const reduced =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -36,7 +43,7 @@ export function PhotoCarousel({
       setIndex((i) => (i + 1) % count);
     }, 3000);
     return () => window.clearInterval(id);
-  }, [count]);
+  }, [count, autoplay]);
 
   if (count === 0) return null;
 
@@ -46,7 +53,7 @@ export function PhotoCarousel({
     <div className={cn("relative", className)}>
       <figure
         className={cn(
-          "relative w-full overflow-hidden rounded-xl border border-border bg-muted",
+          "relative w-full overflow-hidden bg-muted",
           aspectClassName
         )}
       >
@@ -66,7 +73,7 @@ export function PhotoCarousel({
               type="button"
               onClick={prev}
               aria-label="Previous photo"
-              className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-border/80 bg-background/70 text-foreground/70 transition-colors hover:border-primary/40 hover:bg-background hover:text-primary"
+              className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg border border-border/80 bg-background/70 text-foreground/70 transition-colors hover:border-primary/40 hover:bg-background hover:text-primary"
             >
               <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
             </button>
@@ -74,9 +81,21 @@ export function PhotoCarousel({
               type="button"
               onClick={next}
               aria-label="Next photo"
-              className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-border/80 bg-background/70 text-foreground/70 transition-colors hover:border-primary/40 hover:bg-background hover:text-primary"
+              className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg border border-border/80 bg-background/70 text-foreground/70 transition-colors hover:border-primary/40 hover:bg-background hover:text-primary"
             >
               <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
+            </button>
+            <button
+              type="button"
+              onClick={() => setAutoplay((p) => !p)}
+              aria-label={autoplay ? "Pause slideshow" : "Play slideshow"}
+              className="absolute bottom-3 right-3 z-10 flex h-11 w-11 items-center justify-center rounded-lg border border-border/80 bg-background/70 text-foreground/70 transition-colors hover:border-primary/40 hover:bg-background hover:text-primary"
+            >
+              {autoplay ? (
+                <Pause className="h-4 w-4" strokeWidth={1.5} />
+              ) : (
+                <Play className="h-4 w-4" strokeWidth={1.5} />
+              )}
             </button>
           </>
         ) : null}
@@ -90,9 +109,12 @@ export function PhotoCarousel({
               type="button"
               aria-label={`Show photo ${i + 1}`}
               aria-current={i === index}
-              onClick={() => setIndex(i)}
+              onClick={() => {
+                setAutoplay(false);
+                setIndex(i);
+              }}
               className={cn(
-                "h-1.5 w-1.5 rounded-full transition-colors",
+                "h-2.5 w-2.5 rounded-full transition-colors",
                 i === index
                   ? "bg-primary"
                   : "bg-border hover:bg-muted-foreground/40"

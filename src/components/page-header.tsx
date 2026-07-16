@@ -22,9 +22,9 @@ export function PageHeader({
   crumb: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-background pb-12 pt-32 lg:pb-16 lg:pt-40">
-      <div className="relative container-px mx-auto max-w-7xl">
-        <Breadcrumb className="mb-6">
+    <section className="bg-background pb-10 pt-28 lg:pb-14 lg:pt-36">
+      <div className="container-px mx-auto max-w-7xl">
+        <Breadcrumb className="mb-5">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
@@ -38,19 +38,17 @@ export function PageHeader({
           </BreadcrumbList>
         </Breadcrumb>
 
-        <h1 className="text-balance text-5xl font-extrabold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl">
+        <h1 className="max-w-4xl text-balance text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
           {title}
         </h1>
 
         {description ? (
-          <p className="mt-5 max-w-3xl text-balance text-lg leading-relaxed text-foreground/85 lg:text-xl">
+          <p className="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
             {description}
           </p>
         ) : null}
 
         {children ? <div className="mt-8">{children}</div> : null}
-
-        <div className="mt-10 h-px w-full bg-border" aria-hidden />
       </div>
     </section>
   );

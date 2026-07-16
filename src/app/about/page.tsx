@@ -246,7 +246,7 @@ export default function AboutPage() {
                     src={c.image}
                     alt={`${c.name}, ${c.role}`}
                     className="absolute inset-0 h-full w-full"
-                    style={{ objectFit: "fill" }}
+                    style={{ objectFit: "cover", objectPosition: "center top" }}
                   />
                 </div>
                 <p className="mt-4 text-lg font-bold tracking-tight text-foreground">

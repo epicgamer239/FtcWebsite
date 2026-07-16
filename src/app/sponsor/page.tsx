@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Check, ArrowRight, Heart, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { DONATE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sponsor · BeaverBots FTC",
@@ -104,10 +105,9 @@ export default function SponsorPage() {
         }
         description="Sponsors keep 12 students building, competing, and running free STEM programs across Loudoun County. Your support funds parts, travel, and outreach."
       >
-        <div className="flex flex-wrap gap-3">
+        <div id="donate" className="flex flex-wrap gap-3">
           <Link
-            id="donate"
-            href="https://www.gofundme.com/"
+            href={DONATE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className={cn(buttonVariants({ size: "lg" }), "gap-2")}
@@ -129,15 +129,14 @@ export default function SponsorPage() {
         </div>
       </PageHeader>
 
-      <section className="bg-background py-16">
+      <section className="bg-background py-20 lg:py-28">
         <div className="container-px mx-auto max-w-6xl">
           <SectionHeading
-            eyebrow="Partners"
             title="Thank you to our sponsors"
             align="center"
-            className="mb-14"
+            className="mb-16"
           />
-          <div className="space-y-16">
+          <div className="space-y-20">
             {SPONSOR_TIERS.map((tier, tierIndex) => {
               const sponsors = CURRENT_SPONSORS.filter(
                 (s) => s.tier === tier.key
@@ -146,39 +145,37 @@ export default function SponsorPage() {
               return (
                 <div
                   key={tier.key}
-                  className={cn(
-                    tierIndex > 0 && "border-t border-border pt-16"
-                  )}
+                  className={cn(tierIndex > 0 && "border-t border-border pt-20")}
                 >
-                  <div className="mb-8 text-center">
-                    <p className="text-sm font-medium text-muted-foreground">
+                  <div className="mb-10 text-center">
+                    <p className="text-sm text-muted-foreground">
                       {tier.eyebrow}
                     </p>
-                    <h3 className="mt-1 text-2xl font-extrabold tracking-tight">
+                    <h3 className="mt-1 text-2xl font-semibold tracking-tight">
                       {tier.label}
                     </h3>
                   </div>
-                  <div className={cn("mx-auto grid gap-4", tier.grid)}>
+                  <ul className={cn("mx-auto grid gap-8", tier.grid)}>
                     {sponsors.map((s) => (
-                      <Card
+                      <li
                         key={s.name}
-                        className="border-border transition-colors hover:border-primary/30"
+                        className="flex flex-col items-center text-center"
                       >
-                        <div className="relative flex aspect-[2/1] items-center justify-center overflow-hidden rounded-t-xl bg-card p-5">
+                        <div className="relative flex aspect-[2/1] w-full items-center justify-center bg-muted/40 p-6">
                           <Image
                             src={s.logo}
                             alt={s.name}
                             fill
-                            className="object-contain p-4"
+                            className="object-contain p-5"
                             sizes="(max-width: 768px) 50vw, 33vw"
                           />
                         </div>
-                        <CardContent className="border-t border-border p-4 text-center">
-                          <p className="text-sm font-semibold">{s.name}</p>
-                        </CardContent>
-                      </Card>
+                        <p className="mt-3 text-sm font-medium text-foreground">
+                          {s.name}
+                        </p>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               );
             })}
@@ -186,22 +183,21 @@ export default function SponsorPage() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-background py-16">
+      <section className="border-t border-border bg-background py-20 lg:py-28">
         <div className="container-px mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Sponsorship tiers"
             title="Choose a level that works for you"
             description="Every tier is a tax-deductible donation to our 501(c)(3)."
             align="center"
-            className="mx-auto mb-12"
+            className="mx-auto mb-14"
           />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {TIERS.map((t) => (
               <Card
                 key={t.name}
                 className={cn(
                   "relative flex flex-col",
-                  t.featured ? "border-primary shadow-paper" : "border-border"
+                  t.featured && "ring-2 ring-primary"
                 )}
               >
                 <CardContent className="flex h-full flex-col p-6">
@@ -210,10 +206,12 @@ export default function SponsorPage() {
                       Most popular
                     </Badge>
                   ) : null}
-                  <p className="text-lg font-bold">{t.name}</p>
-                  <p className="mt-2 text-3xl font-bold">{t.amount}</p>
+                  <p className="text-lg font-semibold">{t.name}</p>
+                  <p className="mt-2 text-3xl font-semibold tracking-tight">
+                    {t.amount}
+                  </p>
                   <p className="text-xs text-muted-foreground">per season</p>
-                  <ul className="mt-5 flex-1 space-y-2 text-sm">
+                  <ul className="mt-5 flex-1 space-y-2.5 text-sm">
                     {t.perks.map((p) => (
                       <li key={p} className="flex gap-2">
                         <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -240,18 +238,18 @@ export default function SponsorPage() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-background py-16">
-        <div className="container-px mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl font-bold lg:text-3xl">
+      <section className="border-t border-border bg-background py-20 lg:py-24">
+        <div className="container-px mx-auto max-w-2xl text-center">
+          <h2 className="text-2xl font-semibold tracking-tight lg:text-3xl">
             Help us keep building
           </h2>
-          <p className="mt-4 leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-read leading-relaxed text-muted-foreground">
             Your support funds the next robot, the next competition, and the
             free STEM programs we run for kids across Loudoun County.
           </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
-              href="https://www.gofundme.com/"
+              href={DONATE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(buttonVariants({ size: "lg" }), "gap-2")}

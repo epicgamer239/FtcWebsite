@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BeaverLogo } from "@/components/logo";
 import { Separator } from "@/components/ui/separator";
 import { Mail } from "lucide-react";
+import { DONATE_URL } from "@/lib/site";
 
 const COLS = [
   {
@@ -20,11 +21,15 @@ const COLS = [
     title: "Support",
     links: [
       { href: "/sponsor", label: "Sponsor" },
-      { href: "/sponsor#donate", label: "Donate" },
+      { href: DONATE_URL, label: "Donate" },
       { href: "mailto:beaverbotsftc@gmail.com", label: "Email Us" },
     ],
   },
-];
+] as const;
+
+function isExternal(href: string) {
+  return href.startsWith("http") || href.startsWith("mailto:");
+}
 
 export function Footer() {
   return (
@@ -35,10 +40,10 @@ export function Footer() {
             <Link href="/" className="group mb-4 flex items-center gap-3">
               <BeaverLogo className="h-14 w-auto transition-transform group-hover:-rotate-3" />
               <div>
-                <div className="text-base font-extrabold tracking-wider">
-                  BEAVERBOTS
+                <div className="text-base font-bold tracking-tight">
+                  BeaverBots
                 </div>
-                <div className="label-mono text-[11px] text-primary">
+                <div className="mt-0.5 text-xs text-muted-foreground">
                   FTC 26073 · Ashburn, VA
                 </div>
               </div>
@@ -63,9 +68,12 @@ export function Footer() {
               <ul className="space-y-2">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    {l.href.startsWith("mailto:") ? (
+                    {isExternal(l.href) ? (
                       <a
                         href={l.href}
+                        {...(l.href.startsWith("http")
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
                         className="text-sm text-muted-foreground transition-colors hover:text-primary"
                       >
                         {l.label}
@@ -89,8 +97,8 @@ export function Footer() {
 
         <div className="flex flex-col gap-2 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} BeaverBots FTC · 501(c)(3) · EIN
-            99-3214567
+            © {new Date().getFullYear()} BeaverBots FTC · Fiscally sponsored by
+            Hack Club · EIN 81-2908499
           </p>
           <p>FTC Team 26073 · Ashburn, Virginia</p>
         </div>

@@ -22,7 +22,7 @@ Success looks like: the Donate CTA gets clicked, the email link gets used, and o
 
 ## Brand Personality
 
-Polished, confident, established. Voice is calm and concrete — we cite real numbers (12 students, 1,400 kids reached, $13,650 raised), real partners (FIRST Chesapeake, real sponsor names), and real photos. We never use exclamation marks as a substitute for substance, never describe ourselves with adjectives we haven't earned ("incredible team," "amazing program"), and never lean on the beaver mascot as a personality crutch. The mascot lives in the logo; the writing carries the brand.
+Polished, confident, established. Voice is calm and concrete — real partners, real photos, and short copy. A few real numbers may appear in prose when they earn their place; they are not a visual theme. We never use exclamation marks as a substitute for substance, never describe ourselves with adjectives we haven't earned ("incredible team," "amazing program"), and never lean on the beaver mascot as a personality crutch. The mascot lives in the logo; the writing carries the brand.
 
 Emotional goal on Home: "this is real." Emotional goal on Sponsor: "I trust where my money goes." Emotional goal on Outreach and Bot: "these kids built that."
 
@@ -33,14 +33,16 @@ Emotional goal on Home: "this is real." Emotional goal on Sponsor: "I trust wher
 - **School-PowerPoint template.** Random clipart, three different fonts, gratuitous gradients, drop shadows on everything. Anything that looks like a teacher's slide deck is disqualifying.
 - **Dark-mode neon gamer aesthetic.** Black background, magenta/cyan gradients, glow effects, "cyberpunk robotics." A donor reads this as a hobbyist Discord, not a 501(c)(3).
 - **Corporate stock photography.** Suited men shaking hands, smiling diverse-cast laptops, motion-blur cityscapes. Real team photos only.
+- **"By the numbers" / diagram-led pages.** Stat dashboards, budget diagrams, flowchart-style layouts, mono caption clutter, and receipt-table aesthetics. Prefer photography and clean typography over charts and diagram blocks.
 
 ## Design Principles
 
 1. **Earn the check.** Every page answers an implicit question: would a stranger write this team a $5K check after reading it? If a section doesn't move that needle, cut it.
-2. **Show real receipts.** Numbers cited are real numbers. Photos are real photos. Sponsors named are real sponsors. The Sponsor page shows the actual line-item budget, not a generic "your donation matters."
-3. **Quiet over loud.** White surfaces, restrained color, single accent. The site stays out of the way of the team's story. Decoration (gradients, glows, glassmorphism) is forbidden by default.
+2. **Photos over diagrams.** Real team photos and clean layout carry credibility. Do not default to stats grids, budget tables, or diagram panels as the primary visual idea.
+3. **Quiet over loud.** Light surfaces, restrained color, single accent. Premium, clean, and minimal. Decoration (gradients, glows, glassmorphism) is forbidden by default.
 4. **The mascot has restraint.** The beaver lives in the logo and small accents. Copy never talks like a beaver, headlines never lean on dam puns, and the mascot never becomes the visual brand.
 5. **Donor + parent + judge in one pass.** Where the three audiences disagree, default to the donor — the donor decision has the largest dollar consequence and the other two read the same signals favorably.
+6. **Live brief beats stale teach answers.** If a session brief conflicts with older PRODUCT.md / DESIGN.md preferences (especially "by the numbers" or diagram-heavy ideas), follow the live brief.
 
 ## Accessibility & Inclusion
 

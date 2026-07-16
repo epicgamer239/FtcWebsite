@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 
 export function SectionHeading({
-  eyebrow,
   title,
   description,
   align = "left",
   className,
 }: {
+  /** @deprecated Unused; kept out of the visual system to avoid AI kickers. */
   eyebrow?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
@@ -21,7 +21,6 @@ export function SectionHeading({
         className
       )}
     >
-      {eyebrow ? <p className="section-eyebrow mb-2">{eyebrow}</p> : null}
       <h2 className="section-title">{title}</h2>
       {description ? (
         <p className="mt-3 text-base leading-relaxed text-muted-foreground lg:text-lg">

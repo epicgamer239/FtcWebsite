@@ -7,6 +7,7 @@ import { Menu, X, Heart } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { BeaverLogo } from "@/components/logo";
 import { cn } from "@/lib/utils";
+import { DONATE_URL } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -60,10 +61,10 @@ export function Navbar() {
           >
             <BeaverLogo className="h-12 w-auto transition-transform group-hover:-rotate-3" />
             <div className="hidden flex-col leading-none sm:flex">
-              <span className="text-base font-extrabold tracking-wider">
-                BEAVERBOTS
+              <span className="text-base font-bold tracking-tight">
+                BeaverBots
               </span>
-              <span className="label-mono text-[11px] text-primary">
+              <span className="mt-0.5 text-xs text-muted-foreground">
                 FTC 26073 · Ashburn, VA
               </span>
             </div>
@@ -78,8 +79,8 @@ export function Navbar() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "relative block px-3 text-sm font-semibold uppercase tracking-[0.16em] transition-colors lg:px-4",
-                        "after:absolute after:-bottom-1.5 after:left-3 after:right-3 after:h-px after:bg-primary after:transition-transform after:duration-300 after:origin-left lg:after:left-4 lg:after:right-4",
+                        "relative block px-3 text-sm font-medium transition-colors lg:px-4",
+                        "after:absolute after:-bottom-1.5 after:left-3 after:right-3 after:h-px after:origin-left after:bg-primary after:transition-transform after:duration-300 lg:after:left-4 lg:after:right-4",
                         active
                           ? "text-primary after:scale-x-100"
                           : "text-foreground/85 hover:text-primary after:scale-x-0 hover:after:scale-x-100"
@@ -95,7 +96,9 @@ export function Navbar() {
 
           <div className="flex items-center justify-end gap-3">
             <Link
-              href="/sponsor#donate"
+              href={DONATE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 buttonVariants(),
                 "hidden md:inline-flex group bg-primary hover:bg-primary/90 px-4"
@@ -160,7 +163,9 @@ export function Navbar() {
               );
             })}
             <Link
-              href="/sponsor#donate"
+              href={DONATE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(buttonVariants(), "mt-6 py-5 text-base")}
             >
               <Heart className="h-4 w-4" />

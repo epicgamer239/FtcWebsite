@@ -5,8 +5,6 @@ import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
 import { SectionHeading } from "@/components/section-heading";
 import { PhotoCarousel } from "@/components/photo-carousel";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Tabs,
@@ -14,22 +12,11 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import {
-  Gamepad2,
-  Box,
-  Swords,
-  GraduationCap,
-  ClipboardList,
-  Calendar,
-  Users2,
-  ArrowRight,
-  ExternalLink,
-} from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Program = {
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
   audience: string;
   description: string;
   cadence: string;
@@ -49,7 +36,6 @@ type Event = {
 const PROGRAMS: Program[] = [
   {
     name: "Robo Kicks",
-    icon: Gamepad2,
     audience: "Elementary · K–5",
     cadence: "Weekly · After school",
     reach: 540,
@@ -58,7 +44,6 @@ const PROGRAMS: Program[] = [
   },
   {
     name: "CAD Camp",
-    icon: Box,
     audience: "Middle school · 6–8",
     cadence: "Summer · 3-day intensive",
     reach: 96,
@@ -67,7 +52,6 @@ const PROGRAMS: Program[] = [
   },
   {
     name: "Robo Rumble",
-    icon: Swords,
     audience: "All ages",
     cadence: "Annual · Spring",
     reach: 380,
@@ -76,7 +60,6 @@ const PROGRAMS: Program[] = [
   },
   {
     name: "Intro to FIRST",
-    icon: GraduationCap,
     audience: "Parents & students",
     cadence: "Quarterly evenings",
     reach: 220,
@@ -85,7 +68,6 @@ const PROGRAMS: Program[] = [
   },
   {
     name: "FTC Scrimmage",
-    icon: ClipboardList,
     audience: "Local FTC teams",
     cadence: "November · Annual",
     reach: 168,
@@ -225,58 +207,47 @@ function EventGrid({ season }: { season: Event["season"] }) {
   const events = EVENTS.filter((e) => e.season === season);
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-6">
       {events.map((event) => (
-        <Card key={event.name} className="overflow-hidden border-border">
-          <div className="relative h-40 bg-muted sm:h-44">
+        <article key={event.name} className="flex flex-col">
+          <div className="relative aspect-[4/3] bg-muted">
             <Image
               src={event.image}
               alt={event.name}
               fill
-              className="object-contain p-1.5"
+              className="object-contain p-2"
               sizes="(max-width: 768px) 50vw, 25vw"
             />
           </div>
-          <CardContent className="p-3 sm:p-4">
-            <h3 className="text-sm font-bold leading-snug sm:text-base">
-              {event.name}
-            </h3>
-            <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-              {event.description}
+          <h3 className="mt-3 text-sm font-semibold leading-snug sm:text-base">
+            {event.name}
+          </h3>
+          <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+            {event.description}
+          </p>
+          {event.stats ? (
+            <p className="mt-2 text-xs text-muted-foreground">
+              {[
+                event.stats.participants,
+                event.stats.teams ? `${event.stats.teams} teams` : null,
+                event.stats.games ? `${event.stats.games} games` : null,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
             </p>
-            {event.stats ? (
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {event.stats.participants ? (
-                  <Badge variant="secondary" className="text-[10px]">
-                    <Users2 className="mr-1 h-3 w-3" />
-                    {event.stats.participants}
-                  </Badge>
-                ) : null}
-                {event.stats.teams ? (
-                  <Badge variant="secondary" className="text-[10px]">
-                    {event.stats.teams} teams
-                  </Badge>
-                ) : null}
-                {event.stats.games ? (
-                  <Badge variant="secondary" className="text-[10px]">
-                    {event.stats.games} games
-                  </Badge>
-                ) : null}
-              </div>
-            ) : null}
-            {event.registrationUrl ? (
-              <Link
-                href={event.registrationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline sm:text-sm"
-              >
-                Registration
-                <ExternalLink className="h-3 w-3" />
-              </Link>
-            ) : null}
-          </CardContent>
-        </Card>
+          ) : null}
+          {event.registrationUrl ? (
+            <Link
+              href={event.registrationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline sm:text-sm"
+            >
+              Registration
+              <ExternalLink className="h-3 w-3" />
+            </Link>
+          ) : null}
+        </article>
       ))}
     </div>
   );
@@ -296,87 +267,57 @@ export default function OutreachPage() {
       />
 
       <div className="border-y border-border bg-background py-4">
-        <div className="container-px mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-2">
-          {PROGRAM_TAGS.map((m) => (
-            <span
-              key={m}
-              className="inline-flex items-center rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground"
-            >
-              {m}
-            </span>
-          ))}
-        </div>
+        <p className="container-px mx-auto max-w-7xl text-center text-sm text-muted-foreground">
+          {PROGRAM_TAGS.join(" · ")}
+        </p>
       </div>
 
-      <section className="py-14 lg:py-16">
+      <section className="py-20 lg:py-24">
         <div className="container-px mx-auto max-w-5xl">
           <SectionHeading
-            eyebrow="In the community"
             title="Real kids. Real programs."
             description="Photos from camps, scrimmages, and school visits across Loudoun County."
-            className="mb-8"
+            className="mb-10"
           />
           <PhotoCarousel slides={HELP_PHOTOS} />
         </div>
       </section>
 
-      <section className="border-t border-border py-14 lg:py-20">
-        <div className="container-px mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Programs"
-            title="Five programs we run"
-            className="mb-10"
-          />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {PROGRAMS.map((p) => {
-              const Icon = p.icon;
-              return (
-                <Card
-                  key={p.name}
-                  className={cn(
-                    "border-border",
-                    p.name === "Robo Kicks" && "sm:col-span-2 lg:col-span-1"
-                  )}
-                >
-                  <CardContent className="flex h-full flex-col p-6">
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-border bg-accent text-primary">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <div className="mb-3 flex flex-wrap gap-2">
-                      <Badge variant="secondary">
-                        <Users2 className="mr-1 h-3 w-3" />
-                        {p.audience}
-                      </Badge>
-                      <Badge variant="outline">
-                        <Calendar className="mr-1 h-3 w-3" />
-                        {p.cadence}
-                      </Badge>
-                    </div>
-                    <h3 className="text-xl font-bold">{p.name}</h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                      {p.description}
-                    </p>
-                    <p className="mt-4 border-t border-border pt-4 text-sm">
-                      <span className="text-muted-foreground">Kids reached: </span>
-                      <span className="font-bold text-primary">
-                        {p.reach.toLocaleString()}
-                      </span>
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+      <section className="border-t border-border py-20 lg:py-28">
+        <div className="container-px mx-auto max-w-4xl">
+          <SectionHeading title="Five programs we run" className="mb-12" />
+          <ul className="divide-y divide-border border-y border-border">
+            {PROGRAMS.map((p) => (
+              <li
+                key={p.name}
+                className="grid gap-3 py-8 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-10"
+              >
+                <div>
+                  <h3 className="text-xl font-semibold tracking-tight">
+                    {p.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {p.audience} · {p.cadence}
+                  </p>
+                  <p className="mt-3 max-w-read text-base leading-relaxed text-muted-foreground">
+                    {p.description}
+                  </p>
+                </div>
+                <p className="text-sm tabular-nums text-muted-foreground sm:pt-1 sm:text-right">
+                  <span className="block text-2xl font-semibold text-primary">
+                    {p.reach.toLocaleString()}
+                  </span>
+                  kids reached
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section className="border-t border-border bg-background py-14 lg:py-20">
+      <section className="border-t border-border bg-background py-20 lg:py-24">
         <div className="container-px mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Events"
-            title="Past events"
-            className="mb-8"
-          />
+          <SectionHeading title="Past events" className="mb-10" />
           <Tabs defaultValue="2025-2026">
             <TabsList>
               <TabsTrigger value="2025-2026">2025–26 season</TabsTrigger>
@@ -392,28 +333,23 @@ export default function OutreachPage() {
         </div>
       </section>
 
-      <section className="py-14 lg:py-20">
-        <div className="container-px mx-auto max-w-4xl">
-          <Card className="border-primary/30">
-            <CardContent className="flex flex-col items-start justify-between gap-6 p-8 lg:flex-row lg:items-center">
-              <div>
-                <h3 className="text-2xl font-bold">
-                  Bring the BeaverBots to your school
-                </h3>
-                <p className="mt-2 text-muted-foreground">
-                  Free demos, workshops, and Q&amp;A sessions across Loudoun
-                  County.
-                </p>
-              </div>
-              <Link
-                href="mailto:beaverbotsftc@gmail.com"
-                className={cn(buttonVariants({ size: "lg" }), "gap-2 shrink-0")}
-              >
-                Email us
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </CardContent>
-          </Card>
+      <section className="border-t border-border py-20 lg:py-24">
+        <div className="container-px mx-auto flex max-w-4xl flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
+          <div>
+            <h3 className="text-2xl font-semibold tracking-tight">
+              Bring the BeaverBots to your school
+            </h3>
+            <p className="mt-2 max-w-read text-muted-foreground">
+              Free demos, workshops, and Q&amp;A sessions across Loudoun County.
+            </p>
+          </div>
+          <Link
+            href="mailto:beaverbotsftc@gmail.com"
+            className={cn(buttonVariants({ size: "lg" }), "shrink-0 gap-2")}
+          >
+            Email us
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
     </>
