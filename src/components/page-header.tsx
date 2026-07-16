@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,22 +9,21 @@ import {
 } from "@/components/ui/breadcrumb";
 
 export function PageHeader({
-  eyebrow,
   title,
   description,
   children,
   crumb,
 }: {
-  eyebrow: string;
+  /** @deprecated Kept for call-site compatibility; no longer rendered. */
+  eyebrow?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
   children?: React.ReactNode;
   crumb: string;
 }) {
   return (
-    <section className="relative pt-32 pb-12 lg:pt-40 lg:pb-16 overflow-hidden bg-background">
+    <section className="relative overflow-hidden bg-background pb-12 pt-32 lg:pb-16 lg:pt-40">
       <div className="relative container-px mx-auto max-w-7xl">
-        {/* Breadcrumb */}
         <Breadcrumb className="mb-6">
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -33,39 +31,26 @@ export function PageHeader({
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage className="text-primary font-medium">
+              <BreadcrumbPage className="font-medium text-primary">
                 {crumb}
               </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
 
-        <Badge
-          variant="outline"
-          className="label-mono border-primary/30 bg-accent text-primary mb-5 py-1"
-        >
-          {eyebrow}
-        </Badge>
-
-        <h1 className="text-balance text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.04]">
+        <h1 className="text-balance text-5xl font-extrabold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl">
           {title}
         </h1>
 
         {description ? (
-          <p className="mt-5 text-lg lg:text-xl text-foreground/85 max-w-3xl text-balance leading-relaxed">
+          <p className="mt-5 max-w-3xl text-balance text-lg leading-relaxed text-foreground/85 lg:text-xl">
             {description}
           </p>
         ) : null}
 
         {children ? <div className="mt-8">{children}</div> : null}
 
-        <div className="mt-10 flex items-center gap-3">
-          <span aria-hidden className="h-px flex-1 bg-border" />
-          <span className="label-mono text-[10px] text-muted-foreground">
-            FILE · {crumb.toUpperCase()}
-          </span>
-          <span aria-hidden className="h-px w-12 bg-primary" />
-        </div>
+        <div className="mt-10 h-px w-full bg-border" aria-hidden />
       </div>
     </section>
   );

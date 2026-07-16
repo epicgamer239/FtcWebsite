@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/section-heading";
 import { buttonVariants } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -84,10 +83,9 @@ const PAST_ROBOTS = [
 export default function BotPage() {
   return (
     <>
-      {/* First viewport: one composition — name, line, CTA, photo */}
       <section className="flex min-h-[100svh] flex-col bg-background pt-24 lg:pt-28">
         <div className="container-px mx-auto flex w-full max-w-7xl flex-1 flex-col pb-8 lg:pb-10">
-          <Breadcrumb className="mb-4 shrink-0">
+          <Breadcrumb className="mb-6 shrink-0">
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
@@ -103,13 +101,10 @@ export default function BotPage() {
 
           <div className="grid min-h-0 flex-1 gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
             <div className="flex max-w-xl flex-col justify-center">
-              <Badge
-                variant="outline"
-                className="label-mono mb-4 w-fit border-primary/30 bg-accent py-1 text-primary"
-              >
-                2025–26 · Qualifying robot
-              </Badge>
-              <h1 className="text-balance text-5xl font-extrabold tracking-tight leading-[1.04] sm:text-6xl lg:text-7xl">
+              <p className="mb-4 text-sm font-medium text-primary">
+                2025–26 qualifying robot
+              </p>
+              <h1 className="text-balance text-5xl font-extrabold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl">
                 Meet <span className="text-primary">WoodChucker</span>
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-foreground/85 lg:text-xl">
@@ -142,7 +137,7 @@ export default function BotPage() {
               </div>
             </div>
 
-            <figure className="relative min-h-[42vh] overflow-hidden border border-border bg-muted lg:min-h-0 lg:h-full lg:max-h-[calc(100svh-8rem)]">
+            <figure className="relative min-h-[42vh] overflow-hidden rounded-xl border border-border bg-muted lg:h-full lg:max-h-[calc(100svh-8rem)] lg:min-h-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/bots/woodchucker.jpeg"
@@ -156,7 +151,7 @@ export default function BotPage() {
 
       <section
         id="features"
-        className="scroll-mt-24 border-t border-border bg-muted/30 py-14 lg:py-16"
+        className="scroll-mt-24 border-t border-border bg-background py-14 lg:py-16"
       >
         <div className="container-px mx-auto max-w-7xl">
           <SectionHeading
@@ -165,10 +160,15 @@ export default function BotPage() {
             description="Five systems built for scoring when it counts."
             className="mb-8"
           />
-          <ul className="grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((feature) => (
-              <li key={feature.label} className="bg-background p-5 sm:p-6">
-                <p className="label-mono text-primary">{feature.label}</p>
+              <li
+                key={feature.label}
+                className="rounded-xl border border-border bg-background p-5 sm:p-6"
+              >
+                <p className="text-base font-bold tracking-tight text-foreground">
+                  {feature.label}
+                </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground lg:text-base">
                   {feature.summary}
                 </p>
@@ -178,7 +178,7 @@ export default function BotPage() {
         </div>
       </section>
 
-      <section className="py-14 lg:py-16">
+      <section className="border-t border-border bg-background py-14 lg:py-16">
         <div className="container-px mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Lineage"
@@ -188,8 +188,11 @@ export default function BotPage() {
           />
           <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-5">
             {PAST_ROBOTS.map((robot) => (
-              <article key={robot.name} className="flex flex-col">
-                <div className="relative mb-3 aspect-square overflow-hidden border border-border bg-muted">
+              <article
+                key={robot.name}
+                className="flex flex-col rounded-xl border border-border bg-background p-3"
+              >
+                <div className="relative mb-3 aspect-square overflow-hidden rounded-lg border border-border bg-muted">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={robot.image}
@@ -197,7 +200,7 @@ export default function BotPage() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
-                <p className="label-mono text-[10px] text-primary">
+                <p className="text-xs font-medium text-primary">
                   {robot.season}
                 </p>
                 <h3 className="mt-0.5 text-sm font-bold tracking-tight sm:text-base">

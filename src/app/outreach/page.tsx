@@ -191,7 +191,7 @@ const EVENTS: Event[] = [
   },
 ];
 
-const MARQUEE_ITEMS = [
+const PROGRAM_TAGS = [
   "ROBO KICKS",
   "CAD CAMP",
   "ROBO RUMBLE",
@@ -286,7 +286,6 @@ export default function OutreachPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Outreach"
         crumb="Outreach"
         title={
           <>
@@ -296,18 +295,14 @@ export default function OutreachPage() {
         description="We run free STEM programs across Loudoun County: camps, scrimmages, and school visits that get kids into robotics."
       />
 
-      <div
-        aria-hidden
-        className="overflow-hidden border-y border-border bg-background py-3"
-      >
-        <div className="flex w-max animate-marquee gap-12">
-          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((m, i) => (
+      <div className="border-y border-border bg-background py-4">
+        <div className="container-px mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-2">
+          {PROGRAM_TAGS.map((m) => (
             <span
-              key={i}
-              className="label-mono inline-flex items-center gap-12 whitespace-nowrap text-xs text-muted-foreground"
+              key={m}
+              className="inline-flex items-center rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground"
             >
               {m}
-              <span aria-hidden className="h-1 w-1 rounded-full bg-primary" />
             </span>
           ))}
         </div>
@@ -375,7 +370,7 @@ export default function OutreachPage() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-muted/30 py-14 lg:py-20">
+      <section className="border-t border-border bg-background py-14 lg:py-20">
         <div className="container-px mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Events"

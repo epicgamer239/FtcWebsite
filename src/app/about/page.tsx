@@ -152,7 +152,6 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        eyebrow="About"
         crumb="About"
         title={
           <>
@@ -179,16 +178,16 @@ export default function AboutPage() {
         </div>
       </PageHeader>
 
-      <section className="border-t border-border py-16 lg:py-20">
+      <section className="border-t border-border bg-background py-16 lg:py-20">
         <div className="container-px mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
             About the <span className="text-primary">Beavers</span>
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            The BeaverBots are a FIRST Tech Challenge team in Ashburn, VA. We are
-            a second-year team of high school students, from rising sophomores to
-            rising juniors. We want more kids in our community to try robotics
-            and get interested in STEM.
+            The BeaverBots are a FIRST Tech Challenge team in Ashburn, VA. We
+            are a second-year team of high school students, from rising
+            sophomores to rising juniors. We want more kids in our community to
+            try robotics and get interested in STEM.
           </p>
         </div>
 
@@ -197,33 +196,31 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-border py-16 lg:py-20">
+      <section className="border-t border-border bg-background py-16 lg:py-20">
         <div className="container-px mx-auto max-w-5xl">
-          <h2 className="text-center text-3xl font-extrabold uppercase tracking-wide text-primary sm:text-4xl">
+          <h2 className="text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
             Members
           </h2>
 
-          <ul className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
+          <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
             {MEMBERS.map((m) => (
               <li
                 key={m.name}
-                className="flex flex-col items-center text-center"
+                className="flex flex-col items-center rounded-xl border border-border bg-background p-5 text-center shadow-paper"
               >
-                <p className="mb-3 text-lg font-extrabold uppercase tracking-wide text-primary">
-                  {m.name}
-                </p>
-                <div className="relative aspect-[3/4] w-full max-w-[220px] overflow-hidden bg-[oklch(0.92_0.01_85)]">
+                <div className="relative aspect-[3/4] w-full max-w-[200px] overflow-hidden rounded-lg bg-muted">
                   <Image
                     src={m.image}
                     alt={`${m.name}, ${m.role}`}
                     fill
-                    sizes="220px"
+                    sizes="200px"
                     className="object-cover object-top"
                   />
                 </div>
-                <p className="mt-3 text-sm font-medium text-foreground">
-                  {m.role}
+                <p className="mt-4 text-lg font-bold tracking-tight text-foreground">
+                  {m.name}
                 </p>
+                <p className="mt-1 text-sm font-medium text-primary">{m.role}</p>
                 <p className="text-sm text-muted-foreground">{m.year}</p>
               </li>
             ))}
@@ -231,16 +228,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-border py-16 lg:py-20">
+      <section className="border-t border-border bg-background py-16 lg:py-20">
         <div className="container-px mx-auto max-w-5xl">
-          <h2 className="text-center text-3xl font-extrabold uppercase tracking-wide text-primary sm:text-4xl">
+          <h2 className="text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
             Coaches &amp; Mentors
           </h2>
 
-          <ul className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
+          <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {COACHES.map((c) => (
-              <li key={c.name} className="flex flex-col">
-                <div className="relative aspect-[3/1] w-full overflow-hidden border border-border bg-muted">
+              <li
+                key={c.name}
+                className="flex flex-col rounded-xl border border-border bg-background p-4 shadow-paper"
+              >
+                <div className="relative aspect-[3/1] w-full overflow-hidden rounded-lg border border-border bg-muted">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={c.image}
@@ -249,7 +249,7 @@ export default function AboutPage() {
                     style={{ objectFit: "fill" }}
                   />
                 </div>
-                <p className="mt-3 text-lg font-extrabold uppercase tracking-wide text-primary">
+                <p className="mt-4 text-lg font-bold tracking-tight text-foreground">
                   {c.name}
                 </p>
                 <p className="text-sm text-muted-foreground">{c.role}</p>

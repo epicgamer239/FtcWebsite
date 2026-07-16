@@ -46,7 +46,7 @@ export function PhotoCarousel({
     <div className={cn("relative", className)}>
       <figure
         className={cn(
-          "relative w-full overflow-hidden border border-border bg-muted",
+          "relative w-full overflow-hidden rounded-xl border border-border bg-muted",
           aspectClassName
         )}
       >
@@ -59,45 +59,47 @@ export function PhotoCarousel({
           className="object-cover"
           priority={index === 0}
         />
+
+        {count > 1 ? (
+          <>
+            <button
+              type="button"
+              onClick={prev}
+              aria-label="Previous photo"
+              className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-border/80 bg-background/70 text-foreground/70 transition-colors hover:border-primary/40 hover:bg-background hover:text-primary"
+            >
+              <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
+            </button>
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Next photo"
+              className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-border/80 bg-background/70 text-foreground/70 transition-colors hover:border-primary/40 hover:bg-background hover:text-primary"
+            >
+              <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
+            </button>
+          </>
+        ) : null}
       </figure>
 
       {count > 1 ? (
-        <>
-          <button
-            type="button"
-            onClick={prev}
-            aria-label="Previous photo"
-            className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-background/90 p-2 text-muted-foreground shadow-sm ring-1 ring-border transition-colors hover:text-foreground"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={next}
-            aria-label="Next photo"
-            className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-background/90 p-2 text-muted-foreground shadow-sm ring-1 ring-border transition-colors hover:text-foreground"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-
-          <div className="mt-4 flex items-center justify-center gap-2">
-            {slides.map((s, i) => (
-              <button
-                key={s.src}
-                type="button"
-                aria-label={`Show photo ${i + 1}`}
-                aria-current={i === index}
-                onClick={() => setIndex(i)}
-                className={cn(
-                  "h-2 w-2 rounded-full transition-colors",
-                  i === index
-                    ? "bg-primary"
-                    : "bg-border hover:bg-muted-foreground/40"
-                )}
-              />
-            ))}
-          </div>
-        </>
+        <div className="mt-4 flex items-center justify-center gap-2">
+          {slides.map((s, i) => (
+            <button
+              key={s.src}
+              type="button"
+              aria-label={`Show photo ${i + 1}`}
+              aria-current={i === index}
+              onClick={() => setIndex(i)}
+              className={cn(
+                "h-1.5 w-1.5 rounded-full transition-colors",
+                i === index
+                  ? "bg-primary"
+                  : "bg-border hover:bg-muted-foreground/40"
+              )}
+            />
+          ))}
+        </div>
       ) : null}
     </div>
   );

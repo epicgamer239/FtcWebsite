@@ -19,13 +19,13 @@ const STATS = [
   },
   {
     label: "Raised",
-    caption: "Worlds travel fund",
+    caption: "This season",
     numeric: { value: 13650, prefix: "$" },
   },
   {
-    label: "2026 qualifier",
-    caption: "Houston, TX",
-    text: "Worlds",
+    label: "2026",
+    caption: "FIRST Worlds",
+    text: "Qualifier",
   },
   {
     label: "Season",
@@ -43,21 +43,17 @@ export default function Home() {
 
       <section
         aria-labelledby="stats-heading"
-        className="border-b border-white/10 bg-[oklch(0.22_0.015_290)] py-12 lg:py-16"
+        className="border-b border-border bg-background py-16 lg:py-20"
       >
         <div className="container-px mx-auto max-w-7xl">
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <SectionHeading
               eyebrow="By the numbers"
-              title={
-                <span className="text-[oklch(0.96_0.01_290)]">
-                  A few numbers
-                </span>
-              }
+              title="A few numbers"
             />
             <Link
               href="/sponsor"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[oklch(0.82_0.08_295)] hover:underline"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
             >
               Become a sponsor
               <ArrowRight className="h-4 w-4" />
@@ -66,15 +62,12 @@ export default function Home() {
 
           <dl
             id="stats-heading"
-            className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 lg:grid-cols-5"
+            className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border lg:grid-cols-5"
           >
             {STATS.map((s) => (
-              <div
-                key={s.label}
-                className="bg-[oklch(0.26_0.015_290)] p-5 lg:p-6"
-              >
-                <dt className="text-sm text-[oklch(0.72_0.02_290)]">{s.label}</dt>
-                <dd className="mt-1 text-2xl font-bold text-[oklch(0.78_0.14_295)] sm:text-3xl">
+              <div key={s.label} className="bg-background p-5 lg:p-6">
+                <dt className="text-sm text-muted-foreground">{s.label}</dt>
+                <dd className="mt-1 text-2xl font-bold text-primary sm:text-3xl">
                   {"numeric" in s ? (
                     <Counter
                       value={s.numeric.value}
@@ -85,9 +78,7 @@ export default function Home() {
                     s.text
                   )}
                 </dd>
-                <p className="mt-1 text-xs text-[oklch(0.62_0.02_290)]">
-                  {s.caption}
-                </p>
+                <p className="mt-1 text-xs text-muted-foreground">{s.caption}</p>
               </div>
             ))}
           </dl>

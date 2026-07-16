@@ -19,22 +19,16 @@ export function SponsorStrip() {
   return (
     <section
       aria-label="Sponsors"
-      className="bg-[oklch(0.22_0.015_290)] px-[max(1.25rem,10vw)] pb-14 pt-4 sm:pb-16 sm:pt-6 lg:pb-20 lg:pt-8"
+      className="border-b border-border bg-background px-[max(1.25rem,10vw)] py-14 sm:py-16 lg:py-20"
     >
       <div className="mx-auto max-w-5xl text-center">
         <Reveal motion="float" delay={0}>
-          <p
-            className="text-balance text-[clamp(1rem,2vw+0.4rem,1.35rem)] font-medium leading-[1.4] text-[oklch(0.96_0.01_290)]"
-            style={{
-              fontFamily:
-                'Futura, "Futura Std", futura-lt-w01-book, var(--font-panel), "Century Gothic", CenturyGothic, sans-serif',
-            }}
-          >
+          <p className="text-balance text-lg font-medium leading-relaxed text-foreground sm:text-xl">
             Team 26073 - BeaverBots is proud to be supported by:
           </p>
         </Reveal>
 
-        <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 sm:gap-x-12 sm:gap-y-10">
+        <ul className="mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-5">
           {HOME_SPONSORS.map((s, index) => (
             <Reveal
               key={s.name}
@@ -42,15 +36,16 @@ export function SponsorStrip() {
               motion="float"
               index={index}
               delay={90}
-              className="flex items-center justify-center"
             >
-              <Image
-                src={s.logo}
-                alt={s.name}
-                width={160}
-                height={64}
-                className="h-10 w-auto max-w-[140px] object-contain sm:h-12 sm:max-w-[160px]"
-              />
+              <div className="flex h-16 w-[9.5rem] items-center justify-center rounded-xl border border-border bg-background px-4 transition-colors hover:border-primary/30 sm:h-[4.5rem] sm:w-40">
+                <Image
+                  src={s.logo}
+                  alt={s.name}
+                  width={140}
+                  height={48}
+                  className="h-8 w-auto max-w-full object-contain sm:h-9"
+                />
+              </div>
             </Reveal>
           ))}
         </ul>
@@ -58,7 +53,7 @@ export function SponsorStrip() {
         <Reveal motion="float" index={HOME_SPONSORS.length} delay={90}>
           <Link
             href="/sponsor"
-            className="mt-10 inline-block text-sm font-semibold text-[oklch(0.82_0.08_295)] underline-offset-4 hover:underline"
+            className="mt-10 inline-block text-sm font-semibold text-primary underline-offset-4 hover:underline"
           >
             See all sponsors
           </Link>

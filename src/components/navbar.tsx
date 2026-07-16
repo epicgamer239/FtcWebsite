@@ -63,8 +63,8 @@ export function Navbar() {
               <span className="text-base font-extrabold tracking-wider">
                 BEAVERBOTS
               </span>
-              <span className="label-mono text-[10px] text-primary">
-                FTC 26073 · ASHBURN, VA
+              <span className="label-mono text-[11px] text-primary">
+                FTC 26073 · Ashburn, VA
               </span>
             </div>
           </Link>

@@ -52,7 +52,7 @@ export function NavPanels() {
   return (
     <section
       aria-label="Explore BeaverBots"
-      className="bg-[oklch(0.22_0.015_290)] px-[max(1.25rem,12vw)] py-10 sm:py-12 lg:py-14"
+      className="border-b border-border bg-background px-[max(1.25rem,12vw)] py-14 sm:py-16 lg:py-20"
     >
       <ul className="mx-auto grid max-w-[56rem] grid-cols-1 gap-2.5 md:grid-cols-3 md:gap-3">
         {PANELS.map((panel, index) => (
@@ -65,7 +65,7 @@ export function NavPanels() {
           >
             <Link
               href={panel.href}
-              className="group relative block aspect-[3/4] overflow-hidden focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="group relative block aspect-[3/4] overflow-hidden rounded-xl border border-border focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

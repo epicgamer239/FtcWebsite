@@ -38,14 +38,14 @@ export function Footer() {
                 <div className="text-base font-extrabold tracking-wider">
                   BEAVERBOTS
                 </div>
-                <div className="label-mono text-[10px] text-primary">
-                  FTC 26073 · ASHBURN, VA
+                <div className="label-mono text-[11px] text-primary">
+                  FTC 26073 · Ashburn, VA
                 </div>
               </div>
             </Link>
             <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
               A second-year FTC team from Ashburn, VA. We build robots, run free
-              STEM programs for kids, and are headed to the 2026 FIRST Worlds
+              STEM programs for kids, and competed at the 2026 FIRST Worlds
               Championship.
             </p>
             <a

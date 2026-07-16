@@ -117,16 +117,13 @@
     text-wrap: balance;
   }
   .section-eyebrow {
-    @apply text-sm font-semibold text-primary;
+    @apply text-sm font-medium text-primary;
   }
   .section-title {
     @apply text-balance text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl;
   }
   .label-mono {
-    font-family: var(--font-mono), ui-monospace, monospace;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    font-weight: 500;
+    @apply text-xs font-medium tracking-wide text-muted-foreground;
   }
   /* The only ambient shadow we ship; matches DESIGN.md elevation system. */
   .shadow-paper {

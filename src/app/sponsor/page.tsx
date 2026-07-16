@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Sponsor · BeaverBots FTC",
   description:
-    "Sponsor or donate to the BeaverBots. Help send our team to the 2026 FIRST World Championship.",
+    "Sponsor or donate to the BeaverBots. Support our robots, competitions, and free STEM outreach across Loudoun County.",
 };
 
 const TIERS = [
@@ -96,14 +96,13 @@ export default function SponsorPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Sponsor"
         crumb="Sponsor"
         title={
           <>
-            Help us get to <span className="text-primary">Worlds</span>
+            Invest in the next <span className="text-primary">season</span>
           </>
         }
-        description="Getting 12 students from Virginia to Houston costs real money. Sponsors help us compete and keep our outreach programs free."
+        description="Sponsors keep 12 students building, competing, and running free STEM programs across Loudoun County. Your support funds parts, travel, and outreach."
       >
         <div className="flex flex-wrap gap-3">
           <Link
@@ -119,7 +118,10 @@ export default function SponsorPage() {
           </Link>
           <Link
             href="mailto:beaverbotsftc@gmail.com?subject=Sponsorship%20Inquiry"
-            className={cn(buttonVariants({ size: "lg", variant: "outline" }), "gap-2")}
+            className={cn(
+              buttonVariants({ size: "lg", variant: "outline" }),
+              "gap-2"
+            )}
           >
             <Mail className="h-4 w-4" />
             Email us
@@ -127,7 +129,7 @@ export default function SponsorPage() {
         </div>
       </PageHeader>
 
-      <section className="py-16">
+      <section className="bg-background py-16">
         <div className="container-px mx-auto max-w-6xl">
           <SectionHeading
             eyebrow="Partners"
@@ -136,32 +138,42 @@ export default function SponsorPage() {
             className="mb-14"
           />
           <div className="space-y-16">
-            {SPONSOR_TIERS.map((tier) => {
+            {SPONSOR_TIERS.map((tier, tierIndex) => {
               const sponsors = CURRENT_SPONSORS.filter(
                 (s) => s.tier === tier.key
               );
               if (sponsors.length === 0) return null;
               return (
-                <div key={tier.key}>
-                  <div className="mb-6 text-center">
-                    <p className="section-eyebrow">{tier.eyebrow}</p>
+                <div
+                  key={tier.key}
+                  className={cn(
+                    tierIndex > 0 && "border-t border-border pt-16"
+                  )}
+                >
+                  <div className="mb-8 text-center">
+                    <p className="text-sm font-medium text-muted-foreground">
+                      {tier.eyebrow}
+                    </p>
                     <h3 className="mt-1 text-2xl font-extrabold tracking-tight">
                       {tier.label}
                     </h3>
                   </div>
-                  <div className={cn("mx-auto grid gap-5", tier.grid)}>
+                  <div className={cn("mx-auto grid gap-4", tier.grid)}>
                     {sponsors.map((s) => (
-                      <Card key={s.name} className="border-border">
-                        <div className="relative flex aspect-[2/1] items-center justify-center bg-muted p-4">
+                      <Card
+                        key={s.name}
+                        className="border-border transition-colors hover:border-primary/30"
+                      >
+                        <div className="relative flex aspect-[2/1] items-center justify-center overflow-hidden rounded-t-xl bg-card p-5">
                           <Image
                             src={s.logo}
                             alt={s.name}
                             fill
-                            className="object-contain p-2"
+                            className="object-contain p-4"
                             sizes="(max-width: 768px) 50vw, 33vw"
                           />
                         </div>
-                        <CardContent className="p-4 text-center">
+                        <CardContent className="border-t border-border p-4 text-center">
                           <p className="text-sm font-semibold">{s.name}</p>
                         </CardContent>
                       </Card>
@@ -174,7 +186,7 @@ export default function SponsorPage() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-muted/30 py-16">
+      <section className="border-t border-border bg-background py-16">
         <div className="container-px mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Sponsorship tiers"
@@ -189,7 +201,7 @@ export default function SponsorPage() {
                 key={t.name}
                 className={cn(
                   "relative flex flex-col",
-                  t.featured ? "border-primary" : "border-border"
+                  t.featured ? "border-primary shadow-paper" : "border-border"
                 )}
               >
                 <CardContent className="flex h-full flex-col p-6">
@@ -228,14 +240,14 @@ export default function SponsorPage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="border-t border-border bg-background py-16">
         <div className="container-px mx-auto max-w-3xl text-center">
           <h2 className="text-2xl font-bold lg:text-3xl">
-            From a new team to Worlds in two years
+            Help us keep building
           </h2>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            Your support helps us keep competing and running free STEM programs
-            for kids across Loudoun County.
+            Your support funds the next robot, the next competition, and the
+            free STEM programs we run for kids across Loudoun County.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
@@ -249,7 +261,10 @@ export default function SponsorPage() {
             </Link>
             <Link
               href="mailto:beaverbotsftc@gmail.com"
-              className={cn(buttonVariants({ size: "lg", variant: "outline" }), "gap-2")}
+              className={cn(
+                buttonVariants({ size: "lg", variant: "outline" }),
+                "gap-2"
+              )}
             >
               <Mail className="h-4 w-4" />
               beaverbotsftc@gmail.com
