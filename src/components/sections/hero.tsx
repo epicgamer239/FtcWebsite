@@ -1,58 +1,29 @@
-"use client";
-
-import * as React from "react";
+import Image from "next/image";
 
 export function Hero() {
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-
-  React.useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const syncMotion = () => {
-      if (media.matches) {
-        video.pause();
-        video.removeAttribute("autoplay");
-      } else {
-        void video.play().catch(() => {
-          /* autoplay can fail; poster still covers */
-        });
-      }
-    };
-
-    syncMotion();
-    media.addEventListener("change", syncMotion);
-    return () => media.removeEventListener("change", syncMotion);
-  }, []);
-
   return (
     <section
       id="home"
       aria-label="BeaverBots team introduction"
       className="relative mt-20 flex min-h-[calc(100svh-5rem)] items-center justify-center overflow-hidden bg-[oklch(0.18_0.02_290)]"
     >
-      <video
-        ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster="/IMG_4172.jpg"
+      <Image
+        src="/IMG_4172.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
         aria-hidden
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-      </video>
+      />
 
-      {/* Darken busy footage so the brand title stays legible */}
+      {/* Darken busy photo so the brand title stays legible */}
       <div
         className="absolute inset-0 bg-[oklch(0.12_0.02_290/0.55)]"
         aria-hidden
       />
 
-      {/* Diagonal scanline hatch — Simbotics-style atmosphere */}
+      {/* Diagonal scanline hatch */}
       <div className="hero-scanlines absolute inset-0" aria-hidden />
 
       <div className="hero-copy relative z-10 mx-auto max-w-6xl px-4 py-24 text-center sm:px-8">

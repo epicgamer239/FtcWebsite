@@ -14,7 +14,6 @@ const NAV_LINKS = [
   { href: "/outreach", label: "Outreach" },
   { href: "/sponsor", label: "Sponsor" },
   { href: "/bot", label: "Bot" },
-  { href: "/first", label: "First" },
 ];
 
 export function Navbar() {

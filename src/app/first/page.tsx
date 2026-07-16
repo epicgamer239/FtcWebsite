@@ -49,7 +49,7 @@ const PROGRAMS = [
     age: "Grades 9–12",
     icon: Cpu,
     description:
-      "Large-scale robots and the highest level of high-school FIRST competition.",
+      "Large robots and high-school FIRST competition at full field scale.",
   },
 ];
 

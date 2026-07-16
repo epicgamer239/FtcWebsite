@@ -14,10 +14,7 @@ const COLS = [
   },
   {
     title: "Community",
-    links: [
-      { href: "/outreach", label: "Outreach" },
-      { href: "/first", label: "FIRST Programs" },
-    ],
+    links: [{ href: "/outreach", label: "Outreach" }],
   },
   {
     title: "Support",
@@ -47,9 +44,9 @@ export function Footer() {
               </div>
             </Link>
             <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-              A second-year FTC team from Ashburn, VA, heading to the 2026
-              FIRST Worlds Championship. We build robots, run outreach programs,
-              and train the next generation of engineers.
+              A second-year FTC team from Ashburn, VA. We build robots, run free
+              STEM programs for kids, and are headed to the 2026 FIRST Worlds
+              Championship.
             </p>
             <a
               href="mailto:beaverbotsftc@gmail.com"

@@ -1,252 +1,216 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/page-header";
 import { SectionHeading } from "@/components/section-heading";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import {
-  Cpu,
-  Gauge,
-  Ruler,
-  Battery,
-  Weight,
-  Eye,
-  ArrowRight,
-} from "lucide-react";
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Bot · BeaverBots FTC",
-  description: "Meet DAM-1, the BeaverBots 2025–26 FIRST Tech Challenge robot.",
+  description:
+    "Meet WoodChucker, the BeaverBots 2025–26 FIRST Tech Challenge qualifying robot.",
 };
 
-const SPECS = [
-  { icon: Ruler, label: "Size", value: "18 × 18 in", tip: "Fits in the FTC starting cube." },
-  { icon: Weight, label: "Weight", value: "38.6 lbs", tip: "Under the 42 lb limit." },
-  { icon: Gauge, label: "Top speed", value: "5.4 ft/s", tip: "Mecanum drive, 312 RPM motors." },
-  { icon: Battery, label: "Battery", value: "12V LiPo", tip: "REV slim battery pack." },
-  { icon: Cpu, label: "Control", value: "REV Control Hub", tip: "With Limelight 3 for vision." },
-  { icon: Eye, label: "Vision", value: "AprilTags + ML", tip: "Custom-trained object detector." },
-];
+const FEATURES = [
+  {
+    label: "Drivetrain",
+    summary:
+      "Smooth and nimble for tight turns, and stable enough to stay accurate when the match gets chaotic.",
+  },
+  {
+    label: "Intake",
+    summary:
+      "Wide, fast pickup that grabs under pressure and feeds cleanly without jams.",
+  },
+  {
+    label: "Shooter",
+    summary:
+      "Tuned for repeatable shots from multiple field positions. When it lines up, points follow.",
+  },
+  {
+    label: "Software",
+    summary:
+      "Driver-friendly controls with sensor feedback and autonomous routines we refine at competition.",
+  },
+  {
+    label: "Upgrades",
+    summary:
+      "Faster intake cycles, tighter shooter consistency, and a tougher frame for long tournament days.",
+  },
+] as const;
 
-const HIGHLIGHTS = [
-  "Custom CNC aluminum chassis, built in-house",
-  "14 student-designed 3D-printed parts (PETG-CF)",
-  "3,600+ lines of Kotlin for tele-op and autonomous",
-  "78% autonomous scoring in practice matches",
-];
-
-const SUBSYSTEMS = [
+const PAST_ROBOTS = [
   {
-    name: "Mecanum drivetrain",
-    desc: "Field-centric drive with odometry and PID tuning.",
-    tag: "Mobility",
+    name: "STUBBY V2",
+    season: "2024–25",
+    blurb: "Last season’s qualifying tournament robot.",
+    image: "/bots/stubby_v2.jpg",
   },
   {
-    name: "Cascading slides",
-    desc: "Two-stage slides with 32 in. of reach in under one second.",
-    tag: "Manipulation",
+    name: "Dam Driver V1",
+    season: "2024–25",
+    blurb: "Post-season build, still in progress.",
+    image: "/bots/dam_driver_v1.jpg",
   },
   {
-    name: "Active intake",
-    desc: "Compliant wheels for reliable game-piece pickup.",
-    tag: "Intake",
+    name: "First BeaverBOT",
+    season: "Archive",
+    blurb: "First FTC chassis with an AprilTag webcam.",
+    image: "/bots/first_bot.jpg",
   },
   {
-    name: "Vision stack",
-    desc: "AprilTag localization plus on-field object detection.",
-    tag: "Software",
+    name: "BabyBOT",
+    season: "Archive",
+    blurb: "First unique design: four motors and one servo.",
+    image: "/bots/baby_bot.jpg",
   },
-];
-
-const HISTORY = [
-  { name: "DAM-1", year: "2025–26", season: "Into the Deep" },
-  { name: "TIMBER", year: "2024–25", season: "Centerstage" },
-];
+  {
+    name: "DemoBot",
+    season: "Archive",
+    blurb: "First mechanisms: PowerPlay cup and a linear slide.",
+    image: "/bots/demo_bot.jpg",
+  },
+] as const;
 
 export default function BotPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Robot"
-        crumb="Bot"
-        title={
-          <>
-            Meet <span className="text-primary">DAM-1</span>
-          </>
-        }
-        description="Our 2025–26 competition robot. Designed in Onshape, built in our shop, and programmed in Kotlin by students on the team."
-      >
-        <Link href="/sponsor#donate" className={cn(buttonVariants({ size: "lg" }), "gap-2")}>
-          Support the robot
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      </PageHeader>
+      {/* First viewport: one composition — name, line, CTA, photo */}
+      <section className="flex min-h-[100svh] flex-col bg-background pt-24 lg:pt-28">
+        <div className="container-px mx-auto flex w-full max-w-7xl flex-1 flex-col pb-8 lg:pb-10">
+          <Breadcrumb className="mb-4 shrink-0">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage className="font-medium text-primary">
+                  Bot
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
 
-      <section className="py-12 lg:py-16">
-        <div className="container-px mx-auto grid max-w-7xl gap-8 lg:grid-cols-2">
-          <Card className="overflow-hidden border-border">
-            <div className="flex aspect-[4/3] items-center justify-center bg-muted/50 p-8">
-              <RobotIllustration className="max-h-full w-full max-w-md" />
+          <div className="grid min-h-0 flex-1 gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+            <div className="flex max-w-xl flex-col justify-center">
+              <Badge
+                variant="outline"
+                className="label-mono mb-4 w-fit border-primary/30 bg-accent py-1 text-primary"
+              >
+                2025–26 · Qualifying robot
+              </Badge>
+              <h1 className="text-balance text-5xl font-extrabold tracking-tight leading-[1.04] sm:text-6xl lg:text-7xl">
+                Meet <span className="text-primary">WoodChucker</span>
+              </h1>
+              <p className="mt-4 text-lg leading-relaxed text-foreground/85 lg:text-xl">
+                Built by the BeaverBots. It doesn’t just chuck wood. It chucks
+                Artifacts.
+              </p>
+              <p className="mt-3 text-base text-muted-foreground">
+                Already{" "}
+                <span className="font-semibold text-primary">
+                  2 qualifier tournament wins
+                </span>{" "}
+                this season.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  href="#features"
+                  className={cn(buttonVariants({ size: "lg" }), "gap-2")}
+                >
+                  See what it does
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/sponsor#donate"
+                  className={cn(
+                    buttonVariants({ size: "lg", variant: "outline" })
+                  )}
+                >
+                  Support the robot
+                </Link>
+              </div>
             </div>
-            <CardContent className="border-t border-border p-4 text-center text-sm text-muted-foreground">
-              DAM-1 · Into the Deep · 2025–26 season
-            </CardContent>
-          </Card>
 
-          <div className="space-y-6">
-            <Card className="border-border">
-              <CardContent className="p-6">
-                <h3 className="mb-4 text-lg font-bold">Specifications</h3>
-                <Table>
-                  <TableBody>
-                    {SPECS.map((s) => {
-                      const Icon = s.icon;
-                      return (
-                        <TableRow key={s.label}>
-                          <TableCell className="text-muted-foreground">
-                            <span className="inline-flex items-center gap-2">
-                              <Icon className="h-4 w-4 text-primary" />
-                              {s.label}
-                            </span>
-                          </TableCell>
-                          <TableCell className="text-right">
-                            <Tooltip>
-                              <TooltipTrigger
-                                render={
-                                  <span className="cursor-help font-semibold underline decoration-dotted underline-offset-4" />
-                                }
-                              >
-                                {s.value}
-                              </TooltipTrigger>
-                              <TooltipContent>{s.tip}</TooltipContent>
-                            </Tooltip>
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border">
-              <CardContent className="p-6">
-                <h3 className="mb-3 text-lg font-bold">Build highlights</h3>
-                <ul className="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-                  {HIGHLIGHTS.map((h) => (
-                    <li key={h}>{h}</li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            <figure className="relative min-h-[42vh] overflow-hidden border border-border bg-muted lg:min-h-0 lg:h-full lg:max-h-[calc(100svh-8rem)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/bots/woodchucker.jpeg"
+                alt="WoodChucker, the BeaverBots 2025–26 competition robot"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+            </figure>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-border bg-muted/30 py-14 lg:py-20">
+      <section
+        id="features"
+        className="scroll-mt-24 border-t border-border bg-muted/30 py-14 lg:py-16"
+      >
         <div className="container-px mx-auto max-w-7xl">
-          <SectionHeading title="Robot details" className="mb-8" />
-          <Tabs defaultValue="subsystems">
-            <TabsList>
-              <TabsTrigger value="subsystems">Subsystems</TabsTrigger>
-              <TabsTrigger value="history">Past robots</TabsTrigger>
-            </TabsList>
-            <TabsContent value="subsystems" className="mt-6 grid gap-4 sm:grid-cols-2">
-              {SUBSYSTEMS.map((s) => (
-                <Card key={s.name} className="border-border bg-background">
-                  <CardContent className="p-5">
-                    <div className="mb-2 flex items-center justify-between gap-2">
-                      <h4 className="font-semibold">{s.name}</h4>
-                      <Badge variant="secondary">{s.tag}</Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{s.desc}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </TabsContent>
-            <TabsContent value="history" className="mt-6 grid gap-4 sm:grid-cols-3">
-              {HISTORY.map((r) => (
-                <Card key={r.name} className="border-border bg-background">
-                  <CardContent className="p-5">
-                    <p className="text-sm font-medium text-primary">{r.year}</p>
-                    <p className="text-lg font-bold">{r.name}</p>
-                    <p className="text-sm text-muted-foreground">{r.season}</p>
-                  </CardContent>
-                </Card>
-              ))}
-              <Card className="border-dashed border-border bg-transparent">
-                <CardContent className="p-5 text-sm text-muted-foreground">
-                  Next robot: 2026–27 season
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
+          <SectionHeading
+            eyebrow="Systems"
+            title="What WoodChucker brings to the field"
+            description="Five systems built for scoring when it counts."
+            className="mb-8"
+          />
+          <ul className="grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+            {FEATURES.map((feature) => (
+              <li key={feature.label} className="bg-background p-5 sm:p-6">
+                <p className="label-mono text-primary">{feature.label}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground lg:text-base">
+                  {feature.summary}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="py-14 lg:py-16">
+        <div className="container-px mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Lineage"
+            title="Robots before WoodChucker"
+            description="Earlier builds that got us here."
+            className="mb-8"
+          />
+          <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-5">
+            {PAST_ROBOTS.map((robot) => (
+              <article key={robot.name} className="flex flex-col">
+                <div className="relative mb-3 aspect-square overflow-hidden border border-border bg-muted">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={robot.image}
+                    alt={robot.name}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </div>
+                <p className="label-mono text-[10px] text-primary">
+                  {robot.season}
+                </p>
+                <h3 className="mt-0.5 text-sm font-bold tracking-tight sm:text-base">
+                  {robot.name}
+                </h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                  {robot.blurb}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </>
-  );
-}
-
-function RobotIllustration({ className }: { className?: string }) {
-  const ink = "oklch(0.35 0.08 295)";
-  const royal = "oklch(0.52 0.21 295)";
-
-  return (
-    <svg viewBox="0 0 400 280" fill="none" className={className} aria-hidden>
-      <rect width="400" height="280" fill="oklch(0.97 0.01 290)" rx="8" />
-      <polygon
-        points="120,160 200,200 280,160 200,120"
-        fill="oklch(0.94 0.03 295)"
-        stroke={ink}
-        strokeWidth="1.5"
-      />
-      <polygon
-        points="200,120 240,100 240,40 200,55"
-        fill="white"
-        stroke={ink}
-        strokeWidth="1.2"
-      />
-      {[
-        [140, 175],
-        [200, 205],
-        [260, 175],
-      ].map(([cx, cy], i) => (
-        <ellipse
-          key={i}
-          cx={cx}
-          cy={cy}
-          rx="16"
-          ry="8"
-          fill="white"
-          stroke={ink}
-          strokeWidth="1.2"
-        />
-      ))}
-      <text
-        x="200"
-        y="250"
-        textAnchor="middle"
-        fontSize="11"
-        fill={royal}
-        fontFamily="system-ui,sans-serif"
-        fontWeight="600"
-      >
-        DAM-1
-      </text>
-    </svg>
   );
 }

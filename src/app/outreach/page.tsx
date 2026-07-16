@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
 import { SectionHeading } from "@/components/section-heading";
+import { PhotoCarousel } from "@/components/photo-carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -190,43 +191,76 @@ const EVENTS: Event[] = [
   },
 ];
 
+const MARQUEE_ITEMS = [
+  "ROBO KICKS",
+  "CAD CAMP",
+  "ROBO RUMBLE",
+  "INTRO TO FIRST",
+  "FTC SCRIMMAGE",
+  "FAMILY STEM NIGHT",
+  "MENTORING FLL",
+  "OPEN-SOURCE WORKSHOP",
+];
+
+const HELP_PHOTOS = [
+  {
+    src: "/help/help1.jpg",
+    alt: "BeaverBots helping kids at an outreach event",
+  },
+  {
+    src: "/help/help2.jpg",
+    alt: "Students learning robotics with BeaverBots mentors",
+  },
+  {
+    src: "/help/help3.jpg",
+    alt: "Hands-on STEM activity led by BeaverBots",
+  },
+  {
+    src: "/help/help4.jpg",
+    alt: "BeaverBots outreach in the community",
+  },
+] as const;
+
 function EventGrid({ season }: { season: Event["season"] }) {
   const events = EVENTS.filter((e) => e.season === season);
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
       {events.map((event) => (
         <Card key={event.name} className="overflow-hidden border-border">
-          <div className="relative aspect-[3/4] bg-muted">
+          <div className="relative h-40 bg-muted sm:h-44">
             <Image
               src={event.image}
               alt={event.name}
               fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-contain p-1.5"
+              sizes="(max-width: 768px) 50vw, 25vw"
             />
-            <Badge className="absolute left-3 top-3 bg-background/90 backdrop-blur-sm">
-              {event.date}
-            </Badge>
           </div>
-          <CardContent className="p-5">
-            <h3 className="text-lg font-bold">{event.name}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          <CardContent className="p-3 sm:p-4">
+            <h3 className="text-sm font-bold leading-snug sm:text-base">
+              {event.name}
+            </h3>
+            <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
               {event.description}
             </p>
             {event.stats ? (
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="mt-2 flex flex-wrap gap-1.5">
                 {event.stats.participants ? (
-                  <Badge variant="secondary">
+                  <Badge variant="secondary" className="text-[10px]">
                     <Users2 className="mr-1 h-3 w-3" />
                     {event.stats.participants}
                   </Badge>
                 ) : null}
                 {event.stats.teams ? (
-                  <Badge variant="secondary">{event.stats.teams} teams</Badge>
+                  <Badge variant="secondary" className="text-[10px]">
+                    {event.stats.teams} teams
+                  </Badge>
                 ) : null}
                 {event.stats.games ? (
-                  <Badge variant="secondary">{event.stats.games} games</Badge>
+                  <Badge variant="secondary" className="text-[10px]">
+                    {event.stats.games} games
+                  </Badge>
                 ) : null}
               </div>
             ) : null}
@@ -235,7 +269,7 @@ function EventGrid({ season }: { season: Event["season"] }) {
                 href={event.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+                className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline sm:text-sm"
               >
                 Registration
                 <ExternalLink className="h-3 w-3" />
@@ -249,8 +283,6 @@ function EventGrid({ season }: { season: Event["season"] }) {
 }
 
 export default function OutreachPage() {
-  const totalReach = PROGRAMS.reduce((acc, p) => acc + p.reach, 0);
-
   return (
     <>
       <PageHeader
@@ -261,36 +293,43 @@ export default function OutreachPage() {
             <span className="text-primary">1,400+ kids</span> reached every year
           </>
         }
-        description="We run free STEM programs across Loudoun County — camps, scrimmages, and school visits that introduce robotics to the next generation."
+        description="We run free STEM programs across Loudoun County: camps, scrimmages, and school visits that get kids into robotics."
       />
 
-      <section className="border-b border-border bg-primary py-12 text-primary-foreground lg:py-16">
-        <div className="container-px mx-auto max-w-7xl">
-          <div className="grid items-end gap-6 lg:grid-cols-2">
-            <div>
-              <p className="text-sm font-medium text-primary-foreground/80">
-                Total outreach reach
-              </p>
-              <p className="mt-1 text-5xl font-bold tabular-nums sm:text-6xl">
-                {totalReach.toLocaleString()}+
-              </p>
-              <p className="mt-2 text-primary-foreground/80">
-                Students and families served across all programs
-              </p>
-            </div>
-            <p className="text-primary-foreground/90 leading-relaxed">
-              Outreach is a core part of who we are. We host events year-round so
-              kids in our community get the same opportunities we had.
-            </p>
-          </div>
+      <div
+        aria-hidden
+        className="overflow-hidden border-y border-border bg-background py-3"
+      >
+        <div className="flex w-max animate-marquee gap-12">
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((m, i) => (
+            <span
+              key={i}
+              className="label-mono inline-flex items-center gap-12 whitespace-nowrap text-xs text-muted-foreground"
+            >
+              {m}
+              <span aria-hidden className="h-1 w-1 rounded-full bg-primary" />
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <section className="py-14 lg:py-16">
+        <div className="container-px mx-auto max-w-5xl">
+          <SectionHeading
+            eyebrow="In the community"
+            title="Real kids. Real programs."
+            description="Photos from camps, scrimmages, and school visits across Loudoun County."
+            className="mb-8"
+          />
+          <PhotoCarousel slides={HELP_PHOTOS} />
         </div>
       </section>
 
-      <section className="py-14 lg:py-20">
+      <section className="border-t border-border py-14 lg:py-20">
         <div className="container-px mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Programs"
-            title="Five programs, one mission"
+            title="Five programs we run"
             className="mb-10"
           />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

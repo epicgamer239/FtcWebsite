@@ -17,7 +17,7 @@ const IMPACTS: Impact[] = [
     label: "$25",
     unlocks: "1 motor encoder cable",
     detail:
-      "Encoder cables get replaced often at competitions. This keeps DAM-1 driving straight in autonomous.",
+      "Encoder cables get replaced often at competitions. This keeps WoodChucker driving straight in autonomous.",
   },
   {
     amount: 100,

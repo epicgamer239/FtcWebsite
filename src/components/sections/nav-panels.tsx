@@ -7,7 +7,7 @@ const PANELS = [
     href: "/bot",
     label: "Bot",
     image: "/panels/bot.jpg",
-    alt: "DAM-1 competition robot with the BeaverBots team",
+    alt: "WoodChucker competition robot with the BeaverBots team",
   },
   {
     href: "/outreach",

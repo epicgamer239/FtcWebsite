@@ -27,7 +27,7 @@ const jost = Jost({
 export const metadata: Metadata = {
   title: "BeaverBots FTC · Headed to the 2026 FIRST Worlds Championship",
   description:
-    "The BeaverBots are a second-year FIRST Tech Challenge team based in Ashburn, VA — heading to the 2026 FIRST Worlds Championship in Houston, Texas. Empowering STEM in our community.",
+    "The BeaverBots are a second-year FIRST Tech Challenge team in Ashburn, VA. We qualified for the 2026 FIRST Worlds Championship in Houston, Texas.",
 };
 
 export default function RootLayout({

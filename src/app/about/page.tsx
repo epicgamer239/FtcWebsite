@@ -1,23 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
-import { SectionHeading } from "@/components/section-heading";
-import { Card, CardContent } from "@/components/ui/card";
+import { PhotoCarousel } from "@/components/photo-carousel";
 import { buttonVariants } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import {
-  Hammer,
-  Users2,
-  Rocket,
-  MapPin,
-  Calendar,
-  ArrowRight,
-  Lightbulb,
-  HeartHandshake,
-  Compass,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -26,76 +13,140 @@ export const metadata: Metadata = {
     "Meet the BeaverBots: a second-year FIRST Tech Challenge team from Ashburn, VA.",
 };
 
-const FACTS = [
-  { icon: MapPin, label: "Location", value: "Ashburn, VA" },
-  { icon: Calendar, label: "Founded", value: "2024 · 2nd season" },
-  { icon: Users2, label: "Team size", value: "12 students" },
-  { icon: Hammer, label: "Program", value: "FIRST Tech Challenge" },
-];
-
-const VALUES = [
-  {
-    icon: Hammer,
-    title: "Engineering excellence",
-    body: "We CAD, machine, print, and iterate until the robot earns its place on the field.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    body: "Custom mechanisms, autonomous routines, and vision pipelines built by students.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Gracious professionalism",
-    body: "We compete hard, support other teams, and represent our school and sponsors well.",
-  },
-  {
-    icon: Compass,
-    title: "Student-led",
-    body: "Students design the robot, write the code, and run outreach. Mentors guide; students lead.",
-  },
-];
-
 const MEMBERS = [
-  { name: "Maya R.", role: "Captain · Mechanical lead", grade: "Senior" },
-  { name: "Devon P.", role: "Programming lead", grade: "Junior" },
-  { name: "Aisha K.", role: "Electrical & controls", grade: "Senior" },
-  { name: "Lucas T.", role: "CAD & manufacturing", grade: "Junior" },
-  { name: "Priya S.", role: "Outreach director", grade: "Senior" },
-  { name: "Jordan R.", role: "Driver · strategy", grade: "Senior" },
-];
+  {
+    name: "Velan",
+    role: "Captain",
+    year: "Junior",
+    image: "/members/velan.jpg",
+  },
+  {
+    name: "Aryan",
+    role: "Vice-Captain",
+    year: "Sophomore",
+    image: "/members/aryan.jpg",
+  },
+  {
+    name: "Savni",
+    role: "Outreach",
+    year: "Junior",
+    image: "/members/sanvi.jpg",
+  },
+  {
+    name: "Ishani",
+    role: "Outreach",
+    year: "Sophomore",
+    image: "/members/ishani.jpg",
+  },
+  {
+    name: "Smit",
+    role: "CAD",
+    year: "Junior",
+    image: "/members/smit.jpg",
+  },
+  {
+    name: "Ishanth",
+    role: "CAD",
+    year: "Junior",
+    image: "/members/ishanth.jpg",
+  },
+  {
+    name: "Graisen",
+    role: "Programming",
+    year: "Junior",
+    image: "/members/graisen.jpg",
+  },
+  {
+    name: "Eshan",
+    role: "Building",
+    year: "Junior",
+    image: "/members/eshan.jpg",
+  },
+  {
+    name: "Pranav",
+    role: "Building",
+    year: "Sophomore",
+    image: "/members/pranav.jpg",
+  },
+] as const;
 
-const SEASONS = [
+const COACHES = [
   {
-    when: "2024",
-    title: "Rookie year",
-    detail:
-      "Six students and a borrowed 3D printer. We built our first robot, TIMBER, and learned how an FTC team runs.",
-    badge: "Founded",
+    name: "Susee Natarajan",
+    role: "Coach",
+    image: "/coaches/susee-natarajan.png",
   },
   {
-    when: "2024–25",
-    title: "Centerstage",
-    detail:
-      "First full competition season. Inspire Award nomination at a Loudoun qualifier.",
-    badge: "Season 1",
+    name: "Adhvith",
+    role: "Mentor",
+    image: "/coaches/adhvith.png",
   },
   {
-    when: "2025–26",
-    title: "Into the Deep",
-    detail:
-      "Twelve students, in-house CNC, and DAM-1 — mecanum drive, cascading slides, and 78% autonomous accuracy.",
-    badge: "Worlds qualifier",
-    current: true,
+    name: "Raghav",
+    role: "Mentor",
+    image: "/coaches/raghav.png",
   },
   {
-    when: "Apr 2026",
-    title: "Houston, TX",
-    detail:
-      "First Worlds Championship. Competing against the best FTC teams in the world.",
-    badge: "Goal",
+    name: "Tom Nobal",
+    role: "Mentor",
+    image: "/coaches/tom-nobal.png",
   },
-];
+  {
+    name: "Jens Charl",
+    role: "Mentor",
+    image: "/coaches/jens-charl.png",
+  },
+  {
+    name: "Mohan",
+    role: "Mentor",
+    image: "/coaches/mohan.png",
+  },
+  {
+    name: "Pranav",
+    role: "Mentor",
+    image: "/coaches/pranav.png",
+  },
+  {
+    name: "Saravana",
+    role: "Mentor",
+    image: "/coaches/saravana.png",
+  },
+] as const;
+
+const TEAM_PHOTOS = [
+  {
+    src: "/team/team1.jpg",
+    alt: "BeaverBots team together",
+  },
+  {
+    src: "/team/team2.jpeg",
+    alt: "BeaverBots at a competition event",
+  },
+  {
+    src: "/team/team3.jpg",
+    alt: "BeaverBots students with their robot",
+  },
+  {
+    src: "/team/team4.jpg",
+    alt: "BeaverBots team on the field",
+  },
+  {
+    src: "/team/team5.jpg",
+    alt: "BeaverBots team photo",
+  },
+  {
+    src: "/team/team6.jpg",
+    alt: "BeaverBots at an outreach or competition day",
+  },
+  {
+    src: "/team/team7.jpg",
+    alt: "BeaverBots students working together",
+  },
+  {
+    src: "/team/team8.jpg",
+    alt: "BeaverBots team group photo",
+  },
+] as const;
 
 export default function AboutPage() {
   return (
@@ -109,10 +160,13 @@ export default function AboutPage() {
             <span className="text-primary">Ashburn, Virginia</span>
           </>
         }
-        description="Twelve students in grades 8–12 who design, build, and program competition robots — and run outreach programs that reach over 1,400 kids a year."
+        description="Twelve students in grades 8–12 who design, build, and program competition robots. We also run outreach that reaches over 1,400 kids a year."
       >
         <div className="flex flex-wrap gap-3">
-          <Link href="/bot" className={cn(buttonVariants({ size: "lg" }), "gap-2")}>
+          <Link
+            href="/bot"
+            className={cn(buttonVariants({ size: "lg" }), "gap-2")}
+          >
             Meet our robot
             <ArrowRight className="h-4 w-4" />
           </Link>
@@ -125,162 +179,92 @@ export default function AboutPage() {
         </div>
       </PageHeader>
 
-      <section className="border-b border-border py-10">
-        <div className="container-px mx-auto grid max-w-7xl grid-cols-2 gap-6 lg:grid-cols-4">
-          {FACTS.map((f) => {
-            const Icon = f.icon;
-            return (
-              <div key={f.label} className="flex items-center gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-accent text-primary">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">{f.label}</p>
-                  <p className="font-bold">{f.value}</p>
-                </div>
-              </div>
-            );
-          })}
+      <section className="border-t border-border py-16 lg:py-20">
+        <div className="container-px mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+            About the <span className="text-primary">Beavers</span>
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            The BeaverBots are a FIRST Tech Challenge team in Ashburn, VA. We are
+            a second-year team of high school students, from rising sophomores to
+            rising juniors. We want more kids in our community to try robotics
+            and get interested in STEM.
+          </p>
         </div>
-      </section>
 
-      <section className="py-16 lg:py-20">
-        <div className="container-px mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="What we stand for"
-            title="More than a robotics team"
-            className="mb-10"
-          />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {VALUES.map((v) => {
-              const Icon = v.icon;
-              return (
-                <Card key={v.title} className="border-border">
-                  <CardContent className="p-6">
-                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-accent text-primary">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h3 className="font-bold">{v.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {v.body}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-border bg-muted/30 py-16 lg:py-20">
-        <div className="container-px mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Our story"
-            title="Two seasons, steady growth"
-            className="mb-10"
-          />
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {SEASONS.map((s) => (
-              <Card
-                key={s.when}
-                className={cn(
-                  "border-border bg-background",
-                  s.current && "border-primary"
-                )}
-              >
-                <CardContent className="p-5">
-                  <p className="text-sm font-medium text-primary">{s.when}</p>
-                  <h3 className="mt-1 text-lg font-bold">{s.title}</h3>
-                  <Badge variant="outline" className="mt-2">
-                    {s.badge}
-                  </Badge>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {s.detail}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 lg:py-20">
-        <div className="container-px mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Team"
-            title="12 students. One robot."
-            className="mb-10"
-          />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {MEMBERS.map((m) => (
-              <Card key={m.name} className="border-border">
-                <CardContent className="flex items-center gap-4 p-5">
-                  <Avatar className="h-12 w-12">
-                    <AvatarFallback className="bg-accent font-bold text-primary">
-                      {m.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <p className="font-semibold">{m.name}</p>
-                    <p className="text-xs text-muted-foreground">{m.role}</p>
-                  </div>
-                  <Badge variant="secondary">{m.grade}</Badge>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <Separator className="my-10" />
-
-          <p className="mb-4 text-sm font-semibold">Mentors & coaches</p>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {[
-              { n: "Ms. Lopez", r: "Head coach · Physics" },
-              { n: "Dr. Singh", r: "Mentor · Boeing" },
-              { n: "Mr. Chen", r: "Mentor · Microsoft" },
-            ].map((m) => (
-              <div
-                key={m.n}
-                className="flex items-center gap-4 rounded-lg border border-border p-4"
-              >
-                <Avatar className="h-11 w-11">
-                  <AvatarFallback className="bg-accent font-bold text-primary">
-                    {m.n
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="text-sm font-semibold">{m.n}</p>
-                  <p className="text-xs text-muted-foreground">{m.r}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="container-px mx-auto mt-12 max-w-5xl">
+          <PhotoCarousel slides={TEAM_PHOTOS} />
         </div>
       </section>
 
       <section className="border-t border-border py-16 lg:py-20">
-        <div className="container-px mx-auto max-w-3xl text-center">
-          <Rocket className="mx-auto mb-4 h-10 w-10 text-primary" />
-          <h2 className="text-2xl font-bold lg:text-3xl">
-            Empowering STEM in our community
+        <div className="container-px mx-auto max-w-5xl">
+          <h2 className="text-center text-3xl font-extrabold uppercase tracking-wide text-primary sm:text-4xl">
+            Members
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-muted-foreground">
-            Our mission is to give students real engineering experience and bring
-            robotics programs to families across Loudoun County.
-          </p>
-          <Link
-            href="/sponsor#donate"
-            className={cn(buttonVariants({ size: "lg" }), "mt-7 gap-2")}
-          >
-            Help us get to Worlds
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+
+          <ul className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
+            {MEMBERS.map((m) => (
+              <li
+                key={m.name}
+                className="flex flex-col items-center text-center"
+              >
+                <p className="mb-3 text-lg font-extrabold uppercase tracking-wide text-primary">
+                  {m.name}
+                </p>
+                <div className="relative aspect-[3/4] w-full max-w-[220px] overflow-hidden bg-[oklch(0.92_0.01_85)]">
+                  {m.image ? (
+                    <Image
+                      src={m.image}
+                      alt={`${m.name}, ${m.role}`}
+                      fill
+                      sizes="220px"
+                      className="object-cover object-top"
+                    />
+                  ) : (
+                    <div
+                      className="flex h-full w-full items-end justify-center pb-8 text-4xl font-extrabold text-primary/25"
+                      aria-hidden
+                    >
+                      {m.name[0]}
+                    </div>
+                  )}
+                </div>
+                <p className="mt-3 text-sm font-medium text-foreground">
+                  {m.role}
+                </p>
+                <p className="text-sm text-muted-foreground">{m.year}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="border-t border-border py-16 lg:py-20">
+        <div className="container-px mx-auto max-w-5xl">
+          <h2 className="text-center text-3xl font-extrabold uppercase tracking-wide text-primary sm:text-4xl">
+            Coaches &amp; Mentors
+          </h2>
+
+          <ul className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
+            {COACHES.map((c) => (
+              <li key={c.name} className="flex flex-col">
+                <div className="relative aspect-[3/1] w-full overflow-hidden border border-border bg-muted">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={c.image}
+                    alt={`${c.name}, ${c.role}`}
+                    className="absolute inset-0 h-full w-full"
+                    style={{ objectFit: "fill" }}
+                  />
+                </div>
+                <p className="mt-3 text-lg font-extrabold uppercase tracking-wide text-primary">
+                  {c.name}
+                </p>
+                <p className="text-sm text-muted-foreground">{c.role}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </>
