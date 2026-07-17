@@ -16,7 +16,7 @@ const PANELS = [
   {
     href: "/bot",
     label: "Bot",
-    image: "/panels/bot.jpg",
+    image: "/panels/bot.jpeg",
     alt: "WoodChucker competition robot with the BeaverBots team",
     showLogos: false,
     imageStyle: {
@@ -41,9 +41,9 @@ const PANELS = [
   {
     href: "/sponsor",
     label: "Sponsors",
-    image: "/panels/outreach.jpg",
+    image: "/panels/sponsors.jpg",
     alt: "BeaverBots sponsors over a team photo",
-    showLogos: true,
+    showLogos: false,
     imageStyle: undefined as CSSProperties | undefined,
   },
 ] as const;
