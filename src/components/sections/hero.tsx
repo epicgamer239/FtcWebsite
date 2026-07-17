@@ -8,7 +8,7 @@ export function Hero() {
       className="relative w-full h-screen flex items-center justify-center overflow-hidden"
     >
       <Image
-        src="/IMG_4172.JPG"
+        src="/gallery/team.jpg"
         alt=""
         fill
         priority
