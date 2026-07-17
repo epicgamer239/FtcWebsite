@@ -43,7 +43,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <TooltipProvider delay={150}>
           <Navbar />
-          <main className="flex-1 flex flex-col pb-16 md:pb-0">{children}</main>
+          <main className="flex-1 flex flex-col">{children}</main>
           <Footer />
           <MobileNav />
           <Toaster />

@@ -5,10 +5,10 @@ export function Hero() {
     <section
       id="home"
       aria-label="BeaverBots team introduction"
-      className="relative w-full h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden"
+      className="relative w-full h-screen flex items-center justify-center overflow-hidden"
     >
       <Image
-        src="/IMG_4172.jpg"
+        src="/IMG_4172.JPG"
         alt=""
         fill
         priority
