@@ -266,10 +266,12 @@ export default function OutreachPage() {
         description="We run free STEM programs across Loudoun County: camps, scrimmages, and school visits that get kids into robotics."
       />
 
-      <div className="border-y border-border bg-background py-4">
-        <p className="container-px mx-auto max-w-7xl text-center text-sm text-muted-foreground">
-          {PROGRAM_TAGS.join(" · ")}
-        </p>
+      <div className="border-y border-border bg-background py-4 overflow-hidden">
+        <div className="animate-marquee whitespace-nowrap">
+          <p className="text-sm font-mono text-muted-foreground inline-block">
+            {PROGRAM_TAGS.join("    ·    ")}    ·    {PROGRAM_TAGS.join("    ·    ")}
+          </p>
+        </div>
       </div>
 
       <section className="py-20 lg:py-24">

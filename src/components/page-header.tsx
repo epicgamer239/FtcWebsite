@@ -38,7 +38,7 @@ export function PageHeader({
           </BreadcrumbList>
         </Breadcrumb>
 
-        <h1 className="max-w-4xl text-balance text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+        <h1 className="max-w-4xl text-balance text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
           {title}
         </h1>
 

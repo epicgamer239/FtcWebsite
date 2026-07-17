@@ -5,7 +5,7 @@ export function Hero() {
     <section
       id="home"
       aria-label="BeaverBots team introduction"
-      className="relative mt-20 flex min-h-[calc(100svh-5rem)] items-center justify-center overflow-hidden bg-muted"
+      className="relative w-full h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden"
     >
       <Image
         src="/IMG_4172.jpg"
@@ -17,24 +17,23 @@ export function Hero() {
         aria-hidden
       />
 
-      {/* Soft gradient scrim for text readability */}
+      {/* Dark overlay for text contrast */}
       <div
-        className="absolute inset-0 bg-gradient-to-t from-foreground/45 via-foreground/25 to-foreground/15"
+        className="absolute inset-0 bg-black/20"
         aria-hidden
       />
 
       <div className="hero-copy relative z-10 mx-auto max-w-6xl px-4 py-24 text-center sm:px-8">
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-8 sm:py-10">
-          <h1
-            className="hero-copy-title whitespace-nowrap text-[clamp(1.15rem,5.2vw+0.25rem,4.75rem)] font-extrabold italic uppercase leading-[0.95] tracking-tight text-white"
-            style={{ textShadow: "0 2px 24px rgb(0 0 0 / 0.45)" }}
-          >
-            Team 26073 - BeaverBots
-          </h1>
-          <p
-            className="hero-copy-subtitle mt-5 text-balance font-serif text-[clamp(1.05rem,2vw+0.35rem,1.65rem)] italic leading-snug text-white/95"
-            style={{ textShadow: "0 1px 16px rgb(0 0 0 / 0.5)" }}
-          >
+          <div className="flex flex-col items-center justify-center gap-1 sm:gap-2">
+            <p className="text-white font-bold uppercase tracking-widest text-lg sm:text-xl md:text-2xl lg:text-3xl opacity-90 text-center" style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.5), 0 0 16px rgba(0, 0, 0, 0.25)' }}>
+              TEAM 26073
+            </p>
+            <h1 className="text-primary font-extrabold italic uppercase tracking-tighter text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-center leading-none" style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.5), 0 0 16px rgba(0, 0, 0, 0.25)' }}>
+              BEAVERBOTS
+            </h1>
+          </div>
+          <p className="hero-copy-subtitle mt-6 font-serif italic text-white text-lg sm:text-xl md:text-2xl text-center opacity-90 max-w-2xl px-4" style={{ textShadow: '0 1px 4px rgba(0, 0, 0, 0.4)' }}>
             A 2026 FIRST
             <sup className="ml-0.5 text-[0.55em] font-normal not-italic leading-none">
               ®

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { PhotoCarousel } from "@/components/photo-carousel";
 import { buttonVariants } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -206,7 +207,7 @@ export default function AboutPage() {
             {MEMBERS.map((m) => (
               <li
                 key={m.name}
-                className="flex flex-col items-center rounded-xl border border-border bg-background p-5 text-center shadow-paper"
+                className="flex flex-col items-center rounded-xl border border-border bg-background p-5 text-center shadow-paper transition-colors hover:border-primary"
               >
                 <div className="relative aspect-[3/4] w-full max-w-[200px] overflow-hidden rounded-lg bg-muted">
                   <Image
@@ -217,11 +218,13 @@ export default function AboutPage() {
                     className="object-cover object-top"
                   />
                 </div>
-                <p className="mt-4 text-lg font-bold tracking-tight text-foreground">
+                <Badge variant="secondary" className="mt-4">
+                  {m.year}
+                </Badge>
+                <p className="mt-3 text-lg font-bold tracking-tight text-foreground">
                   {m.name}
                 </p>
                 <p className="mt-1 text-sm font-medium text-primary">{m.role}</p>
-                <p className="text-sm text-muted-foreground">{m.year}</p>
               </li>
             ))}
           </ul>
@@ -238,7 +241,7 @@ export default function AboutPage() {
             {COACHES.map((c) => (
               <li
                 key={c.name}
-                className="flex flex-col rounded-xl border border-border bg-background p-4 shadow-paper"
+                className="flex flex-col rounded-xl border border-border bg-background p-4 shadow-paper transition-colors hover:border-primary"
               >
                 <div className="relative aspect-[3/1] w-full overflow-hidden rounded-lg border border-border bg-muted">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -249,10 +252,12 @@ export default function AboutPage() {
                     style={{ objectFit: "cover", objectPosition: "center top" }}
                   />
                 </div>
-                <p className="mt-4 text-lg font-bold tracking-tight text-foreground">
+                <Badge variant="secondary" className="mt-4">
+                  {c.role}
+                </Badge>
+                <p className="mt-3 text-lg font-bold tracking-tight text-foreground">
                   {c.name}
                 </p>
-                <p className="text-sm text-muted-foreground">{c.role}</p>
               </li>
             ))}
           </ul>
